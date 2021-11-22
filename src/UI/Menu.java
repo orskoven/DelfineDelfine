@@ -5,10 +5,15 @@ import persons.Member;
 import java.util.Scanner;
 
 public class Menu {
-    private Scanner userInput;
+    private Scanner input;
 
     public Menu(){
-        this.userInput = new Scanner(System.in);
+        this.input = new Scanner(System.in);
+    }
+
+    public int getUserInput(){
+        int userInput = Integer.parseInt(input.nextLine());
+        return userInput;
     }
 
     public void welcome(){
@@ -23,6 +28,7 @@ public class Menu {
         System.out.println("1. Chairman");
         System.out.println("2. Cashier");
         System.out.println("3. Coach");
+        System.out.println("0. Quit");
     }
 
     public void optionsForChairman() {
