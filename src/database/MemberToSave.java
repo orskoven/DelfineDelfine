@@ -16,6 +16,8 @@ public class MemberToSave {
 
 
     public void saveMemberDetailsToFile(Member member) {
+        saveMemberIdCounter();
+        member.setMemberId(memberId+1);
         String[] memberDetailsArray = member.toString().split(",");
         try {
             Writer w = new FileWriter("src/disciplines/resources/members.csv", true);
