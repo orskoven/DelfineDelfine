@@ -12,12 +12,11 @@ import java.util.Scanner;
 public class MemberToSave {
     private ArrayList<String> memberDetails = new ArrayList<String>();
     static int memberId;
-    static int newMemberId = memberId + 1;
 
 
     public void saveMemberDetailsToFile(Member member) {
         saveMemberIdCounter();
-        member.setMemberId(memberId+1);
+        member.setMemberId(memberId);
         String[] memberDetailsArray = member.toString().split(",");
         try {
             Writer w = new FileWriter("src/disciplines/resources/members.csv", true);

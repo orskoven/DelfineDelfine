@@ -9,8 +9,6 @@ public class MemberGenerator {
     private String name;
     private int age;
     private String adress;
-    private int memberId;
-    private int memberCounter;
     private boolean isActive;
     private boolean isUnder18;
     private boolean isEliteSwimmer;
