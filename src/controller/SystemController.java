@@ -9,19 +9,23 @@ public class SystemController {
     public void chooseOptions(){
         int userInput;
 
-        System.out.println("1. Chairman");
-        System.out.println("2. Cashier");
-        System.out.println("3. Coach");
-        System.out.println("0. Quit");
+        menu.welcome();
 
         do {
-            menu.welcome();
+
             menu.chooseUser();
             userInput = menu.getUserInput();
 
             switch (userInput){
                 case 1:
                     menu.optionsForChairman();
+                    if (userInput == 1){
+                        //create member
+                    }else if (userInput == 2){
+                        //show members
+                    }else if (userInput == 0){
+                        //go back option
+                    }
                     break;
                 case 2:
                     menu.optionsForCashier();

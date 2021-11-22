@@ -34,17 +34,20 @@ public class Menu {
     public void optionsForChairman() {
         System.out.println("1. Create member");
         System.out.println("2. Show members");
+        System.out.println("3. Return");
     }
 
     public void optionsForCashier(){
         System.out.println("1. Show expected payments");
         System.out.println("2. Show members in arrears"); //restance = er i gæld til svømmeklubben
+        System.out.println("3. Return");
     }
 
     public void optionsForCoach(){
         System.out.println("1. Show top 5 elite swimmers"); //juniors + seniors
         System.out.println("2. Show elite swimmers");
         System.out.println("3. Create a result");
+        System.out.println("4. Return");
     }
 
 }
