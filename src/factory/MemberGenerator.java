@@ -19,12 +19,11 @@ public class MemberGenerator {
     public Member MemberGenerator() {
         boolean isVerified = false;
         do {
+            System.out.println("Age: ");
+            age = Integer.parseInt(scanner.next());
 
             System.out.println("Name: ");
-            name = scanner.nextLine();
-
-            System.out.println("Age: ");
-            age = scanner.nextInt();
+            name = scanner.next();
 
             System.out.println("Address: ");
             scanner.next();
@@ -56,7 +55,8 @@ public class MemberGenerator {
             } else {
                 hasPaid = false;
             }
-            newMember = new Member(name, age, adress, 0, 0, isActive, isUnder18, isEliteSwimmer, hasPaid);
+            newMember = new Member(name, age, adress, 0, 0, isActive,
+                    isUnder18, isEliteSwimmer, hasPaid);
             String[] newMemberArray = newMember.toString().split(",");
             System.out.println("Verify the datails: ");
             for (int i = 0; i < newMemberArray.length; i++) {
