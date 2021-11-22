@@ -1,3 +1,4 @@
+import database.LoadMember;
 import database.MemberToSave;
 import database.ReadFiles;
 import factory.MemberGenerator;
@@ -9,6 +10,8 @@ public class DelfinenApp {
 
 
     public static void main(String[] args) {
+        new LoadMember();
+        System.out.println();
         new ReadFiles("src/disciplines/resources/members.csv");
         new ReadFiles("src/disciplines/resources/memberIdCounter.csv");
         MemberGenerator memberGenerator = new MemberGenerator();
