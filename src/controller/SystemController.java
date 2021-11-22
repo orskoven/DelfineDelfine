@@ -1,10 +1,12 @@
 package controller;
 
 import UI.Menu;
+import factory.MemberGenerator;
 
 public class SystemController {
 
     private Menu menu = new Menu();
+    private MemberGenerator member = new MemberGenerator();
 
     public void chooseOptions(){
         int userInput;
@@ -19,11 +21,14 @@ public class SystemController {
             switch (userInput){
                 case 1:
                     menu.optionsForChairman();
-                    if (userInput == 1){
-                        //create member
-                    }else if (userInput == 2){
+                    int choice = menu.getUserInput();
+                    if (choice == 1){                    //create member
+                        member.MemberGenerator();
+
+                    }else if (choice == 2){
                         //show members
-                    }else if (userInput == 0){
+
+                    }else if (choice == 9){
                         //go back option
                     }
                     break;
@@ -34,7 +39,7 @@ public class SystemController {
                     menu.optionsForCoach();
                     break;
             }
-        } while (userInput != 0);
+        } while (userInput != 9);
     }
 
     public static void main(String[] args) {
