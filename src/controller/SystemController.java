@@ -1,7 +1,7 @@
 package controller;
 
 import UI.Menu;
-import database.LoadMember;
+import database.LoadMemberMissingPayment;
 import database.MemberToSave;
 import database.ReadFiles;
 import factory.MemberGenerator;
@@ -44,7 +44,7 @@ public class SystemController {
                         //show expected payments
                     }else if (cashierChoice == 2){
                         //show members in arrears
-                        new LoadMember();
+                        new LoadMemberMissingPayment();
                     }else if (cashierChoice == 9){
 
                     }

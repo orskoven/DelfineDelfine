@@ -8,12 +8,12 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class LoadMember {
+public class LoadMemberMissingPayment {
     static Scanner scanner = new Scanner(System.in);
     static int lineCounter = 0;
     static ArrayList<String> membersNotPayed = new ArrayList<String>();
 
-    public LoadMember() {
+    public LoadMemberMissingPayment() {
         File getMemberNotPayedYet = new File("resources/members.csv");
         try {
             Scanner sc = new Scanner(getMemberNotPayedYet);

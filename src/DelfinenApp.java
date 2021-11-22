@@ -1,8 +1,7 @@
-import database.LoadMember;
+import database.LoadMemberMissingPayment;
 import database.MemberToSave;
 import database.ReadFiles;
 import factory.MemberGenerator;
-import persons.Member;
 
 public class DelfinenApp {
     static MemberToSave memberToSave = new MemberToSave();
@@ -10,7 +9,7 @@ public class DelfinenApp {
 
 
     public static void main(String[] args) {
-        new LoadMember();
+        new LoadMemberMissingPayment();
         System.out.println();
         new ReadFiles("resources/members.csv");
         new ReadFiles("resources/memberIdCounter.csv");

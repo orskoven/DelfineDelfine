@@ -19,7 +19,7 @@ public class MemberToSave {
         member.setMemberId(memberId);
         String[] memberDetailsArray = member.toString().split(",");
         try {
-            Writer w = new FileWriter("src/disciplines/resources/members.csv", true);
+            Writer w = new FileWriter("resources/members.csv", true);
             w.write("\r");
             for (int i = 0; i < memberDetailsArray.length; i++) {
                 w.write(memberDetailsArray[i]);
@@ -36,7 +36,7 @@ public class MemberToSave {
     static void saveMemberIdCounter() {
         int number = 0;
         try {
-            File file = new File("src/disciplines/resources/memberIdCounter.csv");
+            File file = new File("resources/members.csv");
             Scanner numberScanner = new Scanner(file);
             while (numberScanner.hasNext()){
                 memberId = numberScanner.nextInt();
@@ -45,7 +45,7 @@ public class MemberToSave {
             System.out.println("File couldn't read");
         }
         try {
-            Writer w = new FileWriter("resources/members.csv");
+            Writer w = new FileWriter("resources/memberIdCounter.csv");
             w.write(Integer.toString(memberId+1));
             w.close();
 
