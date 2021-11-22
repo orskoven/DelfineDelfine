@@ -21,22 +21,42 @@ public class SystemController {
             switch (userInput){
                 case 1:
                     menu.optionsForChairman();
-                    int choice = menu.getUserInput();
-                    if (choice == 1){                    //create member
+                    int chairmanChoice = menu.getUserInput();
+                    if (chairmanChoice == 1){                    //create member
                         member.MemberGenerator();
 
-                    }else if (choice == 2){
+                    }else if (chairmanChoice == 2){
                         //show members
 
-                    }else if (choice == 9){
-                        //go back option
+                    }else if (chairmanChoice == 9){             //go back option
+
                     }
                     break;
+
                 case 2:
                     menu.optionsForCashier();
+                    int cashierChoice = menu.getUserInput();
+                    if (cashierChoice == 1){
+                        //show expected payments
+                    }else if (cashierChoice == 2){
+                        //show members in arrears
+                    }else if (cashierChoice == 9){
+
+                    }
                     break;
+
                 case 3:
                     menu.optionsForCoach();
+                    int coachChoice = menu.getUserInput();
+                    if (coachChoice == 1){
+                        //Show top 5 elite swimmers
+                    }else if (coachChoice == 2){
+                        //Show elite swimmers
+                    }else if (coachChoice == 3){
+                        //create result
+                    }else if (coachChoice == 9){
+                        //return
+                    }
                     break;
             }
         } while (userInput != 9);
