@@ -5,10 +5,15 @@ import persons.Member;
 import java.util.Scanner;
 
 public class Menu {
-    private Scanner userInput;
+    private Scanner input;
 
     public Menu(){
-        this.userInput = new Scanner(System.in);
+        this.input = new Scanner(System.in);
+    }
+
+    public int getUserInput(){
+        int userInput = Integer.parseInt(input.nextLine());
+        return userInput;
     }
 
     public void welcome(){
@@ -23,22 +28,26 @@ public class Menu {
         System.out.println("1. Chairman");
         System.out.println("2. Cashier");
         System.out.println("3. Coach");
+        System.out.println("9. Quit");
     }
 
     public void optionsForChairman() {
         System.out.println("1. Create member");
         System.out.println("2. Show members");
+        System.out.println("9. Return");
     }
 
     public void optionsForCashier(){
         System.out.println("1. Show expected payments");
         System.out.println("2. Show members in arrears"); //restance = er i gæld til svømmeklubben
+        System.out.println("9. Return");
     }
 
     public void optionsForCoach(){
         System.out.println("1. Show top 5 elite swimmers"); //juniors + seniors
         System.out.println("2. Show elite swimmers");
         System.out.println("3. Create a result");
+        System.out.println("9. Return");
     }
 
 }
