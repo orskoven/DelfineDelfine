@@ -11,7 +11,8 @@ import java.util.Scanner;
 
 public class MemberToSave {
     private ArrayList<String> memberDetails = new ArrayList<String>();
-    static int[] memberId = new int[1];
+    static int memberId;
+    static int newMemberId = memberId + 1;
 
 
     public void saveMemberDetailsToFile(Member member) {
@@ -37,15 +38,14 @@ public class MemberToSave {
             File file = new File("src/disciplines/resources/memberIdCounter.csv");
             Scanner numberScanner = new Scanner(file);
             while (numberScanner.hasNext()){
-                String[] memberIdArray = numberScanner.next().split(";");
-                number = Integer.parseInt(memberIdArray[0]);
+                memberId = numberScanner.nextInt();
             }
         } catch(Exception e) {
             System.out.println("File couldn't read");
         }
         try {
             Writer w = new FileWriter("src/disciplines/resources/memberIdCounter.csv", true);
-            w.write( number+ 1 );
+            w.write(;
             w.close();
 
         } catch (IOException e) {
