@@ -45,7 +45,7 @@ public class MemberToSave {
             System.out.println("File couldn't read");
         }
         try {
-            Writer w = new FileWriter("src/disciplines/resources/memberIdCounter.csv");
+            Writer w = new FileWriter("resources/members.csv");
             w.write(Integer.toString(memberId+1));
             w.close();
 

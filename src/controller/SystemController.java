@@ -1,10 +1,13 @@
 package controller;
 
 import UI.Menu;
+import database.LoadMember;
+import database.MemberToSave;
+import database.ReadFiles;
 import factory.MemberGenerator;
 
 public class SystemController {
-
+    static MemberToSave memberToSave = new MemberToSave();
     private Menu menu = new Menu();
     private MemberGenerator member = new MemberGenerator();
 
@@ -22,11 +25,12 @@ public class SystemController {
                 case 1:
                     menu.optionsForChairman();
                     int chairmanChoice = menu.getUserInput();
-                    if (chairmanChoice == 1){                    //create member
-                        member.MemberGenerator();
-
+                    if (chairmanChoice == 1){
+                        //create member
+                        memberToSave.saveMemberDetailsToFile(member.MemberGenerator());
                     }else if (chairmanChoice == 2){
                         //show members
+                        new ReadFiles("resources/members.csv");
 
                     }else if (chairmanChoice == 9){             //go back option
 
@@ -40,6 +44,7 @@ public class SystemController {
                         //show expected payments
                     }else if (cashierChoice == 2){
                         //show members in arrears
+                        new LoadMember();
                     }else if (cashierChoice == 9){
 
                     }

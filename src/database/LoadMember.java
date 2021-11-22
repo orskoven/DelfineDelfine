@@ -14,7 +14,7 @@ public class LoadMember {
     static ArrayList<String> membersNotPayed = new ArrayList<String>();
 
     public LoadMember() {
-        File getMemberNotPayedYet = new File("src/disciplines/resources/members.csv");
+        File getMemberNotPayedYet = new File("resources/members.csv");
         try {
             Scanner sc = new Scanner(getMemberNotPayedYet);
             while (sc.hasNextLine()) {

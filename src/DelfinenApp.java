@@ -12,8 +12,8 @@ public class DelfinenApp {
     public static void main(String[] args) {
         new LoadMember();
         System.out.println();
-        new ReadFiles("src/disciplines/resources/members.csv");
-        new ReadFiles("src/disciplines/resources/memberIdCounter.csv");
+        new ReadFiles("resources/members.csv");
+        new ReadFiles("resources/memberIdCounter.csv");
         MemberGenerator memberGenerator = new MemberGenerator();
         memberToSave.saveMemberDetailsToFile(memberGenerator.MemberGenerator());
 
