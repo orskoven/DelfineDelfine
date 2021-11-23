@@ -36,7 +36,7 @@ public class MemberToSave {
     static void saveMemberIdCounter() {
         int number = 0;
         try {
-            File file = new File("resources/members.csv");
+            File file = new File("resources/memberIdCounter.csv");
             Scanner numberScanner = new Scanner(file);
             while (numberScanner.hasNext()){
                 memberId = numberScanner.nextInt();

@@ -1,1 +1,1 @@
-Member{name='egon' age=66 adress='' memberId=101 memberCounter=0 isActive=false isUnder18=false isEliteSwimmer=false hasPaid=false}
+Member{name='simon' age=12 adress='' memberId=102 memberCounter=0 isActive=true isUnder18=true isEliteSwimmer=true hasPaid=true}Member{name='kurt' age=55 adress=' ravn' memberId=104 memberCounter=0 isActive=true isUnder18=false isEliteSwimmer=false hasPaid=true}

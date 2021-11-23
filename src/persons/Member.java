@@ -13,13 +13,12 @@ public class Member {
     private boolean isEliteSwimmer;
     private boolean hasPaid;
 
-    public Member(String name, int age, String adress, int memberId, int memberCounter,
+    public Member(String name, int age, String adress, int memberId,
                   boolean isActive, boolean isUnder18, boolean isEliteSwimmer, boolean hasPaid) {
         this.name = name;
         this.age = age;
         this.adress = adress;
         this.memberId = memberId;
-        this.memberCounter = memberCounter;
         this.isActive = isActive;
         this.isUnder18 = isUnder18;
         this.isEliteSwimmer = isEliteSwimmer;

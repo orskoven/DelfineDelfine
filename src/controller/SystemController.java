@@ -3,13 +3,20 @@ package controller;
 import UI.Menu;
 import database.LoadMemberMissingPayment;
 import database.MemberToSave;
+import database.ReadAllMembers;
 import database.ReadFiles;
 import factory.MemberGenerator;
+import persons.Member;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class SystemController {
     static MemberToSave memberToSave = new MemberToSave();
     private Menu menu = new Menu();
     private MemberGenerator member = new MemberGenerator();
+    private ReadAllMembers readAllMembers = new ReadAllMembers();
+    private ArrayList<Member> members = new ArrayList<Member>();
 
     public void chooseOptions(){
         int userInput;
@@ -57,6 +64,8 @@ public class SystemController {
                         //Show top 5 elite swimmers
                     }else if (coachChoice == 2){
                         //Show elite swimmers
+                        readAllMembers.ReadAllMembers();
+
                     }else if (coachChoice == 3){
                         //create result
                     }else if (coachChoice == 9){

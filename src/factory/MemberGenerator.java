@@ -55,7 +55,7 @@ public class MemberGenerator {
             } else {
                 hasPaid = false;
             }
-            newMember = new Member(name, age, adress, 0, 0, isActive,
+            newMember = new Member(name, age, adress, 0, isActive,
                     isUnder18, isEliteSwimmer, hasPaid);
             String[] newMemberArray = newMember.toString().split(",");
             System.out.println("Verify the datails: ");
