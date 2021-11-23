@@ -64,7 +64,12 @@ public class SystemController {
                         //Show top 5 elite swimmers
                     }else if (coachChoice == 2){
                         //Show elite swimmers
-                        readAllMembers.ReadAllMembers();
+                        members.addAll(readAllMembers.ReadAllMembers());
+                        for (int i = 0 Member j = members.get(i); i < members.size() ; i++) {
+                            if (members.get(i).isEliteSwimmer()){
+                                System.out.println();
+                            }
+                        }
 
                     }else if (coachChoice == 3){
                         //create result

@@ -19,13 +19,16 @@ public class ReadAllMembers {
     private  boolean isUnder18;
     private  boolean isElite;
     private  boolean hasPaid;
+    private  Scanner fileReading;
+    private String[] stringToArray;
+    static ReadAllMembers readAllMembers = new ReadAllMembers();
 
     public ArrayList<Member> ReadAllMembers() {
         try {
             File file = new File("resources/members.csv");
-            Scanner fileReading = new Scanner(file);
-            while ( fileReading.hasNextLine()) {
-                String[] stringToArray = fileReading.next().split("=");
+            fileReading = new Scanner(file);
+            while (fileReading.hasNextLine()) {
+                stringToArray = fileReading.next().split("=");
                 if (counter == 0) {
                     String[] nameArray = stringToArray[1].toString().split(" ");
                     name = "";
@@ -83,27 +86,28 @@ public class ReadAllMembers {
                 if (counter == 7) {
                     String[] hasPaidArray = stringToArray[1].toString().split(" ");
                     String hasPaidString = "";
-                    for (char i = 1; i < Arrays.toString(hasPaidArray).length() - 2; i++) {
+                    for (char i = 1; i < Arrays.toString(hasPaidArray).length() - 1; i++) {
                         hasPaidString += Arrays.toString(hasPaidArray).charAt(i);
                     }
                     hasPaid = Boolean.parseBoolean(hasPaidString);
                 }
                 if (counter == 8) {
                     members.add(new Member(name,age,address,id,isActive,isUnder18,isElite,hasPaid));
-                    counter = -1;
-
                 }
                 counter++;
+                if (counter == 9) {
+                    counter = 0;
+                }
             }
         } catch (Exception e) {
             System.out.println("File couldn't read");
         }
-        System.out.println(members);
         return members;
     }
 
     public ArrayList<Member> getMembers() {
         return members;
     }
+
 }
 
