@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class LoadAllEliteSwimmers {
+public class LoadTeams {
     private Member member;
     private ArrayList<Member> members = new ArrayList<Member>();
     private int counter = 0;
@@ -19,14 +19,18 @@ public class LoadAllEliteSwimmers {
     private  boolean isUnder18;
     private  boolean isElite;
     private  boolean hasPaid;
-    private boolean isLastLineFoundInFile;
+    private  Scanner fileReading;
+    private String[] stringToArray;
+    static LoadTeams readAllMembers = new LoadTeams();
+    private ArrayList<Member> teamJunior = new ArrayList<Member>();
+    private ArrayList<Member> teamSenior = new ArrayList<Member>();
 
-    public Member ReadAllMembers() {
+    public void loadingTeams() {
         try {
             File file = new File("resources/members.csv");
-            Scanner fileReading = new Scanner(file);
-            while ( fileReading.hasNext() || !isLastLineFoundInFile) {
-                String[] stringToArray = fileReading.next().split("=");
+            fileReading = new Scanner(file);
+            while (fileReading.hasNextLine()) {
+                stringToArray = fileReading.next().split("=");
                 if (counter == 0) {
                     String[] nameArray = stringToArray[1].toString().split(" ");
                     name = "";
@@ -88,22 +92,42 @@ public class LoadAllEliteSwimmers {
                         hasPaidString += Arrays.toString(hasPaidArray).charAt(i);
                     }
                     hasPaid = Boolean.parseBoolean(hasPaidString);
-                }
-                if (counter == 8) {
-                    member = new Member(name,age,address,id,isActive,isUnder18,isElite,hasPaid);
-
+                    if (isElite && !isUnder18) {
+                        teamSenior.add(new Member(name, age, address, id, isActive, isUnder18, isElite, hasPaid));
+                    } else if (isElite && isUnder18) {
+                        teamJunior.add(new Member(name, age, address, id, isActive, isUnder18, isElite, hasPaid));
+                    }
                 }
                 counter++;
+                if (counter == 8) {
+                    counter = 0;
+                }
             }
         } catch (Exception e) {
             System.out.println("File couldn't read");
         }
-        System.out.println(member);
-        return member;
     }
 
-    public ArrayList<Member> getMembers() {
-        return members;
+
+    public String getTeamJunior() {
+        String juniorMembers = "";
+        for (int i = 0; i < teamJunior.size() ; i++) {
+            juniorMembers += "\n・ Name: " + teamJunior.get(i).getName() + " ID: " + teamJunior.get(i).getMemberId();
+        }
+        return juniorMembers;
+    }
+
+    public String getTeamSenior() {
+        String seniorMembers = "";
+        for (int i = 0; i < teamSenior.size(); i++) {
+            seniorMembers += "\n・ Name: " + teamSenior.get(i).getName() + " ID: " + teamSenior.get(i).getMemberId();
+        }
+        return seniorMembers;
+    }
+
+    public static void main(String[] args) {
+        LoadTeams.readAllMembers.loadingTeams();
+        System.out.println(readAllMembers.teamSenior);
     }
 }
 

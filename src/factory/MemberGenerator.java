@@ -1,5 +1,6 @@
 package factory;
 
+import database.TemporaryData;
 import persons.Member;
 
 import java.util.Scanner;
@@ -62,6 +63,9 @@ public class MemberGenerator {
             for (int i = 0; i < newMemberArray.length; i++) {
                 System.out.println(newMemberArray[i]);
             }
+            if (newMember.isHasPaid()) {
+                getMemberSubscriptionPrice();
+            }
             System.out.println("Press 1 to proceed press 2 to adjust:");
             if (scanner.nextInt() == 1) {
                 isVerified = true;
@@ -69,5 +73,25 @@ public class MemberGenerator {
         } while (!isVerified);
         return newMember;
     }
+
+    public void getMemberSubscriptionPrice(){
+        if (newMember.isUnder18() && newMember.isActive()) {
+            getMembershipPricesFromFile("junior");
+        } else if (newMember.isUnder18() && !newMember.isActive()){
+            getMembershipPricesFromFile("passive");
+        } else if (!newMember.isUnder18() && newMember.isActive() && age < 60) {
+            getMembershipPricesFromFile("senior");
+        } else if (!newMember.isUnder18() && newMember.isActive() && age > 60) {
+            getMembershipPricesFromFile("passive");
+        }  else if (!newMember.isUnder18() && !newMember.isActive() && age > 60) {
+        getMembershipPricesFromFile("elder");
+    }
+    }
+
+    private void getMembershipPricesFromFile(String memberType){
+        int membershipPrice = TemporaryData.productPrices.get(memberType);
+        System.out.println("The member has to pay " + membershipPrice +  " Dkk annually.");
+    }
+
 
 }

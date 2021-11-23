@@ -1,5 +1,6 @@
 package persons;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Member {
@@ -7,7 +8,6 @@ public class Member {
     private int age;
     private String adress;
     private int memberId;
-    private int memberCounter;
     private boolean isActive;
     private boolean isUnder18;
     private boolean isEliteSwimmer;
@@ -57,14 +57,6 @@ public class Member {
         this.memberId = memberId;
     }
 
-    public int getMemberCounter() {
-        return memberCounter;
-    }
-
-    public void setMemberCounter(int memberCounter) {
-        this.memberCounter = memberCounter;
-    }
-
     public boolean isActive() {
         return isActive;
     }
@@ -99,16 +91,15 @@ public class Member {
 
     @Override
     public String toString() {
-        return "Member{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", adress='" + adress + '\'' +
-                ", memberId=" + memberId +
-                ", memberCounter=" + memberCounter +
-                ", isActive=" + isActive +
-                ", isUnder18=" + isUnder18 +
-                ", isEliteSwimmer=" + isEliteSwimmer +
-                ", hasPaid=" + hasPaid +
-                '}';
+        return "[" +
+                "Name='" + name + '\'' +
+                ", ・Age=" + age +
+                ", ・Address='" + adress + '\'' +
+                ", ・Id=" + memberId +
+                ", ・Active=" + isActive +
+                ", ・Under18=" + isUnder18 +
+                ", ・EliteSwimmer=" + isEliteSwimmer +
+                ", ・Paid=" + hasPaid +
+                ']';
     }
 }

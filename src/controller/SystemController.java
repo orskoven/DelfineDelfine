@@ -1,22 +1,24 @@
 package controller;
 
 import UI.Menu;
-import database.LoadMemberMissingPayment;
-import database.MemberToSave;
-import database.ReadAllMembers;
-import database.ReadFiles;
+import database.*;
+import factory.DisciplineGenerator;
 import factory.MemberGenerator;
+import persons.EliteSwimmer;
 import persons.Member;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.*;
 
 public class SystemController {
+    private Scanner scanner = new Scanner(System.in);
     static MemberToSave memberToSave = new MemberToSave();
     private Menu menu = new Menu();
     private MemberGenerator member = new MemberGenerator();
     private ReadAllMembers readAllMembers = new ReadAllMembers();
     private ArrayList<Member> members = new ArrayList<Member>();
+    private ArrayList<EliteSwimmer> eliteSwimmers = new ArrayList<EliteSwimmer>();
+    private LoadTeams loadAllEliteSwimmers = new LoadTeams();
+    private ReadResults readResults = new ReadResults();
 
     public void chooseOptions(){
         int userInput;
@@ -34,6 +36,7 @@ public class SystemController {
                     int chairmanChoice = menu.getUserInput();
                     if (chairmanChoice == 1){
                         //create member
+                        TempRead.getMembershipPricesFromFile();
                         memberToSave.saveMemberDetailsToFile(member.MemberGenerator());
                     }else if (chairmanChoice == 2){
                         //show members
@@ -62,22 +65,26 @@ public class SystemController {
                     int coachChoice = menu.getUserInput();
                     if (coachChoice == 1){
                         //Show top 5 elite swimmers
-                    }else if (coachChoice == 2){
+                        readResults.getTop5("resources/butterfly.csv");
+
+                    }else if (coachChoice == 2) {
                         //Show elite swimmers
-                        members.addAll(readAllMembers.ReadAllMembers());
-                        for (int i = 0 Member j = members.get(i); i < members.size() ; i++) {
-                            if (members.get(i).isEliteSwimmer()){
-                                System.out.println();
-                            }
-                        }
+                        loadAllEliteSwimmers.loadingTeams();
+                        System.out.println("Juniors " + loadAllEliteSwimmers.getTeamJunior());
+                        System.out.println();
+                        System.out.println("Seniors " +loadAllEliteSwimmers.getTeamSenior());
 
                     }else if (coachChoice == 3){
                         //create result
+                        System.out.println("1.Backcrawl\n2.Breaststroke\n3.Crawl\n4.Butterfly");
+                        int userInputDiscipline = scanner.nextInt();
+                        DisciplineGenerator disciplineGenerator = new DisciplineGenerator(userInputDiscipline);
                     }else if (coachChoice == 9){
                         //return
                     }
                     break;
             }
+            System.out.println();
         } while (userInput != 9);
     }
 
