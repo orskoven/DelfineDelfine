@@ -1,6 +1,7 @@
 package controller;
 
 import UI.Menu;
+import UI.ShowTop5;
 import database.*;
 import factory.DisciplineGenerator;
 import factory.MemberGenerator;
@@ -19,6 +20,7 @@ public class SystemController {
     private ArrayList<EliteSwimmer> eliteSwimmers = new ArrayList<EliteSwimmer>();
     private LoadTeams loadAllEliteSwimmers = new LoadTeams();
     private ReadResults readResults = new ReadResults();
+    private ShowTop5 showTop5 = new ShowTop5();
 
     public void chooseOptions(){
         int userInput;
@@ -65,7 +67,7 @@ public class SystemController {
                     int coachChoice = menu.getUserInput();
                     if (coachChoice == 1){
                         //Show top 5 elite swimmers
-                        readResults.getTop5("resources/butterfly.csv");
+                       showTop5.getOptions();
 
                     }else if (coachChoice == 2) {
                         //Show elite swimmers

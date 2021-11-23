@@ -2,7 +2,7 @@ package disciplines;
 
 import java.util.Scanner;
 
-public abstract class Discipline {
+public abstract class Discipline implements Comparable <Discipline> {
     private Scanner scanner = new Scanner(System.in);
     private String name;
     private int id;
@@ -20,6 +20,18 @@ public abstract class Discipline {
         this.date = date;
         this.tournament = tournament;
         this.rank = rank;
+    }
+
+    @Override
+    public int compareTo(Discipline disciplineToCompareTo) {
+        if (this.rank < disciplineToCompareTo.rank) {
+            return -1;
+        }
+        if (this.rank > disciplineToCompareTo.rank) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 
     public String getName() {
@@ -82,13 +94,13 @@ public abstract class Discipline {
     @Override
     public String toString() {
         return "Discipline{" +
-                "name='" + name + '\'' +
-                ", id=" + id +
-                ", time=" + time +
-                ", location='" + location + '\'' +
-                ", date='" + date + '\'' +
-                ", tournament='" + tournament + '\'' +
-                ", rank=" + rank +
+                "・name='" + name + '\'' +
+                ", ・id=" + id +
+                ", ・time=" + time +
+                ", ・location='" + location + '\'' +
+                ", ・date='" + date + '\'' +
+                ", ・tournament='" + tournament + '\'' +
+                ", ・rank=" + rank +
                 '}';
     }
 }

@@ -4,10 +4,7 @@ import disciplines.Discipline;
 import persons.Member;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Scanner;
+import java.util.*;
 
 public class ReadResults {
     private Discipline discipline;
@@ -22,6 +19,9 @@ public class ReadResults {
     private  Scanner fileReading;
     private String[] stringToArray;
     private int counter = 0;
+    private int comparable = 0;
+    private Discipline disciplineToCheck;
+    private Discipline disciplineTop;
 
     public void getTop5(String filePath) {
         try {
@@ -79,36 +79,57 @@ public class ReadResults {
                 if (counter == 6) {
                     String[] rankArray = stringToArray[1].toString().split(" ");
                     String rankString = "";
-                    for (char i = 1; i < Arrays.toString(rankArray).length() - 1; i++) {
+                    for (char i = 1; i < Arrays.toString(rankArray).length() - 2; i++) {
                         rankString += Arrays.toString(rankArray).charAt(i);
                     }
                     rank = Integer.parseInt(rankString);
+                    disciplines.add(new Discipline(name, id, time, location, date, tournament, rank) {
+                    });
                 }
-                disciplines.add(new Discipline(name, id, time, location, date, tournament, rank) {
-                });
 
 
                 counter++;
-                if (counter == 8) {
+                if (counter == 7) {
                     counter = 0;
                 }
-                disciplines.stream();
-                for (int i = 0; i < disciplines.size(); i++) {
-                    System.out.println(disciplines.get(i));
 
-                }
 
             }
 
+            /*
+                for (int i = 0; i < disciplines.size(); i++) {
+                    disciplineToCheck = disciplines.get(i);
+                    disciplineTop = disciplines.get(0);
+                    comparable = disciplineTop.compareTo(disciplineToCheck);
+                    if (comparable == 1) {
+                        Collections.swap(disciplines, 0, i);
+                    }
+                }
 
-        } catch (Exception e) {
-            System.out.println("File couldn't read");
+             */
+            Collections.sort(disciplines);
+            for (int i = 0; i < 5; i++) {
+                    System.out.println(disciplines.get(i));
+
+            }
+            } catch(Exception e){
+                System.out.println("File couldn't read");
+            }
+        disciplines = new ArrayList<Discipline>();
         }
 
-
-
-
+    private void determineTop5(Discipline disciplineOne, Discipline disciplineTwo, int comparable, ArrayList<Discipline> disciplines, int i){
+        if (comparable == 1){
+           Collections.swap(disciplines, i, randomizer());
+        } if (comparable == -1) {
+            Collections.swap(disciplines, randomizer(), i);
         }
+    }
+
+    private int randomizer(){
+        Random random = new Random();
+        return random.nextInt(disciplines.size()+1)-1;
+    }
 
         }
 
