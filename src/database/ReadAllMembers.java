@@ -86,16 +86,14 @@ public class ReadAllMembers {
                 if (counter == 7) {
                     String[] hasPaidArray = stringToArray[1].toString().split(" ");
                     String hasPaidString = "";
-                    for (char i = 1; i < Arrays.toString(hasPaidArray).length() - 1; i++) {
+                    for (char i = 1; i < Arrays.toString(hasPaidArray).length() - 2; i++) {
                         hasPaidString += Arrays.toString(hasPaidArray).charAt(i);
                     }
                     hasPaid = Boolean.parseBoolean(hasPaidString);
-                }
-                if (counter == 8) {
                     members.add(new Member(name,age,address,id,isActive,isUnder18,isElite,hasPaid));
                 }
                 counter++;
-                if (counter == 9) {
+                if (counter == 8) {
                     counter = 0;
                 }
             }
@@ -109,5 +107,9 @@ public class ReadAllMembers {
         return members;
     }
 
+    public static void main(String[] args) {
+        ReadAllMembers.readAllMembers.ReadAllMembers();
+        System.out.println(readAllMembers.members);
+    }
 }
 
