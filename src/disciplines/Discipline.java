@@ -30,7 +30,13 @@ public abstract class Discipline implements Comparable <Discipline> {
         if (this.rank > disciplineToCompareTo.rank) {
             return 1;
         } else {
-            return 0;
+            if (this.time < disciplineToCompareTo.time) {
+                return -1;
+            } else if (this.time > disciplineToCompareTo.time) {
+                return 1;
+            } else {
+                return 0;
+            }
         }
     }
 
@@ -94,13 +100,13 @@ public abstract class Discipline implements Comparable <Discipline> {
     @Override
     public String toString() {
         return "Discipline{" +
-                "・name='" + name + '\'' +
-                ", ・id=" + id +
-                ", ・time=" + time +
-                ", ・location='" + location + '\'' +
-                ", ・date='" + date + '\'' +
-                ", ・tournament='" + tournament + '\'' +
-                ", ・rank=" + rank +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                ", time=" + time +
+                ", location='" + location + '\'' +
+                ", date='" + date + '\'' +
+                ", tournament='" + tournament + '\'' +
+                ", rank=" + rank +
                 '}';
     }
 }

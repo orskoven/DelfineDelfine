@@ -8,6 +8,6 @@ public class BreastStroke  extends Discipline{
 
     @Override
     public String toString() {
-        return super.toString();
+        return  super.toString();
     }
 }

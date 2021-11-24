@@ -96,40 +96,17 @@ public class ReadResults {
 
             }
 
-            /*
-                for (int i = 0; i < disciplines.size(); i++) {
-                    disciplineToCheck = disciplines.get(i);
-                    disciplineTop = disciplines.get(0);
-                    comparable = disciplineTop.compareTo(disciplineToCheck);
-                    if (comparable == 1) {
-                        Collections.swap(disciplines, 0, i);
-                    }
-                }
-
-             */
             Collections.sort(disciplines);
             for (int i = 0; i < 5; i++) {
                     System.out.println(disciplines.get(i));
 
             }
+
             } catch(Exception e){
                 System.out.println("File couldn't read");
             }
         disciplines = new ArrayList<Discipline>();
         }
-
-    private void determineTop5(Discipline disciplineOne, Discipline disciplineTwo, int comparable, ArrayList<Discipline> disciplines, int i){
-        if (comparable == 1){
-           Collections.swap(disciplines, i, randomizer());
-        } if (comparable == -1) {
-            Collections.swap(disciplines, randomizer(), i);
-        }
-    }
-
-    private int randomizer(){
-        Random random = new Random();
-        return random.nextInt(disciplines.size()+1)-1;
-    }
 
         }
 

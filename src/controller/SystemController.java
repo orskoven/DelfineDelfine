@@ -1,10 +1,11 @@
 package controller;
 
 import UI.Menu;
-import UI.ShowTop5;
+import UI.ShowTop5Junior;
 import database.*;
 import factory.DisciplineGenerator;
 import factory.MemberGenerator;
+import persons.Cashier;
 import persons.EliteSwimmer;
 import persons.Member;
 
@@ -20,7 +21,10 @@ public class SystemController {
     private ArrayList<EliteSwimmer> eliteSwimmers = new ArrayList<EliteSwimmer>();
     private LoadTeams loadAllEliteSwimmers = new LoadTeams();
     private ReadResults readResults = new ReadResults();
-    private ShowTop5 showTop5 = new ShowTop5();
+    private ShowTop5Junior showTop5Junior = new ShowTop5Junior();
+    private ShowTop5Junior showTop5Senior = new ShowTop5Junior();
+    private EliteSwimmer eliteSwimmer = new EliteSwimmer();
+    private Cashier cashier = new Cashier();
 
     public void chooseOptions(){
         int userInput;
@@ -32,19 +36,19 @@ public class SystemController {
             menu.chooseUser();
             userInput = menu.getUserInput();
 
-            switch (userInput){
+            switch (userInput) {
                 case 1:
                     menu.optionsForChairman();
                     int chairmanChoice = menu.getUserInput();
-                    if (chairmanChoice == 1){
+                    if (chairmanChoice == 1) {
                         //create member
                         TempRead.getMembershipPricesFromFile();
                         memberToSave.saveMemberDetailsToFile(member.MemberGenerator());
-                    }else if (chairmanChoice == 2){
+                    } else if (chairmanChoice == 2) {
                         //show members
                         new ReadFiles("resources/members.csv");
 
-                    }else if (chairmanChoice == 9){             //go back option
+                    } else if (chairmanChoice == 9) {             //go back option
 
                     }
                     break;
@@ -53,11 +57,20 @@ public class SystemController {
                     menu.optionsForCashier();
                     int cashierChoice = menu.getUserInput();
                     if (cashierChoice == 1){
-                        //show expected payments
+                        //Show contingent prices
+                        cashier.showContingentPrices();
                     }else if (cashierChoice == 2){
+                        //show expected payments
+                        cashier.getExpectedContigentRevenue();
+                    }else if (cashierChoice == 3){
                         //show members in arrears
-                        new LoadMemberMissingPayment();
-                    }else if (cashierChoice == 9){
+                        cashier.getMembersWhoHasntPayed();      //evt. LoadingMissingpaymentmembers
+                    } else if (cashierChoice == 4){
+                        //change member payment status
+                        cashier.getMembersWhoHasntPayed();
+                        cashier.setMembersWhoHasntPayed();
+
+                    } else if (cashierChoice ==9){
 
                     }
                     break;
@@ -65,12 +78,21 @@ public class SystemController {
                 case 3:
                     menu.optionsForCoach();
                     int coachChoice = menu.getUserInput();
-                    if (coachChoice == 1){
-                        //Show top 5 elite swimmers
-                       showTop5.getOptions();
+                    if (coachChoice == 1) {
+                        System.out.println("1.Junior\n2.Senior");
+                        int topTeamInput = scanner.nextInt();
+                        if (topTeamInput == 1) {
+                        showTop5Junior.getOptions();
+                    }
+                    else if (topTeamInput == 2) {
+                        showTop5Senior.getOptions();
+                    }
 
                     }else if (coachChoice == 2) {
                         //Show elite swimmers
+
+                        //eliteSwimmer.addEliteSwimmer();
+
                         loadAllEliteSwimmers.loadingTeams();
                         System.out.println("Juniors " + loadAllEliteSwimmers.getTeamJunior());
                         System.out.println();

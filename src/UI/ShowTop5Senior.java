@@ -4,7 +4,7 @@ import database.ReadResults;
 
 import java.util.Scanner;
 
-public class ShowTop5 {
+public class ShowTop5Senior {
      private Scanner scanner = new Scanner(System.in);
      private ReadResults readResults = new ReadResults();
 
@@ -14,19 +14,19 @@ public class ShowTop5 {
         switch (userInputDiscipline) {
             case 1 -> {
                 System.out.println("Butterfly:");
-                readResults.getTop5("resources/butterfly.csv");
+                readResults.getTop5("resources/seniorResults/butterfly.csv");
             }
             case 2 -> {
                 System.out.println("Breaststroke:");
-                readResults.getTop5("resources/Breaststroke.csv");
+                readResults.getTop5("resources/seniorResults/breastStroke.csv");
             }
             case 3 -> {
                 System.out.println("Crawl:");
-                readResults.getTop5("resources/Crawl.csv");
+                readResults.getTop5("resources/seniorResults/crawl.csv");
             }
             case 4 -> {
                 System.out.println("Backcrawl:");
-                readResults.getTop5("resources/Backcrawl.csv");
+                readResults.getTop5("resources/seniorResults/backcrawl.csv");
             }
         }
     }}
