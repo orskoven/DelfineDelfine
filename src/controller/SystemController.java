@@ -9,6 +9,7 @@ import persons.Cashier;
 import persons.EliteSwimmer;
 import persons.Member;
 
+import java.io.IOException;
 import java.util.*;
 
 public class SystemController {
@@ -26,7 +27,10 @@ public class SystemController {
     private EliteSwimmer eliteSwimmer = new EliteSwimmer();
     private Cashier cashier = new Cashier();
 
-    public void chooseOptions(){
+    public SystemController() throws IOException {
+    }
+
+    public void chooseOptions() throws IOException {
         int userInput;
 
         menu.welcome();
@@ -47,7 +51,9 @@ public class SystemController {
                     } else if (chairmanChoice == 2) {
                         //show members
                         new ReadFiles("resources/members.csv");
-
+                    } else if (chairmanChoice == 3) {
+                        // remove member
+                        new EditFile();
                     } else if (chairmanChoice == 9) {             //go back option
 
                     }
@@ -79,7 +85,8 @@ public class SystemController {
                     menu.optionsForCoach();
                     int coachChoice = menu.getUserInput();
                     if (coachChoice == 1) {
-                        System.out.println("1.Junior\n2.Senior");
+                        System.out.println("Choose:");
+                        System.out.println("1. Junior\n2. Senior");
                         int topTeamInput = scanner.nextInt();
                         if (topTeamInput == 1) {
                         showTop5Junior.getOptions();
@@ -100,7 +107,7 @@ public class SystemController {
 
                     }else if (coachChoice == 3){
                         //create result
-                        System.out.println("1.Backcrawl\n2.Breaststroke\n3.Crawl\n4.Butterfly");
+                        System.out.println("1.Butterfly\n2.Breaststroke\n3.Crawl\n4.Backcrawl");
                         int userInputDiscipline = scanner.nextInt();
                         DisciplineGenerator disciplineGenerator = new DisciplineGenerator(userInputDiscipline);
                     }else if (coachChoice == 9){
@@ -112,7 +119,7 @@ public class SystemController {
         } while (userInput != 9);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         SystemController hej = new SystemController();
         hej.chooseOptions();
     }

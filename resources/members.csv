@@ -1,1 +1,3 @@
-Member{name='simon' age=12 adress='' memberId=102 isActive=true isUnder18=true isEliteSwimmer=true hasPaid=true}Member{name='kurt' age=55 adress='' ReadAllMembersmemberId=104 isActive=true isUnder18=false isEliteSwimmer=false hasPaid=true}Member{name='ses' age=34 adress='' memberId=106 isActive=false isUnder18=false isEliteSwimmer=true hasPaid=false}Member{name='ww' age=34 adress='' memberId=108 isActive=true isUnder18=false isEliteSwimmer=true hasPaid=true}Member{name='goddaw' age=18 adress='' memberId=110 isActive=true isUnder18=false isEliteSwimmer=true hasPaid=false}
+
+Member{Name='erty' Age=43 Address='' Id=112 Active=true Under18=false EliteSwimmer=true Paid=true}
+Member{Name='23' Age=23 Address='' Id=116 Active=true Under18=false EliteSwimmer=true Paid=true}

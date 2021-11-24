@@ -58,7 +58,7 @@ public class MemberGenerator {
             }
             newMember = new Member(name, age, adress, 0, isActive,
                     isUnder18, isEliteSwimmer, hasPaid);
-            String[] newMemberArray = newMember.toString().split(",");
+            String[] newMemberArray = newMember.toStringToConsole().split(",");
             System.out.println("Verify the datails: ");
             for (int i = 0; i < newMemberArray.length; i++) {
                 System.out.println(newMemberArray[i]);
@@ -66,7 +66,7 @@ public class MemberGenerator {
             if (newMember.isHasPaid()) {
                 getMemberSubscriptionPrice();
             }
-            System.out.println("Press 1 to proceed press 2 to adjust:");
+            System.out.println("\nPress 1 to proceed press 2 to adjust:");
             if (scanner.nextInt() == 1) {
                 isVerified = true;
             }

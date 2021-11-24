@@ -91,15 +91,27 @@ public class Member {
 
     @Override
     public String toString() {
-        return "[" +
+        return "Member{" +
                 "Name='" + name + '\'' +
-                ", ・Age=" + age +
-                ", ・Address='" + adress + '\'' +
-                ", ・Id=" + memberId +
-                ", ・Active=" + isActive +
-                ", ・Under18=" + isUnder18 +
-                ", ・EliteSwimmer=" + isEliteSwimmer +
-                ", ・Paid=" + hasPaid +
-                ']';
+                " Age=" + age +
+                " Address='" + adress + '\'' +
+                " Id=" + memberId +
+                " Active=" + isActive +
+                " Under18=" + isUnder18 +
+                " EliteSwimmer=" + isEliteSwimmer +
+                " Paid=" + hasPaid +
+                '}';
+    }
+
+    public String toStringToConsole() {
+        return
+                " Name: " + name +
+                "\n Age: " + age +
+                "\n Address: " + adress + '\'' +
+                "\n Id: " + memberId +
+                "\n Active: " + isActive +
+                "\n Under 18: " + isUnder18 +
+                "\n Elite Swimmer: " + isEliteSwimmer +
+                "\n Paid: " + hasPaid;
     }
 }

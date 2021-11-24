@@ -17,11 +17,11 @@ public class Menu {
     }
 
     public void welcome(){
-        System.out.println("------------------------------");
+        System.out.println("-------------------------------------");
         System.out.println();
-        System.out.println("Welcome to swim club The Dolphin!");
+        System.out.println(" Welcome to swim club The Dolphin!  ");
         System.out.println();
-        System.out.println("------------------------------");
+        System.out.println("-------------------------------------");
     }
 
     public void chooseUser(){
@@ -36,6 +36,7 @@ public class Menu {
         System.out.println("Chairman options:");
         System.out.println("1. Create member");
         System.out.println("2. Show members");
+        System.out.println("3. Remove member");
         System.out.println("9. Return");
     }
 
