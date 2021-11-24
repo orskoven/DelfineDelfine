@@ -114,4 +114,28 @@ public class Member {
                 "\n Elite Swimmer: " + isEliteSwimmer +
                 "\n Paid: " + hasPaid;
     }
+    public String toStringToPrintAll() {
+        String toPrint = " Name: "+ name +
+                        "| Age: " + age +
+                        "| Address: " + adress + '\'' +
+                        "| Id: " + memberId;
+                        if (this.isActive) {
+                           toPrint +=  "| Active";
+                        } else {
+                            toPrint +=  "| Passive";
+                        } if (this.isUnder18) {
+                            toPrint +=  "| Junior";
+                         } else {
+                            toPrint +=  "| Senior";
+                        }  if (this.isEliteSwimmer) {
+                            toPrint +=  "| Elite Swimmer";
+                        } else {
+                            toPrint +=  "| Leasure swimmer";
+                        } if (this.hasPaid) {
+                            toPrint +=  "| Has paid |";
+                        } else {
+                            toPrint +=  "| Has not piad |";
+                        }
+                        return toPrint;
+    }
 }

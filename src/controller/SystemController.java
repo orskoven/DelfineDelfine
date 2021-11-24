@@ -26,6 +26,7 @@ public class SystemController {
     private ShowTop5Junior showTop5Senior = new ShowTop5Junior();
     private EliteSwimmer eliteSwimmer = new EliteSwimmer();
     private Cashier cashier = new Cashier();
+    private ArrayList<Member> readAllMembersList = new ReadAllMembers().ReadAllMembers();
 
     public SystemController() throws IOException {
     }
@@ -50,7 +51,10 @@ public class SystemController {
                         memberToSave.saveMemberDetailsToFile(member.MemberGenerator());
                     } else if (chairmanChoice == 2) {
                         //show members
-                        new ReadFiles("resources/members.csv");
+                        System.out.println("All MEMBERS: ");
+                        for (int i = 0; i <readAllMembersList.size() ; i++) {
+                            System.out.println(readAllMembersList.get(i).toStringToPrintAll());
+                        }
                     } else if (chairmanChoice == 3) {
                         // remove member
                         new EditFile();

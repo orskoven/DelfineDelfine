@@ -98,7 +98,7 @@ public class ReadResults {
 
             Collections.sort(disciplines);
             for (int i = 0; i < 5; i++) {
-                    System.out.println(disciplines.get(i));
+                    System.out.println(disciplines.get(i).toStringConsole());
 
             }
 

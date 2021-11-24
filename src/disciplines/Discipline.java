@@ -109,4 +109,14 @@ public abstract class Discipline implements Comparable <Discipline> {
                 ", rank=" + rank +
                 '}';
     }
+    public String toStringConsole() {
+        return
+                "Name: " + name +
+                " | ID: " + id +
+                " | TIME: " + time +
+                " | LOCATION: " + location  +
+                " | DATE: "+ date  +
+                " | TOURNAMENT: " + tournament +
+                " | RANK: " + rank;
+    }
 }
