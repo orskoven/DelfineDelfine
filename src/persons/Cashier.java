@@ -66,6 +66,8 @@ public class Cashier {
 
         }
     }
+
+
 /*
     public ArrayList<Member> setFile(){
         File membersFile = new File("resources/members.csv");

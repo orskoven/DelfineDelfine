@@ -70,7 +70,7 @@ public class SystemController {
                         cashier.getMembersWhoHasntPayed();
                         cashier.setMembersWhoHasntPayed();
 
-                    } else if (cashierChoice ==9){
+                    } else if (cashierChoice == 9){
 
                     }
                     break;
@@ -79,7 +79,8 @@ public class SystemController {
                     menu.optionsForCoach();
                     int coachChoice = menu.getUserInput();
                     if (coachChoice == 1) {
-                        System.out.println("1.Junior\n2.Senior");
+                        System.out.println("Choose:");
+                        System.out.println("1. Junior\n2. Senior");
                         int topTeamInput = scanner.nextInt();
                         if (topTeamInput == 1) {
                         showTop5Junior.getOptions();
@@ -90,7 +91,6 @@ public class SystemController {
 
                     }else if (coachChoice == 2) {
                         //Show elite swimmers
-
                         //eliteSwimmer.addEliteSwimmer();
 
                         loadAllEliteSwimmers.loadingTeams();
@@ -100,7 +100,7 @@ public class SystemController {
 
                     }else if (coachChoice == 3){
                         //create result
-                        System.out.println("1.Backcrawl\n2.Breaststroke\n3.Crawl\n4.Butterfly");
+                        System.out.println("1.Butterfly \n2.Breaststroke\n3.Crawl\n4.Backcrawl");
                         int userInputDiscipline = scanner.nextInt();
                         DisciplineGenerator disciplineGenerator = new DisciplineGenerator(userInputDiscipline);
                     }else if (coachChoice == 9){

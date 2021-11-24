@@ -17,11 +17,11 @@ public class Menu {
     }
 
     public void welcome(){
-        System.out.println("------------------------------");
+        System.out.println("-------------------------------------");
         System.out.println();
-        System.out.println("Welcome to swim club The Dolphin!");
+        System.out.println(" Welcome to swim club The Dolphin!  ");
         System.out.println();
-        System.out.println("------------------------------");
+        System.out.println("-------------------------------------");
     }
 
     public void chooseUser(){
@@ -43,7 +43,7 @@ public class Menu {
         System.out.println("Cashier options:");
         System.out.println("1. Show contingent prices");
         System.out.println("2. Show expected revenue");
-        System.out.println("3. Show members in arrears"); //restance = er i gæld til svømmeklubben
+        System.out.println("3. Show members in arrears");       //restance = er i gæld til svømmeklubben
         System.out.println("4. Change members payment status");
         System.out.println("9. Return");
     }
