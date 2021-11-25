@@ -119,7 +119,7 @@ public class Member {
     public String toStringToPrintAll() {
         String toPrint = " Name: "+ name +
                         "| Age: " + age +
-                        "| Address: " + adress + '\'' +
+                        "| Address: " + adress +
                         "| Id: " + memberId;
                         if (this.isActive) {
                            toPrint +=  "| Active";

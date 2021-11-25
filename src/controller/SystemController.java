@@ -53,9 +53,12 @@ public class SystemController {
                     } else if (chairmanChoice == 2) {
                         //show members
                         System.out.println("All MEMBERS: ");
+
                         for (int i = 0; i <readAllMembersList.size() ; i++) {
                             System.out.println(readAllMembersList.get(i).toStringToPrintAll());
                         }
+
+
                     } else if (chairmanChoice == 3) {
                         // remove member
                         new EditFile();
