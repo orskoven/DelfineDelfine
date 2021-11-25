@@ -40,29 +40,29 @@ public class DisciplineGeneratorTraining {
         if (memberToLoad.isUnder18()){
         if (userInput == 1){
             saveDiscipline.saveDiscipline( new Butterfly(name,  id,  time,  location,  date,  tournament,  rank),
-                    "resources/juniorResults/training/butterfly.csv");
+                    "resources/eliteResults/juniorResults/training/butterfly.csv");
         }  if (userInput == 2){
             saveDiscipline.saveDiscipline( new BreastStroke(name,  id,  time,  location,  date,  tournament,  rank),
-                    "resources/juniorResults/training/breastStroke.csv");
+                    "resources/eliteResults/juniorResults/training/breastStroke.csv");
         } if (userInput == 3){
             saveDiscipline.saveDiscipline( new Crawl(name,  id,  time,  location,  date,  tournament,  rank),
-                    "resources/juniorResults/training/crawl.csv");
+                    "resources/eliteResults/juniorResults/training/crawl.csv");
         } if (userInput == 4){
                 saveDiscipline.saveDiscipline( new BackCrawl(name,  id,  time,  location,  date,  tournament,  rank),
-                        "resources/juniorResults/training/backCrawl.csv");
+                        "resources/eliteResults/juniorResults/training/backCrawl.csv");
         }
     } else if (!memberToLoad.isUnder18()) {
             saveDiscipline.saveDiscipline( new Butterfly(name,  id,  time,  location,  date,  tournament,  rank),
-                    "resources/seniorResults/training/butterfly.csv");
+                    "resources/eliteResults/seniorResults/training/butterfly.csv");
         }  if (userInput == 2){
             saveDiscipline.saveDiscipline( new BreastStroke(name,  id,  time,  location,  date,  tournament,  rank),
-                    "resources/seniorResults/training/breastStroke.csv");
+                    "resources/eliteResults/seniorResults/training/breastStroke.csv");
         } if (userInput == 3){
             saveDiscipline.saveDiscipline( new Crawl(name,  id,  time,  location,  date,  tournament,  rank),
-                    "resources/seniorResults/training/crawl.csv");
+                    "resources/eliteResults/seniorResults/training/crawl.csv");
         } if (userInput == 4){
             saveDiscipline.saveDiscipline( new BackCrawl(name,  id,  time,  location,  date,  tournament,  rank),
-                    "resources/seniorResults/training/backCrawl.csv");
+                    "resources/eliteResults/seniorResults/training/backCrawl.csv");
 
         }
         }

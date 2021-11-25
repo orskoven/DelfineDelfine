@@ -19,19 +19,19 @@ public class ShowTop5JuniorTraining {
         switch (userInputDiscipline) {
             case 1 -> {
                 System.out.println("Top 5 Butterfly:");
-                readResults.getTop5("resources/juniorResults/training/butterfly.csv");
+                readResults.getTop5("resources/eliteResults/juniorResults/training/butterfly.csv");
             }
             case 2 -> {
                 System.out.println("Breaststroke:");
-                readResults.getTop5("resources/juniorResults/training/breastStroke.csv");
+                readResults.getTop5("resources/eliteResults/juniorResults/training/breastStroke.csv");
             }
             case 3 -> {
                 System.out.println("Top 5 Crawl:");
-                readResults.getTop5("resources/juniorResults/training/crawl.csv");
+                readResults.getTop5("resources/eliteResults/juniorResults/training/crawl.csv");
             }
             case 4 -> {
                 System.out.println("Top 5 Backcrawl:");
-                readResults.getTop5("resources/juniorResults/training/backCrawl.csv");
+                readResults.getTop5("resources/eliteResults/juniorResults/training/backCrawl.csv");
             }
         }
     }}
