@@ -26,7 +26,7 @@ public class MemberUpdate {
             }
 
         }  for (int i = 0; i < membersToUpdate.size() ; i++) {
-            System.out.println(membersToUpdate.get(i));
+            System.out.println(membersToUpdate.get(i).toStringToPrintAll());
         }
         Scanner scanner = new Scanner(System.in);
         System.out.println("Type id to adjust: ");
@@ -48,7 +48,7 @@ public class MemberUpdate {
 
             }
         }  for (int i = 0; i < membersToUpdate.size() ; i++) {
-            System.out.println(membersToUpdate.get(i));
+            System.out.println(membersToUpdate.get(i).toStringToPrintAll());
         }
         Scanner scanner = new Scanner(System.in);
         System.out.println("Type id to adjust: ");
@@ -68,7 +68,7 @@ public class MemberUpdate {
                 membersToUpdate.add(members.get(i));
             }
         }  for (int i = 0; i < membersToUpdate.size() ; i++) {
-            System.out.println(membersToUpdate.get(i));
+            System.out.println(membersToUpdate.get(i).toStringToPrintAll());
         }
         Scanner scanner = new Scanner(System.in);
         System.out.println("Type id to adjust: ");
@@ -88,7 +88,7 @@ public class MemberUpdate {
                   membersToUpdate.add(members.get(i));
               }
           }  for (int i = 0; i < membersToUpdate.size() ; i++) {
-              System.out.println(membersToUpdate.get(i));
+              System.out.println(membersToUpdate.get(i).toStringToPrintAll());
           }
           Scanner scanner = new Scanner(System.in);
           System.out.println("Type id to adjust: ");
@@ -108,7 +108,7 @@ public class MemberUpdate {
                 membersToUpdate.add(members.get(i));
             }
         }  for (int i = 0; i < membersToUpdate.size() ; i++) {
-            System.out.println(membersToUpdate.get(i));
+            System.out.println(membersToUpdate.get(i).toStringToPrintAll());
         }
         Scanner scanner = new Scanner(System.in);
         System.out.println("Type id to adjust: ");
@@ -129,7 +129,7 @@ public class MemberUpdate {
 
             }
         }  for (int i = 0; i < membersToUpdate.size() ; i++) {
-            System.out.println(membersToUpdate.get(i));
+            System.out.println(membersToUpdate.get(i).toStringToPrintAll());
         }
         Scanner scanner = new Scanner(System.in);
         System.out.println("Type id to adjust: ");
@@ -149,7 +149,7 @@ public class MemberUpdate {
                 membersToUpdate.add(members.get(i));
             }
         }  for (int i = 0; i < membersToUpdate.size() ; i++) {
-            System.out.println(membersToUpdate.get(i));
+            System.out.println(membersToUpdate.get(i).toStringToPrintAll());
         }
         Scanner scanner = new Scanner(System.in);
         System.out.println("Type id to adjust: ");
@@ -170,7 +170,7 @@ public class MemberUpdate {
             }
         }
         for (int i = 0; i < membersToUpdate.size() ; i++) {
-            System.out.println(membersToUpdate.get(i));
+            System.out.println(membersToUpdate.get(i).toStringToPrintAll());
         }
         Scanner scanner = new Scanner(System.in);
         System.out.println("Type id to adjust: ");

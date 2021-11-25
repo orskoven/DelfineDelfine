@@ -37,6 +37,7 @@ public class Menu {
         System.out.println("1. Create member");
         System.out.println("2. Show members");
         System.out.println("3. Remove member");
+        System.out.println("4. Adjust member");
         System.out.println("9. Return");
     }
 

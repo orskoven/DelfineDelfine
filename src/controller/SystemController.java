@@ -1,11 +1,13 @@
 package controller;
 
+import UI.AdjustMentMenu;
 import UI.Menu;
 import UI.ShowTop5JuniorCompetition;
 import database.*;
 import factory.DisciplineGenerator;
 import factory.DisciplineGeneratorTraining;
 import factory.MemberGenerator;
+import factory.MemberUpdate;
 import persons.Cashier;
 import persons.EliteSwimmer;
 import persons.Member;
@@ -62,6 +64,10 @@ public class SystemController {
                     } else if (chairmanChoice == 3) {
                         // remove member
                         new EditFile().removeMemberProcess();
+                    } else if (chairmanChoice == 4) {
+                        // edit members
+                       new AdjustMentMenu();
+
                     } else if (chairmanChoice == 9) {             //go back option
 
                     }
