@@ -61,7 +61,7 @@ public class SystemController {
 
                     } else if (chairmanChoice == 3) {
                         // remove member
-                        new EditFile();
+                        new EditFile().removeMemberProcess();
                     } else if (chairmanChoice == 9) {             //go back option
 
                     }

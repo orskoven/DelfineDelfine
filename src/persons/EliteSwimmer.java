@@ -4,6 +4,7 @@ import database.ReadAllMembers;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class EliteSwimmer {
@@ -11,7 +12,7 @@ public class EliteSwimmer {
     private ReadAllMembers readAllMembers = new ReadAllMembers();
     private ArrayList<Member> members = new ArrayList<Member>();
     private ArrayList<Member> eliteMembers = new ArrayList<Member>();
-    private Cashier cashier = new Cashier();
+    private Cashier cashier;
 
 
 

@@ -15,13 +15,6 @@ public class EditFile {
     private ArrayList<Member> readAllMembers = new ReadAllMembers().ReadAllMembers();
     private ReadAllMembers readAllMembersGetMember = new ReadAllMembers();
     private Write write = new Write();
-
-    public EditFile() throws IOException {
-        Member memberToLocate = lookForMemberId(readAllMembers);
-        removeMember(readAllMembers,memberToLocate);
-        readAllMembers = new ArrayList<Member>();
-
-    }
     public Member lookForMemberId(ArrayList<Member> membersList) {
 
             Member member = null;
@@ -70,10 +63,31 @@ public class EditFile {
 
         }
 
+
+    }
+    public void removeMemberProcess() throws IOException {
+        Member memberToLocate = lookForMemberId(readAllMembers);
+        removeMember(readAllMembers,memberToLocate);
+        readAllMembers = new ArrayList<Member>();
     }
 
     public static void main(String[] args) throws IOException {
         new EditFile();
+    }
+    public void addMember(ArrayList<Member> membersList, Member member) throws IOException {
+            for (int i = 0; i < membersList.size(); i++) {
+                if (membersList.get(i) == member) {
+                    membersList.add(member);
+                    //System.out.println("✔︎");
+                }
+            }
+        Writer w = new FileWriter("resources/members.csv", false);
+        for (int i = 0; i < membersList.size(); i++) {
+            write.writerToFile("\n" + membersList.get(i).toString());
+
+        }
+
+
     }
 
 }
