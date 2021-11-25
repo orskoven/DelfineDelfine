@@ -91,6 +91,7 @@ public class Member {
         this.hasPaid = hasPaid;
     }
 
+
     @Override
     public String toString() {
         return "Member{" +
