@@ -1,5 +1,5 @@
 
-Member{Name='poul' Age=99 Address='poulsvej' Id=155 Active=true Under18=false EliteSwimmer=true Paid=true}
-Member{Name='poul' Age=99 Address='poulsvej' Id=123 Active=true Under18=false EliteSwimmer=true Paid=true}
 Member{Name='poul' Age=99 Address='poulsvej' Id=158 Active=true Under18=false EliteSwimmer=true Paid=true}
 Member{Name='poul' Age=99 Address='poulsvej' Id=123 Active=true Under18=false EliteSwimmer=true Paid=true}
+Member{Name='poul' Age=99 Address='poulsvej' Id=148 Active=true Under18=false EliteSwimmer=true Paid=true}
+Member{Name='poul' Age=99 Address='poulsvej' Id=133 Active=true Under18=false EliteSwimmer=true Paid=false}

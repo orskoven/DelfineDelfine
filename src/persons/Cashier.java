@@ -87,41 +87,14 @@ public class Cashier {
                 for (int j = 0; j < members.size() ; j++) {
                     if (members.get(j).getMemberId() == hasntPayedMembers.get(i).getMemberId()) {
                         Collections.swap(members, j, members.size()-1);
-                       // members.remove(members.size()-1);
-                        new EditFile().removeMember(members,members.get(0));
-                        //new EditFile().removeMember(members,members.get(members.size()-1));
+                        members.remove(members.size()-1);
+                        new EditFile().addMember(members);
                     }
             }
         }
 
 
         }
-
-
-        /*
-        for (int i = 0; i < hasntPayedMembers.size(); i++) {
-            System.out.println("Type the memberId to change payment status");
-            int userInput = scanner.nextInt();
-            if (hasntPayedMembers.get(i).getMemberId() == userInput){
-                hasntPayedMembers.get(i).setHasPaid(true);
-
-                for (int j = 0; j < members.size() ; j++) {
-                    if (members.get(j).getMemberId() == hasntPayedMembers.get(i).getMemberId())
-
-                    new EditFile().removeMember(members,members.get(j));
-
-                }
-                members.add(hasntPayedMembers.get(i));
-
-                for (int j = 0; j < members.size(); j++) {
-                    new EditFile().addMember(members,members.get(j));
-                }
-            }
-
-        }
-
-        //System.out.println(members);
-        */
     }
 
     public static void main(String[] args) {
