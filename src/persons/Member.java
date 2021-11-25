@@ -1,5 +1,7 @@
 package persons;
 
+import database.MemberToSave;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -107,7 +109,7 @@ public class Member {
         return
                 " Name: " + name +
                 "\n Age: " + age +
-                "\n Address: " + adress + '\'' +
+                "\n Address: " + adress +
                 "\n Id: " + memberId +
                 "\n Active: " + isActive +
                 "\n Under 18: " + isUnder18 +

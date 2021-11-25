@@ -1,5 +1,6 @@
 package factory;
 
+import database.MemberToSave;
 import database.TemporaryData;
 import persons.Member;
 
@@ -15,6 +16,7 @@ public class MemberGenerator {
     private boolean isEliteSwimmer;
     private boolean hasPaid;
     private Member newMember;
+    private MemberToSave memberToSave = new MemberToSave();
 
 
     public Member MemberGenerator() {
@@ -27,8 +29,10 @@ public class MemberGenerator {
             name = scanner.next();
 
             System.out.println("Address: ");
-            scanner.next();
             adress = scanner.nextLine();
+            if (adress.isEmpty()){
+                adress = scanner.nextLine();
+            }
 
             System.out.println("Is the member active (press 1) or passive (press 2)?: ");
             if (scanner.nextInt() == 1) {
@@ -56,7 +60,7 @@ public class MemberGenerator {
             } else {
                 hasPaid = false;
             }
-            newMember = new Member(name, age, adress, 0, isActive,
+            newMember = new Member(name, age, adress, new MemberToSave().getMemberId(), isActive,
                     isUnder18, isEliteSwimmer, hasPaid);
             String[] newMemberArray = newMember.toStringToConsole().split(",");
             System.out.println("Verify the datails: ");

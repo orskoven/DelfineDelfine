@@ -16,7 +16,7 @@ public class MemberToSave {
 
     public void saveMemberDetailsToFile(Member member) {
         saveMemberIdCounter();
-        member.setMemberId(memberId);
+        member.setMemberId(memberId+1);
         String[] memberDetailsArray = member.toString().split(",");
         try {
             Writer w = new FileWriter("resources/members.csv", true);
@@ -34,7 +34,6 @@ public class MemberToSave {
         saveMemberIdCounter();
     }
     static void saveMemberIdCounter() {
-        int number = 0;
         try {
             File file = new File("resources/memberIdCounter.csv");
             Scanner numberScanner = new Scanner(file);
@@ -52,6 +51,11 @@ public class MemberToSave {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public int getMemberId() {
+        saveMemberIdCounter();
+        return memberId+2 ;
     }
 }
 
