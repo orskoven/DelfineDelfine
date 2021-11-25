@@ -1,9 +1,10 @@
 package controller;
 
 import UI.Menu;
-import UI.ShowTop5Junior;
+import UI.ShowTop5JuniorCompetition;
 import database.*;
 import factory.DisciplineGenerator;
+import factory.DisciplineGeneratorTraining;
 import factory.MemberGenerator;
 import persons.Cashier;
 import persons.EliteSwimmer;
@@ -22,8 +23,8 @@ public class SystemController {
     private ArrayList<EliteSwimmer> eliteSwimmers = new ArrayList<EliteSwimmer>();
     private LoadTeams loadAllEliteSwimmers = new LoadTeams();
     private ReadResults readResults = new ReadResults();
-    private ShowTop5Junior showTop5Junior = new ShowTop5Junior();
-    private ShowTop5Junior showTop5Senior = new ShowTop5Junior();
+    private ShowTop5JuniorCompetition showTop5Junior = new ShowTop5JuniorCompetition();
+    private ShowTop5JuniorCompetition showTop5Senior = new ShowTop5JuniorCompetition();
     private EliteSwimmer eliteSwimmer = new EliteSwimmer();
     private Cashier cashier = new Cashier();
     private ArrayList<Member> readAllMembersList = new ReadAllMembers().ReadAllMembers();
@@ -111,9 +112,18 @@ public class SystemController {
 
                     }else if (coachChoice == 3){
                         //create result
-                        System.out.println("1.Butterfly\n2.Breaststroke\n3.Crawl\n4.Backcrawl");
-                        int userInputDiscipline = scanner.nextInt();
-                        DisciplineGenerator disciplineGenerator = new DisciplineGenerator(userInputDiscipline);
+                        System.out.println("1.Training\n2.Competition");
+                        int userInputResultType = scanner.nextInt();
+                        if (userInputResultType == 1){
+                            System.out.println("1.Butterfly\n2.Breaststroke\n3.Crawl\n4.Backcrawl");
+                            int userInputDiscipline = scanner.nextInt();
+                            DisciplineGeneratorTraining disciplineGenerator = new DisciplineGeneratorTraining(userInputDiscipline);
+                        }
+                        if (userInputResultType == 2) {
+                            System.out.println("1.Butterfly\n2.Breaststroke\n3.Crawl\n4.Backcrawl");
+                            int userInputDiscipline = scanner.nextInt();
+                            DisciplineGenerator disciplineGenerator = new DisciplineGenerator(userInputDiscipline);
+                        }
                     }else if (coachChoice == 9){
                         //return
                     }

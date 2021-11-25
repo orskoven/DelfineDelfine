@@ -1,0 +1,69 @@
+package factory;
+
+import database.EditFile;
+import database.LookUpMember;
+import database.SaveDiscipline;
+import disciplines.BackCrawl;
+import disciplines.BreastStroke;
+import disciplines.Butterfly;
+import disciplines.Crawl;
+import persons.Member;
+
+import java.io.IOException;
+import java.util.Scanner;
+
+public class DisciplineGeneratorTraining {
+    private Scanner scanner = new Scanner(System.in);
+    private SaveDiscipline saveDiscipline = new SaveDiscipline();
+    private String name;
+    private int id;
+    private int time;
+    private String location;
+    private String date;
+    private String tournament;
+    private int rank;
+    private LookUpMember currentMember = new LookUpMember();
+
+    public DisciplineGeneratorTraining(int userInput) throws IOException {
+        Member memberToLoad = currentMember.LookUpMember();
+        this.id = memberToLoad.getMemberId();
+        System.out.println("Time in minutes and seconds: ");
+        this.time = Integer.parseInt(String.valueOf(scanner.nextInt()));
+        System.out.println("Date: ");
+        this.date = String.valueOf(scanner.nextLine());
+        if (this.date.isEmpty()){
+            this.date = scanner.nextLine();
+        }
+        System.out.println("Rank: ");
+        this.rank = Integer.parseInt(String.valueOf(scanner.nextInt()));
+        this.name = memberToLoad.getName();
+        if (memberToLoad.isUnder18()){
+        if (userInput == 1){
+            saveDiscipline.saveDiscipline( new Butterfly(name,  id,  time,  location,  date,  tournament,  rank),
+                    "resources/juniorResults/training/butterfly.csv");
+        }  if (userInput == 2){
+            saveDiscipline.saveDiscipline( new BreastStroke(name,  id,  time,  location,  date,  tournament,  rank),
+                    "resources/juniorResults/training/breastStroke.csv");
+        } if (userInput == 3){
+            saveDiscipline.saveDiscipline( new Crawl(name,  id,  time,  location,  date,  tournament,  rank),
+                    "resources/juniorResults/training/crawl.csv");
+        } if (userInput == 4){
+                saveDiscipline.saveDiscipline( new BackCrawl(name,  id,  time,  location,  date,  tournament,  rank),
+                        "resources/juniorResults/training/backCrawl.csv");
+        }
+    } else if (!memberToLoad.isUnder18()) {
+            saveDiscipline.saveDiscipline( new Butterfly(name,  id,  time,  location,  date,  tournament,  rank),
+                    "resources/seniorResults/training/butterfly.csv");
+        }  if (userInput == 2){
+            saveDiscipline.saveDiscipline( new BreastStroke(name,  id,  time,  location,  date,  tournament,  rank),
+                    "resources/seniorResults/training/breastStroke.csv");
+        } if (userInput == 3){
+            saveDiscipline.saveDiscipline( new Crawl(name,  id,  time,  location,  date,  tournament,  rank),
+                    "resources/seniorResults/training/crawl.csv");
+        } if (userInput == 4){
+            saveDiscipline.saveDiscipline( new BackCrawl(name,  id,  time,  location,  date,  tournament,  rank),
+                    "resources/seniorResults/training/backCrawl.csv");
+
+        }
+        }
+}
