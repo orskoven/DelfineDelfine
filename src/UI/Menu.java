@@ -44,7 +44,7 @@ public class Menu {
     public void optionsForCashier(){
         System.out.println("Cashier options:");
         System.out.println("1. Show contingent prices");
-        System.out.println("2. Show expected revenue");
+        System.out.println("2. Show revenue data");
         System.out.println("3. Show members in arrears");       //restance = er i gæld til svømmeklubben
         System.out.println("4. Change members payment status");
         System.out.println("9. Return");

@@ -1,14 +1,14 @@
 package controller;
 
-import UI.AdjustMentMenu;
-import UI.Menu;
-import UI.ShowTop5JuniorCompetition;
+
+import UI.*;
 import database.*;
 import factory.DisciplineGenerator;
 import factory.DisciplineGeneratorTraining;
 import factory.MemberGenerator;
 import factory.MemberUpdate;
 import persons.Cashier;
+import persons.Chairman;
 import persons.EliteSwimmer;
 import persons.Member;
 
@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.*;
 
 public class SystemController {
+    private AdjustmentMenu adjustmentMenu = new AdjustmentMenu();
     private Scanner scanner = new Scanner(System.in);
     static MemberToSave memberToSave = new MemberToSave();
     private Menu menu = new Menu();
@@ -30,6 +31,7 @@ public class SystemController {
     private EliteSwimmer eliteSwimmer = new EliteSwimmer();
     private Cashier cashier = new Cashier();
     private ArrayList<Member> readAllMembersList = new ReadAllMembers().ReadAllMembers();
+    private MemberUpdate memberUpdate = new MemberUpdate();
 
     public SystemController() throws IOException {
     }
@@ -46,6 +48,8 @@ public class SystemController {
 
             switch (userInput) {
                 case 1:
+                    new ChairmanMenu();
+                    /*
                     menu.optionsForChairman();
                     int chairmanChoice = menu.getUserInput();
                     if (chairmanChoice == 1) {
@@ -66,12 +70,16 @@ public class SystemController {
                         new EditFile().removeMemberProcess();
                     } else if (chairmanChoice == 4) {
                         // edit members
-                       new AdjustMentMenu();
+                       new AdjustmentMenu();
 
                     } else if (chairmanChoice == 9) {             //go back option
 
                     }
                     break;
+                    */
+
+                break;
+
 
                 case 2:
                     menu.optionsForCashier();
@@ -81,14 +89,14 @@ public class SystemController {
                         cashier.showContingentPrices();
                     }else if (cashierChoice == 2){
                         //show expected payments
-                        cashier.getExpectedContigentRevenue();
+                        cashier.showRevenueData();
                     }else if (cashierChoice == 3){
                         //show members in arrears
                         cashier.getMembersWhoHasntPayed();      //evt. LoadingMissingpaymentmembers
                     } else if (cashierChoice == 4){
                         //change member payment status
-                        cashier.getMembersWhoHasntPayed();
-                        cashier.setMembersWhoHasntPayed();
+                        adjustmentMenu.paymentMenu();
+
 
                     } else if (cashierChoice ==9){
 
@@ -99,6 +107,8 @@ public class SystemController {
                     menu.optionsForCoach();
                     int coachChoice = menu.getUserInput();
                     if (coachChoice == 1) {
+                        new ResultsMenu();
+                        /*
                         System.out.println("Choose:");
                         System.out.println("1. Junior\n2. Senior");
                         int topTeamInput = scanner.nextInt();
@@ -108,6 +118,8 @@ public class SystemController {
                     else if (topTeamInput == 2) {
                         showTop5Senior.getOptions();
                     }
+
+                         */
 
                     }else if (coachChoice == 2) {
                         //Show elite swimmers

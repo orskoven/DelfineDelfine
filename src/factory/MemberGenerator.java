@@ -34,7 +34,7 @@ public class MemberGenerator {
                 adress = scanner.nextLine();
             }
 
-            System.out.println("Is the member active (press 1) or passive (press 2)?: ");
+            System.out.println("Is the member:\n1. Active\n2. Passive ");
             if (scanner.nextInt() == 1) {
                 isActive = true;
             } else {
@@ -47,14 +47,14 @@ public class MemberGenerator {
                 isUnder18 = false;
             }
 
-            System.out.println("Is the member elite swimmer (press 1) or is the member non-elite (press 2): ");
+            System.out.println("Is the member:\n1. Elite swimmer\n2. Non-elite");
             if (scanner.nextInt() == 1) {
                 isEliteSwimmer = true;
             } else {
                 isEliteSwimmer = false;
             }
 
-            System.out.println("Has the member paid, yes (press 1) or no (press 2): ");
+            System.out.println("Has the member paid:\n1. Yes\n2. No");
             if (scanner.nextInt() == 1) {
                 hasPaid = true;
             } else {
@@ -63,14 +63,20 @@ public class MemberGenerator {
             newMember = new Member(name, age, adress, new MemberToSave().getMemberId(), isActive,
                     isUnder18, isEliteSwimmer, hasPaid);
             String[] newMemberArray = newMember.toStringToConsole().split(",");
+
             System.out.println("Verify the datails: ");
+            // print details
             for (int i = 0; i < newMemberArray.length; i++) {
                 System.out.println(newMemberArray[i]);
             }
+
             if (newMember.isHasPaid()) {
                 getMemberSubscriptionPrice();
+            }  else  if (!newMember.isHasPaid()) {
+                getMemberSubscriptionPrice();
             }
-            System.out.println("\nPress 1 to proceed press 2 to adjust:");
+            System.out.println("-----------------------------------");
+            System.out.println("1. Save the member\n2. Start over");
             if (scanner.nextInt() == 1) {
                 isVerified = true;
             }
@@ -86,15 +92,15 @@ public class MemberGenerator {
         } else if (!newMember.isUnder18() && newMember.isActive() && age < 60) {
             getMembershipPricesFromFile("senior");
         } else if (!newMember.isUnder18() && newMember.isActive() && age > 60) {
-            getMembershipPricesFromFile("passive");
+            getMembershipPricesFromFile("elder");
         }  else if (!newMember.isUnder18() && !newMember.isActive() && age > 60) {
-        getMembershipPricesFromFile("elder");
+        getMembershipPricesFromFile("passive");
     }
     }
 
     private void getMembershipPricesFromFile(String memberType){
         int membershipPrice = TemporaryData.productPrices.get(memberType);
-        System.out.println("The member has to pay " + membershipPrice +  " Dkk annually.");
+        System.out.println("The member has to pay " + membershipPrice +  " DKK annually.");
     }
 
 

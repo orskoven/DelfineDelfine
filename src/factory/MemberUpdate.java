@@ -192,6 +192,7 @@ public class MemberUpdate {
                 new EditFile().addMember(members);
             }
         }
+        System.out.println("\nThe adjustment has been completed [✓]");
     }
 
     public static void main(String[] args) throws IOException {
