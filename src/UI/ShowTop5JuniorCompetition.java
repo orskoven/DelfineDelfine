@@ -19,7 +19,7 @@ public class ShowTop5JuniorCompetition {
         switch (userInputDiscipline) {
             case 1 -> {
                 System.out.println("Top 5 Butterfly:");
-                readResults.getTop5("resources/eliteResults/juniorResults/competition/backCrawl.csv");
+                readResults.getTop5("resources/eliteResults/juniorResults/competition/butterfly.csv");
             }
             case 2 -> {
                 System.out.println("Breaststroke:");
