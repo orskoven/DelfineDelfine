@@ -2,7 +2,7 @@ package disciplines;
 
 import java.util.Scanner;
 
-public abstract class Discipline implements Comparable <Discipline> {
+public class Discipline implements Comparable <Discipline> {
     private Scanner scanner = new Scanner(System.in);
     private String name;
     private int id;

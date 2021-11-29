@@ -84,8 +84,7 @@ public class ReadResults {
                         rankString += Arrays.toString(rankArray).charAt(i);
                     }
                     rank = Integer.parseInt(rankString);
-                    disciplines.add(new Discipline(name, id, time, location, date, tournament, rank) {
-                    });
+                    disciplines.add(new Discipline(name, id, time, location, date, tournament, rank));
                 }
 
 
@@ -97,7 +96,7 @@ public class ReadResults {
             }
                 Collections.sort(disciplines);
                 for (int i = 0; i < disciplines.size(); i++) {
-                    if (disciplines.get(i).getLocation().toString().equals("null")) {
+                    if (disciplines.get(i).getLocation().equals("null")) {
                         System.out.println(disciplines.get(i).toStringConsoleTraining());
                     } else {
                         System.out.println(disciplines.get(i).toStringConsole());
@@ -109,7 +108,7 @@ public class ReadResults {
             } catch(Exception e){
                 System.out.println("File couldn't read");
             }
-        disciplines = new ArrayList<Discipline>();
+       // disciplines = new ArrayList<Discipline>();
         }
 
         }
