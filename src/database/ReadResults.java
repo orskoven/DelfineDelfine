@@ -9,6 +9,7 @@ import java.util.*;
 public class ReadResults {
     private Discipline discipline;
     private ArrayList<Discipline> disciplines = new ArrayList<Discipline>();
+    private ArrayList<Discipline> disciplinesTraining = new ArrayList<Discipline>();
     private String name;
     private int id;
     private int time;
@@ -93,13 +94,16 @@ public class ReadResults {
                     counter = 0;
                 }
 
-
             }
+                Collections.sort(disciplines);
+                for (int i = 0; i < disciplines.size(); i++) {
+                    if (disciplines.get(i).getLocation().toString().equals("null")) {
+                        System.out.println(disciplines.get(i).toStringConsoleTraining());
+                    } else {
+                        System.out.println(disciplines.get(i).toStringConsole());
 
-            Collections.sort(disciplines);
-            for (int i = 0; i < 5; i++) {
-                    System.out.println(disciplines.get(i).toStringConsole());
 
+                }
             }
 
             } catch(Exception e){

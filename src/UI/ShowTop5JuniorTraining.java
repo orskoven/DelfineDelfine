@@ -22,7 +22,7 @@ public class ShowTop5JuniorTraining {
                 readResults.getTop5("resources/eliteResults/juniorResults/training/butterfly.csv");
             }
             case 2 -> {
-                System.out.println("Breaststroke:");
+                System.out.println("Top 5 Breaststroke:");
                 readResults.getTop5("resources/eliteResults/juniorResults/training/breastStroke.csv");
             }
             case 3 -> {

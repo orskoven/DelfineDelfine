@@ -39,7 +39,7 @@ public class ResultsMenu {
         int adjustChoice = scanner.nextInt();
         switch (adjustChoice) {
             case 1:
-                showTop5JuniorCompetition.getOptions();
+                showTop5JuniorTraining.getOptions();
                 break;
             case 2:
                 showTop5JuniorCompetition.getOptions();
