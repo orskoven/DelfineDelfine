@@ -29,7 +29,7 @@ public class Cashier {
 
     public int paymentDetails(int memberArrayIndex){
         members.removeAll(members);
-        members = readAllMembers.ReadAllMembers();
+        members = readAllMembers.setFile();
 
         int contigent = 0;
 
@@ -48,7 +48,7 @@ public class Cashier {
 
     public int getExpectedRevenue(){
 
-        members = readAllMembers.ReadAllMembers();
+        members = readAllMembers.setFile();
         int expectedContigent = 0;
 
         for (int i = 0; i <members.size() ; i++) {
@@ -59,7 +59,7 @@ public class Cashier {
 
     public int getPayedRevenue(){
 
-        members = readAllMembers.ReadAllMembers();
+        members = readAllMembers.setFile();
         int payedContigent = 0;
 
         for (int i = 0; i <members.size() ; i++) {
@@ -72,7 +72,7 @@ public class Cashier {
 
     public int getMissingRevenue(){
 
-        members = readAllMembers.ReadAllMembers();
+        members = readAllMembers.setFile();
         int missingContigent = 0;
 
         for (int i = 0; i <members.size() ; i++) {
@@ -96,7 +96,7 @@ public class Cashier {
 
     public void getMembersWhoHasntPayed(){
         members.removeAll(members);
-        members = readAllMembers.ReadAllMembers();
+        members = readAllMembers.setFile();
 
         hasntPayedMembers.removeAll(hasntPayedMembers);
 

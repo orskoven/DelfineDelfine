@@ -1,14 +1,3 @@
-
-Member{Name='poul' Age=99 Address='poulsvej' Id=133 Active=true Under18=false EliteSwimmer=false Paid=true}
-Member{Name='poul' Age=99 Address='poulsvej' Id=9090 Active=false Under18=false EliteSwimmer=false Paid=true}
-Member{Name='poul' Age=99 Address='poulsvej' Id=444 Active=false Under18=false EliteSwimmer=true Paid=true}
-Member{Name='poul' Age=99 Address='poulsvej' Id=123 Active=false Under18=false EliteSwimmer=true Paid=false}
-Member{Name='poul' Age=99 Address='poulsvej' Id=222 Active=false Under18=false EliteSwimmer=true Paid=true}
-Member{Name='poul' Age=99 Address='poulsvej' Id=432 Active=false Under18=false EliteSwimmer=true Paid=true}
-Member{Name='poul' Age=99 Address='poulsvej' Id=543 Active=true Under18=false EliteSwimmer=false Paid=true}
-Member{Name='poul' Age=99 Address='poulsvej' Id=1231 Active=false Under18=false EliteSwimmer=true Paid=false}
-Member{Name='dorthe' Age=9 Address='karlund' Id=161 Active=false Under18=true EliteSwimmer=false Paid=true}
-Member{Name='børge' Age=44 Address='borgevejs' Id=164 Active=false Under18=false EliteSwimmer=true Paid=true}
-Member{Name='2' Age=12 Address='2' Id=173 Active=true Under18=true EliteSwimmer=true Paid=true}
-Member{Name='ubiquire' Age=77 Address='buffalovsjenmean133' Id=176 Active=true Under18=false EliteSwimmer=true Paid=true}
-Member{Name='mnyf' Age=23 Address='mnyf' Id=179 Active=false Under18=false EliteSwimmer=false Paid=true}Member{Name='12' Age=12 Address='12' Id=183 Active=false Under18=true EliteSwimmer=false Paid=false}Member{Name='1' Age=1 Address='1' Id=186 Active=true Under18=true EliteSwimmer=true Paid=true}Member{Name='1' Age=1 Address='1' Id=189 Active=true Under18=true EliteSwimmer=true Paid=true}Member{Name='1' Age=1 Address='1' Id=192 Active=true Under18=true EliteSwimmer=true Paid=true}Member{Name='1' Age=1 Address='1' Id=195 Active=true Under18=true EliteSwimmer=true Paid=true}
+name;age;adress;id;isActive;isUnder18;isElite;hasPaid
+tove;34;rrr;228;true;false;true;true
+tim;12;vvv;231;false;true;false;true

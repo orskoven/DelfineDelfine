@@ -91,7 +91,7 @@ public class Member {
         this.hasPaid = hasPaid;
     }
 
-
+/*
     @Override
     public String toString() {
         return "Member{" +
@@ -105,7 +105,12 @@ public class Member {
                 " Paid=" + hasPaid +
                 '}';
     }
-
+*/
+@Override
+public String toString() {
+    return name + ";" + age + ";" + adress + ";" + memberId + ";" + isActive + ";" +
+            isUnder18 + ";" + isEliteSwimmer + ";" + hasPaid;
+}
     public String toStringToConsole() {
         return
                 " Name: " + name +

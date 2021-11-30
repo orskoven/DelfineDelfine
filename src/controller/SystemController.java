@@ -30,7 +30,7 @@ public class SystemController {
     private ShowTop5JuniorCompetition showTop5Senior = new ShowTop5JuniorCompetition();
     private EliteSwimmer eliteSwimmer = new EliteSwimmer();
     private Cashier cashier = new Cashier();
-    private ArrayList<Member> readAllMembersList = new ReadAllMembers().ReadAllMembers();
+    private ArrayList<Member> readAllMembersList = new ReadAllMembers().setFile();
     private MemberUpdate memberUpdate = new MemberUpdate();
 
     public SystemController() throws IOException {
@@ -49,7 +49,7 @@ public class SystemController {
             switch (userInput) {
                 case 1:
                     new ChairmanMenu();
-                    /////
+                    //////
                     /*
                     menu.optionsForChairman();
                     int chairmanChoice = menu.getUserInput();
@@ -159,5 +159,4 @@ public class SystemController {
         SystemController hej = new SystemController();
         hej.chooseOptions();
     }
-
 }

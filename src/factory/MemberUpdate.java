@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class MemberUpdate {
     private ReadAllMembers readAllMembers = new ReadAllMembers();
-    private ArrayList<Member> members = readAllMembers.ReadAllMembers();
+    private ArrayList<Member> members = readAllMembers.setFile();
     private ArrayList<Member> membersToUpdate = new ArrayList<Member>();
 
     public MemberUpdate () throws IOException {
@@ -188,7 +188,7 @@ public class MemberUpdate {
         for (int j = 0; j < members.size(); j++) {
             if (members.get(j).getMemberId() == membersToUpdate.get(i).getMemberId()) {
                 Collections.swap(members, j, members.size() - 1);
-                members.remove(members.size() - 1);
+                members.remove(members.size() -1);
                 new EditFile().addMember(members);
             }
         }

@@ -104,7 +104,6 @@ public class ReadResults {
 
                 }
             }
-
             } catch(Exception e){
                 System.out.println("File couldn't read");
             }

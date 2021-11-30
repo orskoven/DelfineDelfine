@@ -17,7 +17,7 @@ public class ChairmanMenu {
     private MemberGenerator member = new MemberGenerator();
     private ReadAllMembers readAllMembers = new ReadAllMembers();
     private ArrayList<Member> members = new ArrayList<Member>();
-    private ArrayList<Member> readAllMembersList = new ReadAllMembers().ReadAllMembers();
+    private ArrayList<Member> readAllMembersList = new ReadAllMembers().setFile();
     static MemberToSave memberToSave = new MemberToSave();
 
 

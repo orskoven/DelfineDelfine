@@ -21,7 +21,7 @@ public class EliteSwimmer {
         members.clear();
         eliteMembers.clear();
 
-        members = readAllMembers.ReadAllMembers();
+        members = readAllMembers.setFile();
 
         //til at få
 

@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class EditFile {
     private Scanner scanner = new Scanner(System.in);
     private ArrayList<Member> members = new ArrayList<Member>();
-    private ArrayList<Member> readAllMembers = new ReadAllMembers().ReadAllMembers();
+    private ArrayList<Member> readAllMembers = new ReadAllMembers().setFile();
     private ReadAllMembers readAllMembersGetMember = new ReadAllMembers();
     private Write write = new Write();
 
