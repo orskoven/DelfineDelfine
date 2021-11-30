@@ -6,6 +6,7 @@ import database.MemberToSave;
 import database.ReadAllMembers;
 import database.TempRead;
 import factory.MemberGenerator;
+import factory.MemberUpdate;
 import persons.Member;
 
 import java.io.IOException;
@@ -19,35 +20,117 @@ public class ChairmanMenu {
     private ArrayList<Member> members = new ArrayList<Member>();
     private ArrayList<Member> readAllMembersList = new ReadAllMembers().setFile();
     static MemberToSave memberToSave = new MemberToSave();
+    private Menu menu = new Menu();
+    private MemberUpdate memberUpdate= new MemberUpdate();
 
 
     public ChairmanMenu() throws IOException {
-        new Menu().optionsForChairman();
-        switch ( new Menu().getUserInput()){
-            case 1:
-                TempRead.getMembershipPricesFromFile();
-                memberToSave.saveMemberDetailsToFile(member.MemberGenerator());
-                break;
-            case 2:
-                //show members
-                System.out.println("All MEMBERS: ");
+    }
 
-                for (int i = 0; i <readAllMembersList.size() ; i++) {
-                    System.out.println(readAllMembersList.get(i).toStringToPrintAll());
-                }
+    public void showChairmanMenu() throws IOException {
+       int chairmanChoice;
 
-                break;
-             case 3:
-            // remove member
-             new EditFile().removeMemberProcess();
-                break;
-             case 4:
-            // edit members
-            new AdjustmentMenu().adjustmentMenuOverview();
-            break;
-            case 9:
-              break;
-        }
+       do {
+           optionsForChairman();
+           chairmanChoice = menu.getUserInput();
+
+           switch (chairmanChoice) {
+               case 1:
+                   TempRead.getMembershipPricesFromFile();
+                   memberToSave.saveMemberDetailsToFile(member.MemberGenerator());
+                   break;
+               case 2:
+                   //show members
+                   System.out.println("All MEMBERS: ");
+
+                   for (int i = 0; i < readAllMembersList.size(); i++) {
+                       System.out.println(readAllMembersList.get(i).toStringToPrintAll());
+                   }
+                   break;
+               case 3:
+                   // remove member
+                   new EditFile().removeMemberProcess();
+                   break;
+               case 4:
+                   // edit members
+                   changeMembershipStatus();
+                   break;
+               case 9:
+                   break;
+           }
+           System.out.println();
+       }while (chairmanChoice !=9);
+
 
     }
+
+    public void activeMenu() throws IOException {
+        System.out.println("1. Turn member active \n2. Turn member passive\n3. Quit");
+        int adjustChoice = menu.getUserInput();
+
+        switch (adjustChoice){
+            case 1:
+                System.out.println("Members who are passive:");
+                memberUpdate.getNonActiveMembers();
+                break;
+            case 2:
+                System.out.println("Members who are active:");
+                memberUpdate.getActiveMembers();
+                break;
+            case 3:
+               //changeMembershipStatus();
+                break;
+
+        }
+    }
+
+    public void eliteMenu() throws IOException {
+        System.out.println("1. Change member to be elite \n2. Change member to be non-elite\n3. Quit");
+        int adjustChoice = menu.getUserInput();
+        switch (adjustChoice){
+            case 1:
+                System.out.println("Members who are non-elite:");
+                memberUpdate.getNonEliteMembers();
+                break;
+            case 2:
+                System.out.println("Members who are elite:");
+                memberUpdate.getEliteMembers();
+                break;
+            case 3:
+                //changeMembershipStatus();
+                break;
+
+        }
+    }
+
+    public void changeMembershipStatus() throws IOException {
+        showMembershipOptions();
+        int adjustChoice = menu.getUserInput();
+
+        switch (adjustChoice){
+            case 1:
+                activeMenu();
+                break;
+            case 2:
+                eliteMenu();
+                break;
+
+        }
+    }
+
+    public void showMembershipOptions(){
+        System.out.println("What would you like to adjust?: ");
+        System.out.println("1. Active/Passive\n2. Elite/non-Elite");
+    }
+
+    public void optionsForChairman() {
+        System.out.println("Chairman options:");
+        System.out.println("1. Create member");
+        System.out.println("2. Show members");
+        System.out.println("3. Remove member");
+        System.out.println("4. Adjust member");
+        System.out.println("9. Return");
+    }
+
+
 }

@@ -1,20 +1,22 @@
+import controller.SystemController;
 import database.LoadMemberMissingPayment;
 import database.MemberToSave;
 import database.ReadFiles;
 import factory.MemberGenerator;
 
+import java.io.IOException;
+
 public class DelfinenApp {
-    static MemberToSave memberToSave = new MemberToSave();
+    private SystemController systemController = new SystemController();
 
+    public DelfinenApp() throws IOException {
+    }
 
+    public static void main(String[] args) throws IOException {
+        DelfinenApp delfinenApp = new DelfinenApp();
 
-    public static void main(String[] args) {
-        new LoadMemberMissingPayment();
-        System.out.println();
-        new ReadFiles("resources/members.csv");
-        new ReadFiles("resources/memberIdCounter.csv");
-        MemberGenerator memberGenerator = new MemberGenerator();
-        memberToSave.saveMemberDetailsToFile(memberGenerator.MemberGenerator());
+        delfinenApp.systemController.chooseOptions();
+
 
     }
 }
