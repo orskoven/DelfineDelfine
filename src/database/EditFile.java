@@ -81,12 +81,10 @@ public class EditFile {
 
     public void addMember(ArrayList<Member> membersList) throws IOException {
         Writer w = new FileWriter("resources/members.csv", false);
+        write.writerToFile("name;age;adress;id;isActive;isUnder18;isElite;hasPaid" + "\n");
         for (int i = 0; i < membersList.size(); i++) {
-            write.writerToFile("\n" + membersList.get(i).toString());
-
+            write.writerToFile( membersList.get(i).toString() + "\n");
         }
-
-
     }
 
 }
