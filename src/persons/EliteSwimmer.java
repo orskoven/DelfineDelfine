@@ -16,7 +16,7 @@ public class EliteSwimmer {
 
 
 
-    public void addEliteSwimmer() {
+    public ArrayList<Member> findEliteSwimmer() {
 
         members.clear();
         eliteMembers.clear();
@@ -28,22 +28,40 @@ public class EliteSwimmer {
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).isEliteSwimmer() == (true)) {
                 eliteMembers.add(members.get(i));
-                //System.out.println(eliteMembers.get(i));
+                //System.out.println(eliteMembers.get(i).toStringToPrintAll());
             } else {
             }
-            for (Member eliteSwimmer : eliteMembers) {
-                System.out.println(eliteSwimmer);
+        }
+        return eliteMembers;
+    }
+
+    public void showJuniorTeam(){
+        findEliteSwimmer();
+        System.out.println("Junior Team");
+        for (int i = 0; i < eliteMembers.size(); i++) {
+            if (eliteMembers.get(i).isUnder18() == true){
+                System.out.println("・Name: " + eliteMembers.get(i).getName() + " ID: " + eliteMembers.get(i).getMemberId());
             }
         }
     }
-/*
+
+    public void showSeniorTeam(){
+        findEliteSwimmer();
+        System.out.println("Senior Team");
+        for (int i = 0; i < eliteMembers.size(); i++) {
+            if (eliteMembers.get(i).isUnder18() == false){
+                System.out.println("・Name: " + eliteMembers.get(i).getName() + " ID: " + eliteMembers.get(i).getMemberId());
+            }
+        }
+    }
+
     public void showEliteSwimmers(){
-        addEliteSwimmer();
+        findEliteSwimmer();
         for (Member eliteSwimmer : eliteMembers) {
             System.out.println(eliteSwimmer);
         }
     }
- */
+
 
 
 }

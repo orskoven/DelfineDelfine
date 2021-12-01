@@ -1,6 +1,4 @@
 package controller;
-
-
 import UI.*;
 import database.*;
 import factory.DisciplineGenerator;

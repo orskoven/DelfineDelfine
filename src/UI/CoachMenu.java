@@ -1,15 +1,22 @@
 package UI;
 
 import database.LoadTeams;
+import database.Result;
+import database.WriteResult;
 import factory.DisciplineGenerator;
 import factory.DisciplineGeneratorTraining;
 import factory.MemberUpdate;
+import persons.EliteSwimmer;
 
 import java.io.IOException;
 
 public class CoachMenu {
     private Menu menu = new Menu();
     private LoadTeams loadAllEliteSwimmers = new LoadTeams();
+    private WriteResult writeResult = new WriteResult();
+    private EliteSwimmer eliteSwimmer = new EliteSwimmer();
+    private Result result = new Result();
+
 
 
 
@@ -21,7 +28,15 @@ public class CoachMenu {
             coachChoice = menu.getUserInput();
 
             if (coachChoice == 1) {
-                new ResultsMenu();
+                result.getTop5Result("butterfly");
+                System.out.println();
+                result.getTop5Result("breast stroke");
+                System.out.println();
+                result.getTop5Result("crawl");
+                System.out.println();
+                result.getTop5Result("back crawl");
+
+                //new ResultsMenu();
                         /*
                         System.out.println("Choose:");
                         System.out.println("1. Junior\n2. Senior");
@@ -37,31 +52,21 @@ public class CoachMenu {
 
             } else if (coachChoice == 2) {
                 //Show elite swimmers
-
-                //eliteSwimmer.addEliteSwimmer();
-
-                loadAllEliteSwimmers.loadingTeams();
-                System.out.println("Juniors " + loadAllEliteSwimmers.getTeamJunior());
+                eliteSwimmer.showJuniorTeam();
                 System.out.println();
-                System.out.println("Seniors " + loadAllEliteSwimmers.getTeamSenior());
+                eliteSwimmer.showSeniorTeam();
 
             } else if (coachChoice == 3) {
-                //create result
-                System.out.println("1.Training\n2.Competition");
-                int userInputResultType = menu.getUserInput();
-                if (userInputResultType == 1) {
-                    System.out.println("1.Butterfly\n2.Breaststroke\n3.Crawl\n4.Backcrawl");
-                    int userInputDiscipline = menu.getUserInput();
-                    DisciplineGeneratorTraining disciplineGenerator = new DisciplineGeneratorTraining(userInputDiscipline);
-                }
-                if (userInputResultType == 2) {
-                    System.out.println("1.Butterfly\n2.Breaststroke\n3.Crawl\n4.Backcrawl");
-                    int userInputDiscipline = menu.getUserInput();
-                    DisciplineGenerator disciplineGenerator = new DisciplineGenerator(userInputDiscipline);
-                }
+                //create training result
+                writeResult.writerToFile(result.writeTrainingToCsv());
+            } else if (coachChoice == 4){
+                //competition rersult
+                writeResult.writerToFile(result.writeCompetitionToCsv());
+
             } else if (coachChoice == 9) {
                 break;
             }
+            System.out.println();
 
 
         } while (coachChoice != 9);
@@ -71,7 +76,8 @@ public class CoachMenu {
         System.out.println("Coach options:");
         System.out.println("1. Show top 5 elite swimmers"); //juniors + seniors
         System.out.println("2. Show elite swimmers");
-        System.out.println("3. Create a result");
+        System.out.println("3. Create a training result");
+        System.out.println("4. Create a competition result");
         System.out.println("9. Return");
     }
 

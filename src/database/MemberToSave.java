@@ -13,7 +13,6 @@ public class MemberToSave {
     private ArrayList<String> memberDetails = new ArrayList<String>();
     static int memberId;
 
-
     public void saveMemberDetailsToFile(Member member) {
         saveMemberIdCounter();
         member.setMemberId(memberId+1);
@@ -33,6 +32,7 @@ public class MemberToSave {
         }
         saveMemberIdCounter();
     }
+
     static void saveMemberIdCounter() {
         try {
             File file = new File("resources/memberIdCounter.csv");
@@ -58,4 +58,3 @@ public class MemberToSave {
         return memberId+2 ;
     }
 }
-

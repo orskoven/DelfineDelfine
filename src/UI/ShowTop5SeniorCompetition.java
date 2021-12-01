@@ -12,7 +12,7 @@ public class ShowTop5SeniorCompetition {
         System.out.println("Show top 5 in:");
         System.out.println("1. Butterfly\n2. Breaststroke\n3. Crawl\n4. Backcrawl");
     }
-
+/*
     public void getOptions(){
         showTop5Disciplines();
         int userInputDiscipline = scanner.nextInt();
@@ -34,4 +34,7 @@ public class ShowTop5SeniorCompetition {
                 readResults.getTop5("resources/eliteResults/seniorResults/competition/backcrawl.csv");
             }
         }
-    }}
+    }
+    }
+ */
+}

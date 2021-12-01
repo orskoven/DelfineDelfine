@@ -5,14 +5,14 @@ import database.ReadResults;
 import java.util.Scanner;
 
 public class ShowTop5JuniorTraining {
-     private Scanner scanner = new Scanner(System.in);
-     private ReadResults readResults = new ReadResults();
+    private Scanner scanner = new Scanner(System.in);
+    private ReadResults readResults = new ReadResults();
 
-    public void showTop5Disciplines(){
+    public void showTop5Disciplines() {
         System.out.println("Show top 5 in:");
         System.out.println("1. Butterfly\n2. Breaststroke\n3. Crawl\n4. Backcrawl");
     }
-
+/*
     public void getOptions(){
         showTop5Disciplines();
         int userInputDiscipline = scanner.nextInt();
@@ -35,3 +35,6 @@ public class ShowTop5JuniorTraining {
             }
         }
     }}
+
+ */
+}

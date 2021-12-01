@@ -69,5 +69,5 @@ public class DisciplineGenerator {
                     "resources/eliteResults/seniorResults/backCrawl.csv");
 
         }
-        }
+    }
 }

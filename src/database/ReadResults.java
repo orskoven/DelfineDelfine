@@ -2,8 +2,9 @@ package database;
 
 import disciplines.Discipline;
 import persons.Member;
-
+import database.Result;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 
 public class ReadResults {
@@ -17,13 +18,61 @@ public class ReadResults {
     private String date;
     private String tournament;
     private int rank;
-    private  Scanner fileReading;
+   // private  Scanner fileReading;
     private String[] stringToArray;
     private int counter = 0;
     private int comparable = 0;
     private Discipline disciplineToCheck;
     private Discipline disciplineTop;
+    private ArrayList<Result> resultArrayList = new ArrayList<Result>();
 
+
+    public ArrayList<Result> setFile() {
+        try {
+            File membersFile = new File("resources/results.csv");
+            Scanner fileReading = new Scanner(membersFile);
+            fileReading.nextLine();
+            while (fileReading.hasNextLine()) {
+
+                String line1 = fileReading.nextLine();
+                String[] membersArray1 = line1.split(";");
+
+
+                String discipline = membersArray1[0];
+                String memberName = membersArray1[1];
+                int memberId = Integer.parseInt(membersArray1[2]);
+                String timeStamp = membersArray1[3];
+                String tournament = membersArray1[4];
+                String timeResult = membersArray1[5];
+                int rank = Integer.parseInt(membersArray1[6]);
+
+                Result result = new Result(discipline, memberName, memberId, timeStamp,
+                        tournament, timeResult, rank);
+
+                resultArrayList.add(result);
+                //counter++;
+            }
+
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("fejl");
+        }
+        /*
+        for (int i = 0; i < resultArrayList.size(); i++) {
+            System.out.println(resultArrayList.get(i));
+
+
+        }
+
+         */
+        return resultArrayList;
+    }
+
+
+
+/*
     public void getTop5(String filePath) {
         try {
             File file = new File(filePath);
@@ -108,7 +157,19 @@ public class ReadResults {
                 System.out.println("File couldn't read");
             }
        // disciplines = new ArrayList<Discipline>();
+
+
         }
+
+ */
+
+    public static void main(String[] args) {
+        ReadResults results = new ReadResults();
+        results.setFile();
+
+
+        //System.out.println(readAllMembers.setFile());
+    }
 
         }
 

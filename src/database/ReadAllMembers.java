@@ -148,6 +148,7 @@ public class ReadAllMembers {
             e.printStackTrace();
             System.out.println("fejl");
         }
+
         return membersArrayList;
     }
 

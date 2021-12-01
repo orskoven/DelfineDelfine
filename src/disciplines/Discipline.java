@@ -12,7 +12,7 @@ public class Discipline implements Comparable <Discipline> {
     private String tournament;
     private int rank;
 
-    public Discipline(String name, int id, int time, String location, String date, String tournament, int rank) {
+    public Discipline(String name, int i, int id, String location, String date, String tournament, int rank) {
         this.name = name;
         this.id = id;
         this.time = time;

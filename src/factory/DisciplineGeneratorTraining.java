@@ -62,7 +62,6 @@ public class DisciplineGeneratorTraining {
         } if (userInput == 4){
             saveDiscipline.saveDiscipline( new BackCrawl(name,  id,  time,  location,  date,  tournament, rank),
                     "resources/eliteResults/seniorResults/training/backCrawl.csv");
-
         }
-        }
+    }
 }

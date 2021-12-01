@@ -12,7 +12,7 @@ public class ResultsMenu {
     private ShowTop5SeniorCompetition showTop5SeniorCompetition = new ShowTop5SeniorCompetition();
     private ShowTop5SeniorTraining showTop5SeniorTraining = new ShowTop5SeniorTraining();
 
-
+/*
     public ResultsMenu() throws IOException {
         firstMenu();
         int resultsChoice = scanner.nextInt();
@@ -32,7 +32,7 @@ public class ResultsMenu {
         System.out.println("Choose:");
         System.out.println("1. Junior\n2. Senior\n9. Quit");
     }
-
+/*
     public void getJuniorResultsMenu() throws IOException {
         System.out.println("Choose: ");
         System.out.println("1. Training \n2. Competition\n9. Quit");
@@ -65,5 +65,6 @@ public class ResultsMenu {
                 new ResultsMenu();
 
         }
-    }
+    }*/
+
 }
