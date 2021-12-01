@@ -1,6 +1,6 @@
 name;age;adress;id;isActive;isUnder18;isElite;hasPaid
 tove;34;rrr;228;true;false;false;true
-tim;12;vvv;231;false;true;true;true
+tim;12;vvv;231;true;true;true;true
 23;23;23;234;true;false;true;true
 12;12;12;237;true;true;false;true
 3;4;2;240;false;true;true;true
