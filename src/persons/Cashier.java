@@ -1,16 +1,5 @@
 package persons;
 
-import database.EditFile;
-import database.MemberToSave;
-import database.ReadAllMembers;
-import factory.MemberGenerator;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.sql.Array;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 
 
@@ -29,7 +18,7 @@ public class Cashier extends User {
         Scanner userInputString = new Scanner(System.in);
 
         boolean validateCheck = false;
-        while (validateCheck == false) {
+        while (!validateCheck) {
 
             System.out.println("Login:");
             String login = userInputString.nextLine();
