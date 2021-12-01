@@ -12,7 +12,7 @@ public class DelfinenApp {
     public DelfinenApp() throws IOException {
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         DelfinenApp delfinenApp = new DelfinenApp();
 
         delfinenApp.systemController.chooseOptions();

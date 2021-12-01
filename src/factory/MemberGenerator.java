@@ -10,7 +10,7 @@ public class MemberGenerator {
     Scanner scanner = new Scanner(System.in);
     private String name;
     private int age;
-    private String adress;
+    private String address;
     private boolean isActive;
     private boolean isUnder18;
     private boolean isEliteSwimmer;
@@ -29,9 +29,9 @@ public class MemberGenerator {
             name = scanner.next();
 
             System.out.println("Address: ");
-            adress = scanner.nextLine();
-            if (adress.isEmpty()){
-                adress = scanner.nextLine();
+            address = scanner.nextLine();
+            if (address.isEmpty()){
+                address = scanner.nextLine();
             }
 
             System.out.println("Is the member:\n1. Active\n2. Passive ");
@@ -60,11 +60,11 @@ public class MemberGenerator {
             } else {
                 hasPaid = false;
             }
-            newMember = new Member(name, age, adress, new MemberToSave().getMemberId(), isActive,
+            newMember = new Member(name, age, address, new MemberToSave().getMemberId(), isActive,
                     isUnder18, isEliteSwimmer, hasPaid);
             String[] newMemberArray = newMember.toStringToConsole().split(",");
 
-            System.out.println("Verify the datails: ");
+            System.out.println("Verify the details: ");
             // print details
             for (int i = 0; i < newMemberArray.length; i++) {
                 System.out.println(newMemberArray[i]);

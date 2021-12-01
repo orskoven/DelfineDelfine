@@ -146,7 +146,7 @@ public class ReadAllMembers {
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            System.out.println("fejl");
+            System.out.println("File couldn't read");
         }
 
         return membersArrayList;

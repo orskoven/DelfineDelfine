@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class Menu {
     private Scanner input;
+    private SoundPlayer introSound = new SoundPlayer();
 
     public Menu(){
         this.input = new Scanner(System.in);
@@ -16,12 +17,9 @@ public class Menu {
         return userInput;
     }
 
-    public void welcome(){
-        System.out.println("-------------------------------------");
-        System.out.println();
-        System.out.println(" Welcome to swim club The Dolphin!  ");
-        System.out.println();
-        System.out.println("-------------------------------------");
+    public void welcome() throws InterruptedException {
+        introSound.play("resources/booooobbooob.wav");
+        MenuVisualization.main();
     }
 
     public void chooseUser(){

@@ -1,14 +1,19 @@
 package UI;
 
+import database.ReadAllMembers;
 import factory.MemberUpdate;
 import persons.Cashier;
+import persons.Member;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class CashierMenu {
     private Menu menu = new Menu();
-    private Cashier cashier = new Cashier();
     private MemberUpdate memberUpdate = new MemberUpdate();
+    private ReadAllMembers readAllMembers = new ReadAllMembers();
+    private ArrayList<Member> members = new ArrayList<Member>();
+    private ArrayList<Member> hasntPayedMembers = new ArrayList<Member>();
 
     public CashierMenu() throws IOException {
     }
@@ -22,13 +27,13 @@ public class CashierMenu {
 
             if (cashierChoice == 1) {
                 //Show contingent prices
-                cashier.showContingentPrices();
+                showContingentPrices();
             } else if (cashierChoice == 2) {
                 //show expected payments
-                cashier.showRevenueData();
+                showRevenueData();
             } else if (cashierChoice == 3) {
                 //show members in arrears
-                cashier.getMembersWhoHasntPayed();      //evt. LoadingMissingpaymentmembers
+                getMembersWhoHasntPayed();      //evt. LoadingMissingpaymentmembers
             } else if (cashierChoice == 4) {
                 //change member payment status
                 paymentStatus();
@@ -67,7 +72,6 @@ public class CashierMenu {
                 memberUpdate.payingMembers();
                 break;
             case 3:
-                //changePaymentStatus();
                 break;
 
         }
@@ -77,5 +81,97 @@ public class CashierMenu {
         System.out.println("Payment adjust: ");
         paymentStatus();
 
+    }
+
+    public void showContingentPrices(){
+        System.out.println("Contingent list:");
+        System.out.println("Under 18 years......... 1000 DKK");
+        System.out.println("Over 18 years.......... 1600 DKK");
+        System.out.println("Over 60 years.......... 1200 DKK");
+        System.out.println("Passive membership...... 500 DKK");
+    }
+
+    public void showRevenueData(){
+        System.out.println("Expected revenue:");
+        System.out.println(getExpectedRevenue()+" DKK");
+        System.out.println("Payed revenue:");
+        System.out.println(getPayedRevenue()+" DKK");
+        System.out.println("Missing revenue:");
+        System.out.println(getMissingRevenue()+" DKK");
+    }
+    public int paymentDetails(int memberArrayIndex){
+        members.removeAll(members);
+        members = readAllMembers.setFile();
+
+        int contingent = 0;
+
+        if (members.get(memberArrayIndex).isActive() == false){
+            contingent += 500;
+        } else if (members.get(memberArrayIndex).getAge() < 18){
+            contingent += 1000;
+        } else if (members.get(memberArrayIndex).getAge() >=18 && members.get(memberArrayIndex).getAge() < 60){
+            contingent += 1600;
+        } else if (members.get(memberArrayIndex).getAge() >= 60){
+            contingent += (1600*0.75);
+        } else {
+        }
+        return contingent;
+    }
+
+    public int getExpectedRevenue(){
+
+        members = readAllMembers.setFile();
+        int expectedContingent = 0;
+
+        for (int i = 0; i <members.size() ; i++) {
+            expectedContingent += paymentDetails(i);
+        }
+        return expectedContingent;
+    }
+
+    public int getPayedRevenue(){
+
+        members = readAllMembers.setFile();
+        int payedContingent = 0;
+
+        for (int i = 0; i <members.size() ; i++) {
+            if (members.get(i).isHasPaid() == true){
+                payedContingent += paymentDetails(i);
+            }
+        }
+        return payedContingent;
+    }
+
+    public int getMissingRevenue(){
+
+        members = readAllMembers.setFile();
+        int missingContigent = 0;
+
+        for (int i = 0; i <members.size() ; i++) {
+            if (members.get(i).isHasPaid() == false){
+                missingContigent += paymentDetails(i);
+            }
+        }
+        return missingContigent;
+    }
+
+    public void getMembersWhoHasntPayed(){
+        members.removeAll(members);
+        members = readAllMembers.setFile();
+
+        hasntPayedMembers.removeAll(hasntPayedMembers);
+
+        for (int i = 0; i < members.size(); i++) {
+            if (members.get(i).isHasPaid() == false) {
+                hasntPayedMembers.add(members.get(i));
+            }
+        } if (hasntPayedMembers.size() == 0) {
+            System.out.println("There are no members in arrears.");
+        } else {
+            System.out.println("Members in arrears " + hasntPayedMembers.size());
+        }
+        for (Member member:hasntPayedMembers) {
+            System.out.println(member.toStringToPrintAll());
+        }
     }
 }

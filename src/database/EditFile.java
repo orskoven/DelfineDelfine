@@ -1,10 +1,12 @@
 package database;
 
 import persons.Member;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class EditFile {
@@ -61,8 +63,11 @@ public class EditFile {
         Writer w = new FileWriter("resources/members.csv", false);
         write.writerToFile("name;age;adress;id;isActive;isUnder18;isElite;hasPaid");
         for (int i = 0; i < membersList.size(); i++) {
-            write.writerToFile("\n" + membersList.get(i).toString());
+            write.writerToFile("\n" + membersList.get(i).toString() + "\n");
+
         }
+
+
     }
 
     public void removeMemberProcess() throws IOException {
@@ -82,4 +87,5 @@ public class EditFile {
             write.writerToFile( membersList.get(i).toString() + "\n");
         }
     }
+
 }
