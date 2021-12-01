@@ -14,10 +14,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ChairmanMenu {
-    private Scanner scanner = new Scanner(System.in);
+
     private MemberGenerator member = new MemberGenerator();
-    private ReadAllMembers readAllMembers = new ReadAllMembers();
-    private ArrayList<Member> members = new ArrayList<Member>();
     private ArrayList<Member> readAllMembersList = new ReadAllMembers().setFile();
     static MemberToSave memberToSave = new MemberToSave();
     private Menu menu = new Menu();
@@ -97,7 +95,6 @@ public class ChairmanMenu {
                 memberUpdate.getEliteMembers();
                 break;
             case 3:
-                //changeMembershipStatus();
                 break;
 
         }

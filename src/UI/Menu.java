@@ -19,7 +19,7 @@ public class Menu {
     public void welcome(){
         System.out.println("-------------------------------------");
         System.out.println();
-        System.out.println(" Welcome to swim club The Dolphin!  ");
+        System.out.println(" Welcome to The Dolphin Swim Club!  ");
         System.out.println();
         System.out.println("-------------------------------------");
     }

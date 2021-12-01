@@ -19,31 +19,25 @@ public class Cashier {
     private ArrayList<Member> members = new ArrayList<Member>();
     private ArrayList<Member> hasntPayedMembers = new ArrayList<Member>();
 
-    public void showContingentPrices(){
-        System.out.println("Contingent list:");
-        System.out.println("Under 18 years......... 1000 DKK");
-        System.out.println("Over 18 years.......... 1600 DKK");
-        System.out.println("Over 60 years.......... 1200 DKK");
-        System.out.println("Passive membership...... 500 DKK");
-    }
+
 
     public int paymentDetails(int memberArrayIndex){
         members.removeAll(members);
         members = readAllMembers.setFile();
 
-        int contigent = 0;
+        int contingent = 0;
 
         if (members.get(memberArrayIndex).isActive() == false){
-            contigent += 500;
+            contingent += 500;
         } else if (members.get(memberArrayIndex).getAge() < 18){
-            contigent += 1000;
+            contingent += 1000;
         } else if (members.get(memberArrayIndex).getAge() >=18 && members.get(memberArrayIndex).getAge() < 60){
-            contigent += 1600;
+            contingent += 1600;
         } else if (members.get(memberArrayIndex).getAge() >= 60){
-            contigent += (1600*0.75);
+            contingent += (1600*0.75);
         } else {
         }
-        return contigent;
+        return contingent;
     }
 
     public int getExpectedRevenue(){
@@ -82,17 +76,6 @@ public class Cashier {
         }
         return missingContigent;
     }
-
-    public void showRevenueData(){
-        System.out.println("Expected revenue:");
-        System.out.println(getExpectedRevenue()+" DKK");
-        System.out.println("Payed revenue:");
-        System.out.println(getPayedRevenue()+" DKK");
-        System.out.println("Missing revenue:");
-        System.out.println(getMissingRevenue()+" DKK");
-    }
-
-
 
     public void getMembersWhoHasntPayed(){
         members.removeAll(members);

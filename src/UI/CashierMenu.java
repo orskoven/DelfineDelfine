@@ -22,10 +22,10 @@ public class CashierMenu {
 
             if (cashierChoice == 1) {
                 //Show contingent prices
-                cashier.showContingentPrices();
+                showContingentPrices();
             } else if (cashierChoice == 2) {
                 //show expected payments
-                cashier.showRevenueData();
+                showRevenueData();
             } else if (cashierChoice == 3) {
                 //show members in arrears
                 cashier.getMembersWhoHasntPayed();      //evt. LoadingMissingpaymentmembers
@@ -67,7 +67,6 @@ public class CashierMenu {
                 memberUpdate.payingMembers();
                 break;
             case 3:
-                //changePaymentStatus();
                 break;
 
         }
@@ -77,5 +76,22 @@ public class CashierMenu {
         System.out.println("Payment adjust: ");
         paymentStatus();
 
+    }
+
+    public void showContingentPrices(){
+        System.out.println("Contingent list:");
+        System.out.println("Under 18 years......... 1000 DKK");
+        System.out.println("Over 18 years.......... 1600 DKK");
+        System.out.println("Over 60 years.......... 1200 DKK");
+        System.out.println("Passive membership...... 500 DKK");
+    }
+
+    public void showRevenueData(){
+        System.out.println("Expected revenue:");
+        System.out.println(cashier.getExpectedRevenue()+" DKK");
+        System.out.println("Payed revenue:");
+        System.out.println(cashier.getPayedRevenue()+" DKK");
+        System.out.println("Missing revenue:");
+        System.out.println(cashier.getMissingRevenue()+" DKK");
     }
 }

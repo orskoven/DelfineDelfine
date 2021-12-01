@@ -20,6 +20,7 @@ public class MemberUpdate {
 
 
     public void getNonActiveMembers () throws IOException {
+
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).isActive() == false) {
                 membersToUpdate.add(members.get(i));
