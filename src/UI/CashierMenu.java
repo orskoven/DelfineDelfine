@@ -121,25 +121,25 @@ public class CashierMenu {
     public int getExpectedRevenue(){
 
         members = readAllMembers.setFile();
-        int expectedContigent = 0;
+        int expectedContingent = 0;
 
         for (int i = 0; i <members.size() ; i++) {
-            expectedContigent += paymentDetails(i);
+            expectedContingent += paymentDetails(i);
         }
-        return expectedContigent;
+        return expectedContingent;
     }
 
     public int getPayedRevenue(){
 
         members = readAllMembers.setFile();
-        int payedContigent = 0;
+        int payedContingent = 0;
 
         for (int i = 0; i <members.size() ; i++) {
             if (members.get(i).isHasPaid() == true){
-                payedContigent += paymentDetails(i);
+                payedContingent += paymentDetails(i);
             }
         }
-        return payedContigent;
+        return payedContingent;
     }
 
     public int getMissingRevenue(){
