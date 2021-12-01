@@ -3,18 +3,16 @@ package persons;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Coach extends User{
+public class Coach extends User {
     public Coach(String login, String password) {
         super(login, password);
     }
 
-    public static void main(String[] args) {
-        ArrayList<Coach> coachUsers = new ArrayList<Coach>();
-
+    public static void login() {
         String coachLogin = "coach";
-        String coachPassword = "coach1";
+        String coachPassword = "coach123";
         Coach coach = new Coach(coachLogin,coachPassword);
-        coachUsers.add(coach);
+        users.add(coach);
 
         Scanner userInputString = new Scanner(System.in);
 
@@ -29,9 +27,9 @@ public class Coach extends User{
 
             Coach test = new Coach(login, password);
 
-            for (int i = 0; i < coachUsers.size(); i++) {
-                Boolean loginCheck = test.getLogin().equals(coachUsers.get(i).getLogin());
-                Boolean passwordCheck = test.getPassword().equals(coachUsers.get(i).getPassword());
+            for (int i = 0; i < users.size(); i++) {
+                Boolean loginCheck = test.getLogin().equals(users.get(i).getLogin());
+                Boolean passwordCheck = test.getPassword().equals(users.get(i).getPassword());
 
                 if (loginCheck && passwordCheck) {
                     System.out.println("Correct login - Welcome");
@@ -39,14 +37,8 @@ public class Coach extends User{
                 } else {
                     System.out.println("Wrong login - try again");
 
-
                 }
-
             }
         }
-
-
-
-
     }
 }

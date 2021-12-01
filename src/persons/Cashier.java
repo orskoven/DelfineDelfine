@@ -1,101 +1,45 @@
 package persons;
 
-import database.EditFile;
-import database.MemberToSave;
-import database.ReadAllMembers;
-import factory.MemberGenerator;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.sql.Array;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 
 
-public class Cashier {
-    private ReadAllMembers readAllMembers = new ReadAllMembers();
-    private ArrayList<Member> members = new ArrayList<Member>();
-    private ArrayList<Member> hasntPayedMembers = new ArrayList<Member>();
+public class Cashier extends User {
 
-
-
-    public int paymentDetails(int memberArrayIndex){
-        members.removeAll(members);
-        members = readAllMembers.setFile();
-
-        int contingent = 0;
-
-        if (members.get(memberArrayIndex).isActive() == false){
-            contingent += 500;
-        } else if (members.get(memberArrayIndex).getAge() < 18){
-            contingent += 1000;
-        } else if (members.get(memberArrayIndex).getAge() >=18 && members.get(memberArrayIndex).getAge() < 60){
-            contingent += 1600;
-        } else if (members.get(memberArrayIndex).getAge() >= 60){
-            contingent += (1600*0.75);
-        } else {
-        }
-        return contingent;
+    public Cashier(String login, String password) {
+        super(login, password);
     }
 
-    public int getExpectedRevenue(){
+    public static void login() {
+        String cashierLogin = "cashier";
+        String casherPassword = "cashier123";
+        Cashier cashier = new Cashier(cashierLogin,casherPassword);
+        users.add(cashier);
 
-        members = readAllMembers.setFile();
-        int expectedContigent = 0;
+        Scanner userInputString = new Scanner(System.in);
 
-        for (int i = 0; i <members.size() ; i++) {
-            expectedContigent += paymentDetails(i);
-        }
-        return expectedContigent;
-    }
+        boolean validateCheck = false;
+        while (!validateCheck) {
 
-    public int getPayedRevenue(){
+            System.out.println("Login:");
+            String login = userInputString.nextLine();
 
-        members = readAllMembers.setFile();
-        int payedContigent = 0;
+            System.out.println("Password: ");
+            String password = userInputString.nextLine();
 
-        for (int i = 0; i <members.size() ; i++) {
-            if (members.get(i).isHasPaid() == true){
-                payedContigent += paymentDetails(i);
+            Cashier test = new Cashier(login, password);
+
+            for (int i = 0; i < users.size(); i++) {
+                Boolean loginCheck = test.getLogin().equals(users.get(i).getLogin());
+                Boolean passwordCheck = test.getPassword().equals(users.get(i).getPassword());
+
+                if (loginCheck && passwordCheck) {
+                    System.out.println("Correct login - Welcome");
+                    validateCheck = true;
+                } else {
+                    System.out.println("Wrong login - try again");
+
+                }
             }
         }
-        return payedContigent;
     }
-
-    public int getMissingRevenue(){
-
-        members = readAllMembers.setFile();
-        int missingContigent = 0;
-
-        for (int i = 0; i <members.size() ; i++) {
-            if (members.get(i).isHasPaid() == false){
-                missingContigent += paymentDetails(i);
-            }
-        }
-        return missingContigent;
-    }
-
-    public void getMembersWhoHasntPayed(){
-        members.removeAll(members);
-        members = readAllMembers.setFile();
-
-        hasntPayedMembers.removeAll(hasntPayedMembers);
-
-        for (int i = 0; i < members.size(); i++) {
-            if (members.get(i).isHasPaid() == false) {
-                hasntPayedMembers.add(members.get(i));
-            }
-        } if (hasntPayedMembers.size() == 0) {
-            System.out.println("There are no members in arrears.");
-        } else {
-            System.out.println("Members in arrears: " + hasntPayedMembers.size());
-        }
-        for (Member member:hasntPayedMembers) {
-            System.out.println(member.toStringToPrintAll());
-        }
-    }
-
-
 }
