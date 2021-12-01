@@ -16,7 +16,7 @@ public class User {
     public static void login(String login, String password) {
         String userLogin = "...";
         String userPassword = "...";
-        User user = new User(login,password);
+        User user = new User(userLogin,userPassword);
         users.add(user);
         Scanner userInputString = new Scanner(System.in);
 
@@ -29,7 +29,7 @@ public class User {
             System.out.println("Password: ");
             String passwordInput = userInputString.nextLine();
 
-            User test = new User(login, password);
+            User test = new User(loginInput, passwordInput);
 
             for (int i = 0; i < users.size(); i++) {
                 Boolean loginCheck = test.getLogin().equals(users.get(i).getLogin());
