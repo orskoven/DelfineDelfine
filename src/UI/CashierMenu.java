@@ -1,14 +1,18 @@
 package UI;
 
+import database.ReadAllMembers;
 import factory.MemberUpdate;
 import persons.Cashier;
+import persons.Member;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class CashierMenu {
     private Menu menu = new Menu();
     private Cashier cashier = new Cashier();
     private MemberUpdate memberUpdate = new MemberUpdate();
+    private ArrayList<Member> readAllMembersList = new ReadAllMembers().setFile();
 
     public CashierMenu() throws IOException {
     }
@@ -30,6 +34,10 @@ public class CashierMenu {
                 //show members in arrears
                 cashier.getMembersWhoHasntPayed();      //evt. LoadingMissingpaymentmembers
             } else if (cashierChoice == 4) {
+                System.out.println("All MEMBERS: ");
+                for (int i = 0; i < readAllMembersList.size(); i++) {
+                    System.out.println(readAllMembersList.get(i).toStringToPrintAll());
+                }
                 //change member payment status
                 paymentStatus();
 

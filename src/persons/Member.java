@@ -142,7 +142,7 @@ public String toString() {
                         } if (this.hasPaid) {
                             toPrint +=  "| Has paid |";
                         } else {
-                            toPrint +=  "| Has not piad |";
+                            toPrint +=  "| Has not paid |";
                         }
                         return toPrint;
     }

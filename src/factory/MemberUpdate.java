@@ -196,8 +196,7 @@ public class MemberUpdate {
                 members.remove(members.size() - 1);
                 new EditFile().addMember(members);
             }
-            System.out.println("\nThe adjustment has been completed [✓]");
         }
-
+        System.out.println("\nThe adjustment has been completed [✓]");
     }
 }

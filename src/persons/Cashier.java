@@ -90,7 +90,7 @@ public class Cashier {
         } if (hasntPayedMembers.size() == 0) {
             System.out.println("There are no members in arrears.");
         } else {
-            System.out.println("Members in arrears " + hasntPayedMembers.size());
+            System.out.println("Members in arrears: " + hasntPayedMembers.size());
         }
         for (Member member:hasntPayedMembers) {
             System.out.println(member.toStringToPrintAll());
