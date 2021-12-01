@@ -7,10 +7,7 @@ import factory.DisciplineGenerator;
 import factory.DisciplineGeneratorTraining;
 import factory.MemberGenerator;
 import factory.MemberUpdate;
-import persons.Cashier;
-import persons.Chairman;
-import persons.EliteSwimmer;
-import persons.Member;
+import persons.*;
 
 import java.io.IOException;
 import java.util.*;
@@ -28,20 +25,25 @@ public class SystemController {
         int userInput;
 
         menu.welcome();
+
+
         do {
             menu.chooseUser();
             userInput = menu.getUserInput();
 
             switch (userInput) {
                 case 1:
+                    Chairman.login();
                     chairmanMenu.showChairmanMenu();
                     break;
 
                 case 2:
+                    Cashier.login();
                     cashierMenu.showCashierMenu();
                     break;
 
                 case 3:
+                    Coach.login();
                     coachMenu.showCoachMenu();
                     break;
             }
