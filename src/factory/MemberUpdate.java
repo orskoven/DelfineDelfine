@@ -25,19 +25,13 @@ public class MemberUpdate {
             if (members.get(i).isActive() == false) {
                 membersToUpdate.add(members.get(i));
             }}
-/*
-        }  for (int i = 0; i < membersToUpdate.size() ; i++) {
-            System.out.println(membersToUpdate.get(i).toStringToPrintAll());
-        }
 
-
- */
         for (int i = 0; i < membersToUpdate.size(); i++) {
             if (memberId == membersToUpdate.get(i).getMemberId()) {
                 membersToUpdate.get(i).setActive(true);
                 members.add(membersToUpdate.get(i));
                 updateFile(i);
-            } else {
+            } else if (members.size() == 0) {
                 System.out.println("No member to update [X]");
                 i = members.size();
             }
@@ -50,18 +44,15 @@ public class MemberUpdate {
                 membersToUpdate.add(members.get(i));
 
             }}
-            /*
-        }  for (int i = 0; i < membersToUpdate.size() ; i++) {
-            System.out.println(membersToUpdate.get(i).toStringToPrintAll());
-        }
-
-             */
 
         for (int i = 0; i < membersToUpdate.size(); i++) {
             if (memberID == membersToUpdate.get(i).getMemberId()) {
                 membersToUpdate.get(i).setActive(false);
                 members.add(membersToUpdate.get(i));
                 updateFile(i);
+            } else if (members.size() == 0) {
+                System.out.println("No member to update [X]");
+                i = members.size();
             }
         }
     }
@@ -70,18 +61,15 @@ public class MemberUpdate {
             if (members.get(i).isEliteSwimmer() == false) {
                 membersToUpdate.add(members.get(i));
             }}
-            /*
-        }  for (int i = 0; i < membersToUpdate.size() ; i++) {
-            System.out.println(membersToUpdate.get(i).toStringToPrintAll());
-        }
-
-             */
 
         for (int i = 0; i < membersToUpdate.size(); i++) {
             if (memberId == membersToUpdate.get(i).getMemberId()) {
                 membersToUpdate.get(i).setEliteSwimmer(true);
                 members.add(membersToUpdate.get(i));
                 updateFile(i);
+            }  else if (members.size() == 0) {
+                System.out.println("No member to update [X]");
+                i = members.size();
             }
         }
     }
@@ -91,22 +79,20 @@ public class MemberUpdate {
                   membersToUpdate.add(members.get(i));
               }
           }
-                  /*
-              }
-          }  for (int i = 0; i < membersToUpdate.size() ; i++) {
-              System.out.println(membersToUpdate.get(i).toStringToPrintAll());
-          }
 
-                   */
 
           for (int i = 0; i < membersToUpdate.size(); i++) {
               if (memberId == membersToUpdate.get(i).getMemberId()) {
                   membersToUpdate.get(i).setEliteSwimmer(false);
                   members.add(membersToUpdate.get(i));
                   updateFile(i);
+              } else if (members.size() == 0) {
+                  System.out.println("No member to update [X]");
+                  i = members.size();
               }
           }
       }
+      /*
     public void getJuniorMebers () throws IOException {
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).isUnder18() == true) {
@@ -124,6 +110,9 @@ public class MemberUpdate {
                 membersToUpdate.get(i).setUnder18(false);
                 members.add(membersToUpdate.get(i));
                 updateFile(i);
+            } else {
+                System.out.println("No member to update [X]");
+                i = members.size();
             }
         }
     }
@@ -145,9 +134,14 @@ public class MemberUpdate {
                 membersToUpdate.get(i).setUnder18(true);
                 members.add(membersToUpdate.get(i));
                 updateFile(i);
+            } else {
+                System.out.println("No member to update [X]");
+                i = members.size();
             }
         }
     }
+
+       */
     public void payingMembers () throws IOException {
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).isHasPaid() == true) {
@@ -165,6 +159,9 @@ public class MemberUpdate {
                 membersToUpdate.get(i).setHasPaid(false);
                 members.add(membersToUpdate.get(i));
                 updateFile(i);
+            } else if (members.size() == 0) {
+                System.out.println("No member to update [X]");
+                i = members.size();
             }
         }
     }
@@ -186,9 +183,14 @@ public class MemberUpdate {
                 membersToUpdate.get(i).setHasPaid(true);
                 members.add(membersToUpdate.get(i));
                 updateFile(i);
+            } else if (members.size() == 0) {
+                System.out.println("No member to update [X]");
+                i = members.size();
             }
         }
     }
+
+
     public void updateFile (int i) throws IOException {
         for (int j = 0; j < members.size(); j++) {
             if (members.get(j).getMemberId() == membersToUpdate.get(i).getMemberId()) {

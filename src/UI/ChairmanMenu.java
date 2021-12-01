@@ -49,7 +49,7 @@ public class ChairmanMenu {
                    new EditFile().removeMemberProcess();
                    break;
                case 4:
-                   // edit members
+                   // adjust members
                    System.out.println("All MEMBERS: ");
 
                    for (int i = 0; i < readAllMembersList.size(); i++) {

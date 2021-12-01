@@ -21,7 +21,7 @@ public class SystemController {
     public SystemController() throws IOException {
     }
 
-    public void chooseOptions() throws IOException {
+    public void chooseOptions() throws IOException, InterruptedException {
         int userInput;
 
         menu.welcome();
