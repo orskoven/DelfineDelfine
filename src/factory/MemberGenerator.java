@@ -64,7 +64,7 @@ public class MemberGenerator {
                     isUnder18, isEliteSwimmer, hasPaid);
             String[] newMemberArray = newMember.toStringToConsole().split(",");
 
-            System.out.println("Verify the datails: ");
+            System.out.println("Verify the details: ");
             // print details
             for (int i = 0; i < newMemberArray.length; i++) {
                 System.out.println(newMemberArray[i]);

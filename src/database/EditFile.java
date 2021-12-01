@@ -61,8 +61,9 @@ public class EditFile {
             System.out.println("No member has been removed.");
         }
         Writer w = new FileWriter("resources/members.csv", false);
+        write.writerToFile("name;age;adress;id;isActive;isUnder18;isElite;hasPaid");
         for (int i = 0; i < membersList.size(); i++) {
-            write.writerToFile("\n" + membersList.get(i).toString());
+            write.writerToFile(membersList.get(i).toString());
 
         }
 

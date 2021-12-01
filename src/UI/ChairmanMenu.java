@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ChairmanMenu {
-
+    private Scanner scanner = new Scanner(System.in);
     private MemberGenerator member = new MemberGenerator();
     private ArrayList<Member> readAllMembersList = new ReadAllMembers().setFile();
     static MemberToSave memberToSave = new MemberToSave();
@@ -40,7 +40,6 @@ public class ChairmanMenu {
                case 2:
                    //show members
                    System.out.println("All MEMBERS: ");
-
                    for (int i = 0; i < readAllMembersList.size(); i++) {
                        System.out.println(readAllMembersList.get(i).toStringToPrintAll());
                    }
@@ -51,7 +50,14 @@ public class ChairmanMenu {
                    break;
                case 4:
                    // edit members
-                   changeMembershipStatus();
+                   System.out.println("All MEMBERS: ");
+
+                   for (int i = 0; i < readAllMembersList.size(); i++) {
+                       System.out.println("Name: " + readAllMembersList.get(i).getName() + " ID: " + readAllMembersList.get(i).getMemberId());
+                   }
+                   System.out.println("PLEASE ENTER THE ID OF THE MEMBER YOU WANT TO ADJUST: ");
+                   int memberId = scanner.nextInt();
+                   changeMembershipStatus(memberId);
                    break;
                case 9:
                    break;
@@ -62,18 +68,18 @@ public class ChairmanMenu {
 
     }
 
-    public void activeMenu() throws IOException {
+    public void activeMenu(int memberId) throws IOException {
         System.out.println("1. Turn member active \n2. Turn member passive\n3. Quit");
         int adjustChoice = menu.getUserInput();
 
         switch (adjustChoice){
             case 1:
-                System.out.println("Members who are passive:");
-                memberUpdate.getNonActiveMembers();
+               // System.out.println("Members who are passive:");
+                memberUpdate.getNonActiveMembers(memberId);
                 break;
             case 2:
-                System.out.println("Members who are active:");
-                memberUpdate.getActiveMembers();
+               // System.out.println("Members who are active:");
+                memberUpdate.getActiveMembers(memberId);
                 break;
             case 3:
                //changeMembershipStatus();
@@ -82,17 +88,17 @@ public class ChairmanMenu {
         }
     }
 
-    public void eliteMenu() throws IOException {
+    public void eliteMenu(int memberId) throws IOException {
         System.out.println("1. Change member to be elite \n2. Change member to be non-elite\n3. Quit");
         int adjustChoice = menu.getUserInput();
         switch (adjustChoice){
             case 1:
-                System.out.println("Members who are non-elite:");
-                memberUpdate.getNonEliteMembers();
+           //     System.out.println("Members who are non-elite:");
+                memberUpdate.getNonEliteMembers(memberId);
                 break;
             case 2:
-                System.out.println("Members who are elite:");
-                memberUpdate.getEliteMembers();
+             //   System.out.println("Members who are elite:");
+                memberUpdate.getEliteMembers(memberId);
                 break;
             case 3:
                 break;
@@ -100,16 +106,16 @@ public class ChairmanMenu {
         }
     }
 
-    public void changeMembershipStatus() throws IOException {
+    public void changeMembershipStatus(int memberId) throws IOException {
         showMembershipOptions();
         int adjustChoice = menu.getUserInput();
 
         switch (adjustChoice){
             case 1:
-                activeMenu();
+                activeMenu(memberId);
                 break;
             case 2:
-                eliteMenu();
+                eliteMenu(memberId);
                 break;
 
         }
