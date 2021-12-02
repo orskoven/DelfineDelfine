@@ -25,6 +25,11 @@ public class Result {
     private EliteSwimmer eliteSwimmer = new EliteSwimmer();
     private ArrayList<Member> eliteMembers = new ArrayList<Member>();
     private ReadResults readResults = new ReadResults();
+    private ReadAllMembers readAllMembers = new ReadAllMembers();
+    private ArrayList<Result> juniorResults = new ArrayList<Result>();
+    private ArrayList<Result> allResults = new ArrayList<Result>();
+    private ArrayList<Member> allMembers = new ArrayList<Member>();
+    ArrayList<Result> seniorResults = new ArrayList<Result>();
 
     public Result() {
     }
@@ -37,6 +42,14 @@ public class Result {
         this.tournamentName = tournamentName;
         this.timeResult = timeResult;
         this.rank = rank;
+    }
+
+    public int getMemberId() {
+        return memberId;
+    }
+
+    public int getRank() {
+        return rank;
     }
 
     public String getDisciplineName(){
@@ -93,7 +106,7 @@ public class Result {
         addMemberIdAndNameToResult();
         chooseDisciplineName();
         getTournamentName();
-        getRank();
+        chooseRank();
         getTimestamp();
         chooseTimeResult();
         return toStringCsv();
@@ -105,7 +118,7 @@ public class Result {
         tournamentName = scanner.next();
     }
 
-    public void getRank (){
+    public void chooseRank (){
         System.out.println("Enter rank result:");
         rank = scanner.nextInt();
     }
@@ -176,19 +189,60 @@ public class Result {
         return timeInSecond;
     }
 
-    public void getJuniorResults(){
+    public ArrayList<Result> getJuniorResults(){
+        juniorResults.removeAll(juniorResults);
+        allResults.removeAll(allResults);
+        allMembers.removeAll(allMembers);
+        allResults = readResults.setFile();
+        allMembers = readAllMembers.setFile();
 
+        for (int i = 0; i < allResults.size(); i++) {
+            for (int j = 0; j < allMembers.size(); j++) {
+                if (allResults.get(i).getMemberId() == allMembers.get(j).getMemberId()&& allMembers.get(j).isUnder18() == true){
+                    juniorResults.add(allResults.get(i));
+                }
+            }
+        }
+        return juniorResults;
     }
 
+    public ArrayList<Result> getSeniorResults(){
+        seniorResults.removeAll(seniorResults);
+        allResults.removeAll(allResults);
+        allMembers.removeAll(allMembers);
+        allResults = readResults.setFile();
+        allMembers = readAllMembers.setFile();
 
-    public void getTop5Result(String desciplineName){
+        for (int i = 0; i < allResults.size(); i++) {
+            for (int j = 0; j < allMembers.size(); j++) {
+                if (allResults.get(i).getMemberId() == allMembers.get(j).getMemberId() && allMembers.get(j).isUnder18() == false){
+                    seniorResults.add(allResults.get(i));
+                }
+            }
+        }
+        return seniorResults;
+    }
+
+    //Skal der opdeles så det kun er træningsresultater der bliver vist??????**
+    public void getTop5Result(String desciplineName, int userInput){
         ReadResults readResults = new ReadResults();
-        ArrayList<Result> allResults = readResults.setFile();
         ArrayList<Result> results = new ArrayList<Result>();
+        ArrayList<Result> eliteResult = new ArrayList<Result>();
 
-        for (int i = 0; i < allResults.size() ; i++) {
-            if (allResults.get(i).getDisciplineName().toLowerCase(Locale.ROOT).equals(desciplineName)){
-                results.add(allResults.get(i));
+        do {
+            if (userInput == 1) {
+                eliteResult = getJuniorResults();
+            } else if (userInput == 2) {
+                eliteResult = getSeniorResults();
+            } else {
+                System.out.println("Try again, type 1 or 2!");
+            }
+        }while (userInput != 1 && userInput != 2);
+
+
+        for (int i = 0; i < eliteResult.size() ; i++) {
+            if (eliteResult.get(i).getDisciplineName().toLowerCase(Locale.ROOT).equals(desciplineName)){
+                results.add(eliteResult.get(i));
             }
         }
 
@@ -197,41 +251,64 @@ public class Result {
 
         if (results.size() == 1){
             System.out.println("Top 5 in " + desciplineName + " results:");
-            System.out.println(results.get(0).toStringTraining());
+            System.out.println(results.get(0).top5ToString());
         } else if (results.size() == 2){
             System.out.println("Top 5 in " + desciplineName + " results:");
-            System.out.println(results.get(0).toStringTraining());
-            System.out.println(results.get(1).toStringTraining());
+            System.out.println(results.get(0).top5ToString());
+            System.out.println(results.get(1).top5ToString());
         } else if (results.size() == 3){
             System.out.println("Top 5 in " + desciplineName + " results:");
-            System.out.println(results.get(0).toStringTraining());
-            System.out.println(results.get(1).toStringTraining());
-            System.out.println(results.get(2).toStringTraining());
+            System.out.println(results.get(0).top5ToString());
+            System.out.println(results.get(1).top5ToString());
+            System.out.println(results.get(2).top5ToString());
         }else if (results.size() == 4){
             System.out.println("Top 5 in " + desciplineName + " results:");
-            System.out.println(results.get(0).toStringTraining());
-            System.out.println(results.get(1).toStringTraining());
-            System.out.println(results.get(2).toStringTraining());
-            System.out.println(results.get(3).toStringTraining());
+            System.out.println(results.get(0).top5ToString());
+            System.out.println(results.get(1).top5ToString());
+            System.out.println(results.get(2).top5ToString());
+            System.out.println(results.get(3).top5ToString());
         } else{
             System.out.println("Top 5 in " + desciplineName + " results:");
-            System.out.println(results.get(0).toStringTraining());
-            System.out.println(results.get(1).toStringTraining());
-            System.out.println(results.get(2).toStringTraining());
-            System.out.println(results.get(3).toStringTraining());
-            System.out.println(results.get(4).toStringTraining());
+            System.out.println(results.get(0).top5ToString());
+            System.out.println(results.get(1).top5ToString());
+            System.out.println(results.get(2).top5ToString());
+            System.out.println(results.get(3).top5ToString());
+            System.out.println(results.get(4).top5ToString());
         }
-/*
-        System.out.println("Top 5 in " + desciplineName + " results:");
-        for (int i = 0; i < results.size(); i++) {
-            if (results.size() > 5){
+        results.clear();
+        eliteResult.clear();
+    }
 
-                System.out.println(results.get(i).toStringTraining());
+    public void getCompetitionResults(int userInput){
+        ArrayList<Result> eliteResult = new ArrayList<Result>();
+        ArrayList<Result> competitionResults = new ArrayList<Result>();
+
+        do {
+            if (userInput == 1) {
+                eliteResult = getJuniorResults();
+            } else if (userInput == 2) {
+                eliteResult = getSeniorResults();
+            } else {
+                System.out.println("Try again, type 1 or 2!");
             }
-            System.out.println(results.get(i).toStringTraining());
+        }while (userInput != 1 && userInput != 2);
+
+        for (int i = 0; i < eliteResult.size(); i++) {
+            if (eliteResult.get(i).getRank() != 0){
+                competitionResults.add(eliteResult.get(i));
+            }
         }
 
- */
+        for (int i = 0; i < competitionResults.size(); i++) {
+            System.out.println(competitionResults.get(i).competitionToString());
+        }
+
+        if (competitionResults.size() == 0){
+            System.out.println("There are no competition results!");
+        }
+
+        competitionResults.removeAll(competitionResults);
+        eliteResult.removeAll(eliteResult);
     }
 
 
@@ -258,9 +335,10 @@ public class Result {
 
 
 
+
     @Override
     public String toString() {
-        return "database.Result:" +
+        return "Result:" +
                 " disciplineName='" + disciplineName + '\'' +
                 ", nameOfMember='" + nameOfMember + '\'' +
                 ", memberId=" + memberId + '\'' +
@@ -270,14 +348,26 @@ public class Result {
                 "rank" + rank;
     }
 
+    public String top5ToString(){
+        return "• Name: " + nameOfMember + ',' +
+                " Id: " + memberId + ',' +
+                 " Time result:" + timeResult;
+    }
+
+    public String competitionToString(){
+        return "• Name: " + nameOfMember + ',' +
+                " Id: " + memberId + ',' +
+                " Tournament: " + tournamentName + ',' +
+                " Discipline: " + disciplineName + ',' +
+                " Rank: " + rank + ',' +
+                " Time result: " + timeResult;
+
+
+    }
+
     public static void main(String[] args) {
-        Result result = new Result();
-        //Result result = new Result();
-        WriteResult.writerToFile(result.writeTrainingToCsv());
-
-        //Result.showEliteNameAndId();
-
-
+Result result = new Result();
+result.getCompetitionResults(2);
 
     }
 }

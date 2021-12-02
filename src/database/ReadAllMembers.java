@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class ReadAllMembers {
-    ArrayList<Member> membersArrayList = new ArrayList<Member>();
+    private ArrayList<Member> membersArrayList = new ArrayList<Member>();
 /*
     private Member member;
     private ArrayList<Member> members = new ArrayList<Member>();
@@ -106,6 +106,7 @@ public class ReadAllMembers {
         return members;
     }
 */
+
     public ArrayList<Member> getMembers() {
         return membersArrayList;
     }

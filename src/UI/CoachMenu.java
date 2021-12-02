@@ -3,9 +3,6 @@ package UI;
 import database.LoadTeams;
 import database.Result;
 import database.WriteResult;
-import factory.DisciplineGenerator;
-import factory.DisciplineGeneratorTraining;
-import factory.MemberUpdate;
 import persons.EliteSwimmer;
 
 import java.io.IOException;
@@ -18,23 +15,28 @@ public class CoachMenu {
     private Result result = new Result();
 
 
-
-
     public void showCoachMenu() throws IOException {
-        int coachChoice;
+        int coachMenuChoice;
+        int coachTrainingResultChoice;
+        int coachCompetitionChoice;
 
         do {
             optionsForCoach();
-            coachChoice = menu.getUserInput();
+            coachMenuChoice = menu.getUserInput();
 
-            if (coachChoice == 1) {
-                result.getTop5Result("butterfly");
+            if (coachMenuChoice == 1) {
+                //Show top 5
+                showResultsOptions();
+                coachTrainingResultChoice = menu.getUserInput();
+
+                //Skal der opdeles så det kun er træningsresultater der bliver vist?
+                result.getTop5Result("butterfly",coachTrainingResultChoice);
                 System.out.println();
-                result.getTop5Result("breast stroke");
+                result.getTop5Result("breast stroke",coachTrainingResultChoice);
                 System.out.println();
-                result.getTop5Result("crawl");
+                result.getTop5Result("crawl",coachTrainingResultChoice);
                 System.out.println();
-                result.getTop5Result("back crawl");
+                result.getTop5Result("back crawl",coachTrainingResultChoice);
 
                 //new ResultsMenu();
                         /*
@@ -50,35 +52,59 @@ public class CoachMenu {
 
                          */
 
-            } else if (coachChoice == 2) {
+            } else if (coachMenuChoice ==2){
+                //Show Competitions Results
+                showCompetitionOptions();
+                coachCompetitionChoice = menu.getUserInput();
+
+                result.getCompetitionResults(coachCompetitionChoice);
+
+
+            } else if (coachMenuChoice == 3) {
                 //Show elite swimmers
                 eliteSwimmer.showJuniorTeam();
                 System.out.println();
                 eliteSwimmer.showSeniorTeam();
 
-            } else if (coachChoice == 3) {
+            } else if (coachMenuChoice == 4) {
                 //create training result
                 writeResult.writerToFile(result.writeTrainingToCsv());
-            } else if (coachChoice == 4){
+            } else if (coachMenuChoice == 5){
                 //competition rersult
                 writeResult.writerToFile(result.writeCompetitionToCsv());
 
-            } else if (coachChoice == 9) {
+            } else if (coachMenuChoice == 9) {
                 break;
             }
             System.out.println();
 
 
-        } while (coachChoice != 9);
+        } while (coachMenuChoice != 9);
     }
 
     public void optionsForCoach(){
         System.out.println("Coach options:");
-        System.out.println("1. Show top 5 elite swimmers"); //juniors + seniors
-        System.out.println("2. Show elite swimmers");
+        System.out.println("1. Show top 5 results"); //juniors + seniors
+        System.out.println("2. Show competition results");
+        System.out.println("3. Show elite swimmers");
         System.out.println("3. Create a training result");
         System.out.println("4. Create a competition result");
         System.out.println("9. Return");
     }
+
+    public void showResultsOptions(){
+        System.out.println("Show top 5 results: ");
+        System.out.println("1. Junior");
+        System.out.println("2. Senior");
+    }
+
+    public void showCompetitionOptions(){
+        System.out.println("Show competitions results: ");
+        System.out.println("1. Junior");
+        System.out.println("2. Senior");
+    }
+
+
+
 
 }
