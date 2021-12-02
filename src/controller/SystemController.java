@@ -1,14 +1,7 @@
 package controller;
 import UI.*;
-import database.*;
-import factory.DisciplineGenerator;
-import factory.DisciplineGeneratorTraining;
-import factory.MemberGenerator;
-import factory.MemberUpdate;
 import persons.*;
-
 import java.io.IOException;
-import java.util.*;
 
 public class SystemController {
     private Menu menu = new Menu();
@@ -32,16 +25,19 @@ public class SystemController {
             switch (userInput) {
                 case 1:
                     Chairman.login();
+                    Chairman.validateLogin();
                     chairmanMenu.showChairmanMenu();
                     break;
 
                 case 2:
                     Cashier.login();
+                    Cashier.validateLogin();
                     cashierMenu.showCashierMenu();
                     break;
 
                 case 3:
                     Coach.login();
+                    Coach.validateLogin();
                     coachMenu.showCoachMenu();
                     break;
             }

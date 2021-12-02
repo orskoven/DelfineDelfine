@@ -3,34 +3,40 @@ package persons;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Chairman extends User {
+public class Chairman {
+    private String login;
+    private String password;
+    static ArrayList<Chairman> chairmans = new ArrayList<Chairman>();
 
     public Chairman(String login, String password) {
-        super(login, password);
+        this.login = login;
+        this.password = password;
     }
 
     public static void login() {
-        String chairmanLogin = "chairman";
-        String chairmanPassword = "chairman123";
-        Chairman chairman = new Chairman(chairmanLogin,chairmanPassword);
-        users.add(chairman);
+        String login = "chairman";
+        String password = "chairman123";
+        Chairman chairman = new Chairman(login, password);
+        chairmans.add(chairman);
+    }
 
+    public static void validateLogin() {
         Scanner userInputString = new Scanner(System.in);
 
         boolean validateCheck = false;
-        while (validateCheck == false) {
+        while (!validateCheck) {
 
             System.out.println("Login:");
-            String login = userInputString.nextLine();
+            String chairmanLogin = userInputString.nextLine();
 
             System.out.println("Password: ");
-            String password = userInputString.nextLine();
+            String chairmanPassword = userInputString.nextLine();
 
-            Chairman test = new Chairman(login, password);
+            Chairman test = new Chairman(chairmanLogin, chairmanPassword);
 
-            for (int i = 0; i < users.size(); i++) {
-                Boolean loginCheck = test.getLogin().equals(users.get(i).getLogin());
-                Boolean passwordCheck = test.getPassword().equals(users.get(i).getPassword());
+            for (int i = 0; i < chairmans.size(); i++) {
+                Boolean loginCheck = test.getLogin().equals(chairmans.get(i).getLogin());
+                Boolean passwordCheck = test.getPassword().equals(chairmans.get(i).getPassword());
 
                 if (loginCheck && passwordCheck) {
                     System.out.println("Correct login - Welcome");
@@ -40,6 +46,15 @@ public class Chairman extends User {
 
                 }
             }
+            chairmans = new ArrayList<Chairman>();
         }
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public String getPassword() {
+        return password;
     }
 }

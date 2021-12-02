@@ -1,36 +1,43 @@
 package persons;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public class Cashier extends User {
+public class Cashier {
+    private String login;
+    private String password;
+    static ArrayList<Cashier> cashiers = new ArrayList<Cashier>();
 
     public Cashier(String login, String password) {
-        super(login, password);
+        this.login = login;
+        this.password = password;
     }
 
     public static void login() {
-        String cashierLogin = "cashier";
-        String casherPassword = "cashier123";
-        Cashier cashier = new Cashier(cashierLogin,casherPassword);
-        users.add(cashier);
+        String login = "cashier";
+        String password = "cashier123";
+        Cashier cashier = new Cashier(login, password);
+        cashiers.add(cashier);
+    }
 
+    public static void validateLogin(){
         Scanner userInputString = new Scanner(System.in);
 
         boolean validateCheck = false;
         while (!validateCheck) {
 
             System.out.println("Login:");
-            String login = userInputString.nextLine();
+            String cashierLogin = userInputString.nextLine();
 
             System.out.println("Password: ");
-            String password = userInputString.nextLine();
+            String cashierPassword = userInputString.nextLine();
 
-            Cashier test = new Cashier(login, password);
+            Cashier test = new Cashier(cashierLogin, cashierPassword);
 
-            for (int i = 0; i < users.size(); i++) {
-                Boolean loginCheck = test.getLogin().equals(users.get(i).getLogin());
-                Boolean passwordCheck = test.getPassword().equals(users.get(i).getPassword());
+            for (int i = 0; i < cashiers.size(); i++) {
+                Boolean loginCheck = test.getLogin().equals(cashiers.get(i).getLogin());
+                Boolean passwordCheck = test.getPassword().equals(cashiers.get(i).getPassword());
 
                 if (loginCheck && passwordCheck) {
                     System.out.println("Correct login - Welcome");
@@ -40,6 +47,15 @@ public class Cashier extends User {
 
                 }
             }
+            cashiers = new ArrayList<Cashier>();
         }
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public String getPassword() {
+        return password;
     }
 }
