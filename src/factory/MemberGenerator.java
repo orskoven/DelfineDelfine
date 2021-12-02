@@ -1,7 +1,7 @@
 package factory;
 
 import database.MemberToSave;
-import database.TemporaryData;
+import database.ReadPrices;
 import persons.Member;
 
 import java.util.Scanner;
@@ -99,7 +99,7 @@ public class MemberGenerator {
     }
 
     private void getMembershipPricesFromFile(String memberType){
-        int membershipPrice = TemporaryData.productPrices.get(memberType);
+        int membershipPrice = ReadPrices.membershipPrices.get(memberType);
         System.out.println("The member has to pay " + membershipPrice +  " DKK annually.");
     }
 

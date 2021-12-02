@@ -6,7 +6,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 
 public class EditFile {
@@ -14,7 +13,7 @@ public class EditFile {
     private ArrayList<Member> members = new ArrayList<Member>();
     private ArrayList<Member> readAllMembers = new ReadAllMembers().setFile();
     private ReadAllMembers readAllMembersGetMember = new ReadAllMembers();
-    private Write write = new Write();
+    private WriteMember write = new WriteMember();
 
     public Member lookForMemberId(ArrayList<Member> membersList) {
 
@@ -76,9 +75,6 @@ public class EditFile {
         readAllMembers = new ArrayList<Member>();
     }
 
-    public static void main(String[] args) throws IOException {
-        new EditFile();
-    }
 
     public void addMember(ArrayList<Member> membersList) throws IOException {
         Writer w = new FileWriter("resources/members.csv", false);

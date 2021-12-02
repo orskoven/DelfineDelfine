@@ -1,7 +1,7 @@
 package UI;
 
-import database.LoadTeams;
-import database.Result;
+
+import factory.Result;
 import database.WriteResult;
 import persons.EliteSwimmer;
 
@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class CoachMenu {
     private Menu menu = new Menu();
-    private LoadTeams loadAllEliteSwimmers = new LoadTeams();
+
     private WriteResult writeResult = new WriteResult();
     private EliteSwimmer eliteSwimmer = new EliteSwimmer();
     private Result result = new Result();
@@ -38,19 +38,7 @@ public class CoachMenu {
                 System.out.println();
                 result.getTop5Result("back crawl",coachTrainingResultChoice);
 
-                //new ResultsMenu();
-                        /*
-                        System.out.println("Choose:");
-                        System.out.println("1. Junior\n2. Senior");
-                        int topTeamInput = scanner.nextInt();
-                        if (topTeamInput == 1) {
-                        showTop5Junior.getOptions();
-                    }
-                    else if (topTeamInput == 2) {
-                        showTop5Senior.getOptions();
-                    }
 
-                         */
 
             } else if (coachMenuChoice ==2){
                 //Show Competitions Results
@@ -87,8 +75,8 @@ public class CoachMenu {
         System.out.println("1. Show top 5 results"); //juniors + seniors
         System.out.println("2. Show competition results");
         System.out.println("3. Show elite swimmers");
-        System.out.println("3. Create a training result");
-        System.out.println("4. Create a competition result");
+        System.out.println("4. Create a training result");
+        System.out.println("5. Create a competition result");
         System.out.println("9. Return");
     }
 

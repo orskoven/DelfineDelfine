@@ -1,10 +1,9 @@
 package UI;
 
-import controller.SystemController;
 import database.EditFile;
 import database.MemberToSave;
 import database.ReadAllMembers;
-import database.TempRead;
+import database.ReadPrices;
 import factory.MemberGenerator;
 import factory.MemberUpdate;
 import persons.Member;
@@ -34,7 +33,7 @@ public class ChairmanMenu {
 
            switch (chairmanChoice) {
                case 1:
-                   TempRead.getMembershipPricesFromFile();
+                   ReadPrices.getMembershipPricesFromFile();
                    memberToSave.saveMemberDetailsToFile(member.MemberGenerator());
                    break;
                case 2:

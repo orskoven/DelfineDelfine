@@ -1,14 +1,11 @@
-package database;
+package factory;
 
+import database.ReadAllMembers;
+import database.ReadResults;
+import database.WriteResult;
 import persons.EliteSwimmer;
 import persons.Member;
 
-import java.sql.Time;
-import java.sql.Timestamp;
-import java.time.Clock;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.chrono.ChronoLocalDate;
 import java.util.*;
 
 
@@ -21,7 +18,6 @@ public class Result {
     private String timestamp;
     private String timeResult;
     private int rank;
-    private WriteResult WriteResults;
     private EliteSwimmer eliteSwimmer = new EliteSwimmer();
     private ArrayList<Member> eliteMembers = new ArrayList<Member>();
     private ReadResults readResults = new ReadResults();
@@ -162,32 +158,7 @@ public class Result {
     }while (!isIdFound);
     }
 
-    public int timeToSeconds(){
-        String str = getTimeResult();
-        String [] array = new String[3];
-        array = str.split(":");
-        int timeInSecond = 0;
 
-        try{
-            int number = Integer.parseInt(array[0]);
-            number = number*60*60;
-            //System.out.println(number); // output = 20
-
-            int number1 = Integer.parseInt(array[1]);
-            number1 = number1*60;
-            //System.out.println(number1); // output = 04
-
-            int number2 = Integer.parseInt(array[2]); // output = 33
-            //System.out.println(number2);
-
-            timeInSecond = number+number1+number2;
-        }
-        catch (NumberFormatException ex){
-            ex.printStackTrace();
-            System.out.println("nope");
-        }
-        return timeInSecond;
-    }
 
     public ArrayList<Result> getJuniorResults(){
         juniorResults.removeAll(juniorResults);
@@ -324,14 +295,6 @@ public class Result {
 
     }
 
-    public String toStringTraining(){
-        return "training reult:" +
-                " disciplineName='" + disciplineName + '\'' +
-                " nameOfMember='" + nameOfMember + '\'' +
-                ", memberId=" + memberId +
-                ", date='" + timestamp + '\''+ "training result" +
-                timeResult;
-    }
 
 
 
@@ -365,9 +328,5 @@ public class Result {
 
     }
 
-    public static void main(String[] args) {
-Result result = new Result();
-result.getCompetitionResults(2);
 
-    }
 }

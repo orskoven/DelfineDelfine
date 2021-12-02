@@ -13,7 +13,7 @@ public class LookUpMember {
     private ArrayList<Member> members = new ArrayList<Member>();
     private ArrayList<Member> readAllMembers = new ReadAllMembers().setFile();
     private ReadAllMembers readAllMembersGetMember = new ReadAllMembers();
-    private Write write = new Write();
+    private WriteMember write = new WriteMember();
 
     public Member LookUpMember() throws IOException {
         Member memberToLocate = lookForMemberId(readAllMembers);

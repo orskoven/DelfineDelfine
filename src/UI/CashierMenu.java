@@ -77,11 +77,7 @@ public class CashierMenu {
         }
     }
 
-    public void changePaymentStatus() throws IOException {
-        System.out.println("Payment adjust: ");
-        paymentStatus();
 
-    }
 
     public void showContingentPrices(){
         System.out.println("Contingent list:");

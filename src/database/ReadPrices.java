@@ -1,9 +1,10 @@
 package database;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.Scanner;
 
-public class TempRead {
+public class ReadPrices {
 
     public static void getMembershipPricesFromFile(){
 
@@ -15,7 +16,7 @@ public class TempRead {
             String[] membershipDetails = productScanner.next().split(";");
             String membershipType = membershipDetails[0];
             int price = Integer.parseInt(membershipDetails[1]);
-            TemporaryData.productPrices.put(membershipType, price);
+            membershipPrices.put(membershipType, price);
         }
         //  Block of code to try
     } catch(Exception e) {
@@ -24,5 +25,10 @@ public class TempRead {
 
     }
 
+    public static HashMap<String, Integer> membershipPrices = new HashMap<>();
 
-} // class ends here
+}
+
+
+
+

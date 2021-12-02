@@ -92,56 +92,7 @@ public class MemberUpdate {
               }
           }
       }
-      /*
-    public void getJuniorMebers () throws IOException {
-        for (int i = 0; i < members.size(); i++) {
-            if (members.get(i).isUnder18() == true) {
-                membersToUpdate.add(members.get(i));
-            }
-        }  for (int i = 0; i < membersToUpdate.size() ; i++) {
-            System.out.println(membersToUpdate.get(i).toStringToPrintAll());
-        }
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Type id to adjust: ");
-        int userInput = scanner.nextInt();
 
-        for (int i = 0; i < membersToUpdate.size(); i++) {
-            if (userInput == membersToUpdate.get(i).getMemberId()) {
-                membersToUpdate.get(i).setUnder18(false);
-                members.add(membersToUpdate.get(i));
-                updateFile(i);
-            } else {
-                System.out.println("No member to update [X]");
-                i = members.size();
-            }
-        }
-    }
-    public void getSeniorMebers () throws IOException {
-        for (int i = 0; i < members.size(); i++) {
-            if (members.get(i).isUnder18() == false) {
-                membersToUpdate.add(members.get(i));
-
-            }
-        }  for (int i = 0; i < membersToUpdate.size() ; i++) {
-            System.out.println(membersToUpdate.get(i).toStringToPrintAll());
-        }
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Type id to adjust: ");
-        int userInput = scanner.nextInt();
-
-        for (int i = 0; i < membersToUpdate.size(); i++) {
-            if (userInput == membersToUpdate.get(i).getMemberId()) {
-                membersToUpdate.get(i).setUnder18(true);
-                members.add(membersToUpdate.get(i));
-                updateFile(i);
-            } else {
-                System.out.println("No member to update [X]");
-                i = members.size();
-            }
-        }
-    }
-
-       */
     public void payingMembers () throws IOException {
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).isHasPaid() == true) {

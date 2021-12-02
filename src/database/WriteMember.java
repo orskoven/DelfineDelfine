@@ -4,7 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 
-public class Write {
+public class WriteMember {
 
 
     public void writerToFile(String members){

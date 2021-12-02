@@ -1,9 +1,6 @@
 package persons;
 
-import database.MemberToSave;
 
-import java.util.List;
-import java.util.Scanner;
 
 public class Member {
     private String name;
@@ -39,17 +36,6 @@ public class Member {
         return age;
     }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getAdress() {
-        return adress;
-    }
-
-    public void setAdress(String adress) {
-        this.adress = adress;
-    }
 
     public int getMemberId() {
         return memberId;
@@ -91,21 +77,7 @@ public class Member {
         this.hasPaid = hasPaid;
     }
 
-/*
-    @Override
-    public String toString() {
-        return "Member{" +
-                "Name='" + name + '\'' +
-                " Age=" + age +
-                " Address='" + adress + '\'' +
-                " Id=" + memberId +
-                " Active=" + isActive +
-                " Under18=" + isUnder18 +
-                " EliteSwimmer=" + isEliteSwimmer +
-                " Paid=" + hasPaid +
-                '}';
-    }
-*/
+
 @Override
 public String toString() {
     return name + ";" + age + ";" + adress + ";" + memberId + ";" + isActive + ";" +
