@@ -71,8 +71,5 @@ public class LookUpMember {
 
     }
 
-    public static void main(String[] args) throws IOException {
-        new LookUpMember();
-    }
 
 }
