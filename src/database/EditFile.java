@@ -62,7 +62,7 @@ public class EditFile {
         Writer w = new FileWriter("resources/members.csv", false);
         write.writerToFile("name;age;adress;id;isActive;isUnder18;isElite;hasPaid");
         for (int i = 0; i < membersList.size(); i++) {
-            write.writerToFile("\n" + membersList.get(i).toString() + "\n");
+            write.writerToFile("\n" + membersList.get(i).toString());
 
         }
 

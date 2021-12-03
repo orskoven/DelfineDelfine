@@ -15,7 +15,8 @@ import java.util.Scanner;
 public class ChairmanMenu {
     private Scanner scanner = new Scanner(System.in);
     private MemberGenerator member = new MemberGenerator();
-    private ArrayList<Member> readAllMembersList = new ReadAllMembers().setFile();
+    private ArrayList<Member> readAllMembersList = new ArrayList<Member>();
+    private ReadAllMembers readAllMembers = new ReadAllMembers();
     static MemberToSave memberToSave = new MemberToSave();
     private Menu menu = new Menu();
     private MemberUpdate memberUpdate= new MemberUpdate();
@@ -37,6 +38,8 @@ public class ChairmanMenu {
                    memberToSave.saveMemberDetailsToFile(member.MemberGenerator());
                    break;
                case 2:
+                   readAllMembersList.removeAll(readAllMembersList);
+                   readAllMembersList =readAllMembers.setFile();
                    //show members
                    System.out.println("All MEMBERS: ");
                    for (int i = 0; i < readAllMembersList.size(); i++) {
@@ -48,6 +51,8 @@ public class ChairmanMenu {
                    new EditFile().removeMemberProcess();
                    break;
                case 4:
+                   readAllMembersList.removeAll(readAllMembersList);
+                   readAllMembersList =readAllMembers.setFile();
                    // adjust members
                    System.out.println("All MEMBERS: ");
 

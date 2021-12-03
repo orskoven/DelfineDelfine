@@ -95,6 +95,8 @@ public class Result {
         chooseDisciplineName();
         getTimestamp();
         chooseTimeResult();
+        setTournementNameToNull();
+        setRankTo0();
         return toStringCsv();
     }
 
@@ -106,6 +108,14 @@ public class Result {
         getTimestamp();
         chooseTimeResult();
         return toStringCsv();
+    }
+
+    public void setTournementNameToNull(){
+        tournamentName = null;
+    }
+
+    public void setRankTo0(){
+        rank = 0;
     }
 
 
@@ -212,7 +222,7 @@ public class Result {
 
 
         for (int i = 0; i < eliteResult.size() ; i++) {
-            if (eliteResult.get(i).getDisciplineName().toLowerCase(Locale.ROOT).equals(desciplineName)){
+            if (eliteResult.get(i).getDisciplineName().toLowerCase(Locale.ROOT).equals(desciplineName) && eliteResult.get(i).getRank() == 0){
                 results.add(eliteResult.get(i));
             }
         }
@@ -220,7 +230,10 @@ public class Result {
         Comparator<Result> resultSorting = Comparator.comparing(Result::getTimeResult);
         results.sort(resultSorting);
 
-        if (results.size() == 1){
+        if (results.size() == 0) {
+            System.out.println("Top 5 in " + desciplineName + " results:");
+            System.out.println("No results to show");
+        } else if (results.size() == 1){
             System.out.println("Top 5 in " + desciplineName + " results:");
             System.out.println(results.get(0).top5ToString());
         } else if (results.size() == 2){

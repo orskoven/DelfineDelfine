@@ -14,21 +14,18 @@ public class ReadAllMembers {
 
 
     public ArrayList<Member> setFile(){
-        File membersFile = new File("resources/members.csv");
-        String line = "";
-        String[] membersArray;
-        int counter = 0;
+
 
         try {
+            File membersFile = new File("resources/members.csv");
+            String line = "";
+            String[] membersArray;
             Scanner scanner = new Scanner(membersFile);
+            scanner.nextLine();
             while (scanner.hasNextLine()){
                 line = scanner.nextLine();
                 membersArray = line.split(";");
 
-                if (counter == 0) {
-                    counter++;
-
-                }else {
 
                     String name = membersArray[0];
                     int age = Integer.parseInt(membersArray[1]);
@@ -41,10 +38,8 @@ public class ReadAllMembers {
 
                     Member member = new Member(name, age, adress, memberId, isActive, isUnder18, isEliteSwimmer, hasPaid);
                     membersArrayList.add(member);
-                    counter++;
                 }
 
-            }
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
