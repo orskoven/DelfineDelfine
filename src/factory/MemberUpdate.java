@@ -1,5 +1,6 @@
 package factory;
 
+import UI.Menu;
 import database.EditFile;
 import database.ReadAllMembers;
 import persons.Member;
@@ -14,17 +15,18 @@ public class MemberUpdate {
     private ReadAllMembers readAllMembers = new ReadAllMembers();
     private ArrayList<Member> members = readAllMembers.setFile();
     private ArrayList<Member> membersToUpdate = new ArrayList<Member>();
+    private Menu menu = new Menu();
 
     public MemberUpdate () throws IOException {
-            }
-
+    }
 
     public void getNonActiveMembers (int memberId) throws IOException {
 
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).isActive() == false) {
                 membersToUpdate.add(members.get(i));
-            }}
+            }
+        }
 
         for (int i = 0; i < membersToUpdate.size(); i++) {
             if (memberId == membersToUpdate.get(i).getMemberId()) {
@@ -38,12 +40,14 @@ public class MemberUpdate {
 
         }
     }
+
     public  void getActiveMembers(int memberID) throws IOException {
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).isActive() == true) {
                 membersToUpdate.add(members.get(i));
 
-            }}
+            }
+        }
 
         for (int i = 0; i < membersToUpdate.size(); i++) {
             if (memberID == membersToUpdate.get(i).getMemberId()) {
@@ -56,11 +60,13 @@ public class MemberUpdate {
             }
         }
     }
+
     public void getNonEliteMembers (int memberId) throws IOException {
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).isEliteSwimmer() == false) {
                 membersToUpdate.add(members.get(i));
-            }}
+            }
+        }
 
         for (int i = 0; i < membersToUpdate.size(); i++) {
             if (memberId == membersToUpdate.get(i).getMemberId()) {
@@ -79,7 +85,6 @@ public class MemberUpdate {
                   membersToUpdate.add(members.get(i));
               }
           }
-
 
           for (int i = 0; i < membersToUpdate.size(); i++) {
               if (memberId == membersToUpdate.get(i).getMemberId()) {
@@ -101,9 +106,9 @@ public class MemberUpdate {
         }  for (int i = 0; i < membersToUpdate.size() ; i++) {
             System.out.println(membersToUpdate.get(i).toStringToPrintAll());
         }
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Type id to adjust: ");
-        int userInput = scanner.nextInt();
+
+        System.out.println("Type ID to adjust: ");
+        int userInput = menu.getUserInput();
 
         for (int i = 0; i < membersToUpdate.size(); i++) {
             if (userInput == membersToUpdate.get(i).getMemberId()) {
@@ -125,9 +130,9 @@ public class MemberUpdate {
         for (int i = 0; i < membersToUpdate.size() ; i++) {
             System.out.println(membersToUpdate.get(i).toStringToPrintAll());
         }
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Type id to adjust: ");
-        int userInput = scanner.nextInt();
+
+        System.out.println("Type ID to adjust: ");
+        int userInput = menu.getUserInput();
 
         for (int i = 0; i < membersToUpdate.size(); i++) {
             if (userInput == membersToUpdate.get(i).getMemberId()) {

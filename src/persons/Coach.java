@@ -4,42 +4,49 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Coach{
-    private String login;
+    private String username;
     private String password;
     static ArrayList<Coach> coaches = new ArrayList<Coach>();
 
-    public Coach(String login, String password) {
-        this.login = login;
+    public Coach(String username, String password) {
+        this.username = username;
         this.password = password;
     }
 
-    public static void login() {
-        String login = "coach";
+    public static void coachLogin() {
+        String username = "coach";
         String password = "coach123";
-        Coach coach = new Coach(login, password);
+        Coach coach = new Coach(username, password);
         coaches.add(coach);
     }
 
+    public static Coach login(){
+        Scanner userInputString = new Scanner(System.in);
+
+        System.out.println("Username:");
+        String coachUsername = userInputString.nextLine();
+
+        System.out.println("Password: ");
+        String coachPassword = userInputString.nextLine();
+
+        Coach currentUser = new Coach(coachUsername, coachPassword);
+
+        return currentUser;
+    }
+
     public static void validateLogin() {
-            Scanner userInputString = new Scanner(System.in);
 
             boolean validateCheck = false;
             while (!validateCheck) {
 
-                System.out.println("Login:");
-                String coachLogin = userInputString.nextLine();
+                Coach userInput = login();
 
-                System.out.println("Password: ");
-                String coachPassword = userInputString.nextLine();
+                for (int i = 0; i < coaches.size() ; i++) {
+                    Boolean usernameCheck = userInput.getUsername().equals(coaches.get(i).getUsername());
+                    Boolean passwordCheck = userInput.getPassword().equals(coaches.get(i).getPassword());
 
-                Coach test = new Coach(coachLogin, coachPassword);
-
-                for (int i = 0; i <coaches.size() ; i++) {
-                    Boolean loginCheck = test.getLogin().equals(coaches.get(i).getLogin());
-                    Boolean passwordCheck = test.getPassword().equals(coaches.get(i).getPassword());
-
-                    if (loginCheck && passwordCheck) {
-                        System.out.println("Correct login - Welcome");
+                    if (usernameCheck && passwordCheck) {
+                        System.out.println("👋🏽 Welcome 👋🏽");
                         validateCheck = true;
                         break;
                     } else {
@@ -47,12 +54,13 @@ public class Coach{
 
                     }
                 }
+                System.out.println();
             }
           coaches = new ArrayList<Coach>();
         }
 
-    public String getLogin() {
-        return login;
+    public String getUsername() {
+        return username;
     }
 
     public String getPassword() {

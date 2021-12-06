@@ -1,10 +1,16 @@
 package database;
 
+import persons.Member;
+
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class WriteMember {
+
 
 
     public void writerToFile(String members){
@@ -18,5 +24,6 @@ public class WriteMember {
             e.printStackTrace();
         }
     }
+
 
 }

@@ -8,6 +8,8 @@ import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+//BRUGER VI DENNE KLASSE?
+
 public class LookUpMember {
     private Scanner scanner = new Scanner(System.in);
     private ArrayList<Member> members = new ArrayList<Member>();
@@ -21,9 +23,11 @@ public class LookUpMember {
         return memberToLocate;
 
     }
+
     public Member lookForMemberId(ArrayList<Member> membersList) {
 
-            Member member = null;
+        Member member = null;
+
         boolean isIDfound = true;
 
                 do {
@@ -38,7 +42,7 @@ public class LookUpMember {
                             }
                         } System.out.println(member.toStringToPrintAll());
                     } catch (NullPointerException exception){
-                        System.out.println("NO MEMBER HAS THAT ID");
+                        System.out.println("No member has that ID");
                         System.out.println("\nHere are all member ID's:");
                         for (int j = 0; j < membersList.size(); j++) {
                             System.out.println(membersList.get(j).getMemberId());
@@ -50,8 +54,10 @@ public class LookUpMember {
 
         return member;
     }
+
+    //SKAL DENNE SLETTES??
     public void removeMember(ArrayList<Member> membersList, Member member) throws IOException {
-        System.out.println("1.Remove\n2.Quit");
+        System.out.println("1. Remove\n2. Quit");
         int inputUser = scanner.nextInt();
         if (inputUser == 1) {
             for (int i = 0; i < membersList.size(); i++) {

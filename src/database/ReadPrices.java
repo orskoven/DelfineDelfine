@@ -10,7 +10,7 @@ public class ReadPrices {
 
 //this reads the prices from csv file
     try {
-        File file = new File("resources/MembershipPrices.csv");
+        File file = new File("resources/membershipPrices.csv");
         Scanner productScanner = new Scanner(file);
         while (productScanner.hasNext()){
             String[] membershipDetails = productScanner.next().split(";");

@@ -15,6 +15,7 @@ public class ReadResults {
             File membersFile = new File("resources/results.csv");
             Scanner fileReading = new Scanner(membersFile);
             fileReading.nextLine();
+
             while (fileReading.hasNextLine()) {
 
                 String line1 = fileReading.nextLine();
@@ -33,13 +34,13 @@ public class ReadResults {
                         tournament, timeResult, rank);
 
                 resultArrayList.add(result);
-                //counter++;
+
             }
 
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            System.out.println("fejl");
+            System.out.println("Couldn't read Results file");
         }
 
         return resultArrayList;

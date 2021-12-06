@@ -24,6 +24,14 @@ public class ChairmanMenu {
 
     public ChairmanMenu() throws IOException {
     }
+    public void optionsForChairman() {
+        System.out.println("Chairman options:");
+        System.out.println("1. Create member");
+        System.out.println("2. Show members");
+        System.out.println("3. Remove member");
+        System.out.println("4. Adjust member");
+        System.out.println("9. Return");
+    }
 
     public void showChairmanMenu() throws IOException {
        int chairmanChoice;
@@ -38,10 +46,11 @@ public class ChairmanMenu {
                    memberToSave.saveMemberDetailsToFile(member.MemberGenerator());
                    break;
                case 2:
+                   //SKAL DETTE LAVES TIL EN METODE UNDER EN PACKAGE (ANALYSIS?)
                    readAllMembersList.removeAll(readAllMembersList);
-                   readAllMembersList =readAllMembers.setFile();
+                   readAllMembersList = readAllMembers.setFile();
                    //show members
-                   System.out.println("All MEMBERS: ");
+                   System.out.println("All Members: ");
                    for (int i = 0; i < readAllMembersList.size(); i++) {
                        System.out.println(readAllMembersList.get(i).toStringToPrintAll());
                    }
@@ -51,16 +60,17 @@ public class ChairmanMenu {
                    new EditFile().removeMemberProcess();
                    break;
                case 4:
+                   //SKAL DETTE LAVES TIL EN METODE UNDER EN PACKAGE (ANALYSIS?)
                    readAllMembersList.removeAll(readAllMembersList);
                    readAllMembersList =readAllMembers.setFile();
                    // adjust members
-                   System.out.println("All MEMBERS: ");
+                   System.out.println("All Members: ");
 
                    for (int i = 0; i < readAllMembersList.size(); i++) {
                        System.out.println("Name: " + readAllMembersList.get(i).getName() + " ID: " + readAllMembersList.get(i).getMemberId());
                    }
-                   System.out.println("PLEASE ENTER THE ID OF THE MEMBER YOU WANT TO ADJUST: ");
-                   int memberId = scanner.nextInt();
+                   System.out.println("Please type the ID of the member you want to adjust: ");
+                   int memberId = menu.getUserInput();
                    changeMembershipStatus(memberId);
                    break;
                case 9:
@@ -130,14 +140,7 @@ public class ChairmanMenu {
         System.out.println("1. Active/Passive\n2. Elite/non-Elite");
     }
 
-    public void optionsForChairman() {
-        System.out.println("Chairman options:");
-        System.out.println("1. Create member");
-        System.out.println("2. Show members");
-        System.out.println("3. Remove member");
-        System.out.println("4. Adjust member");
-        System.out.println("9. Return");
-    }
+
 
 
 }

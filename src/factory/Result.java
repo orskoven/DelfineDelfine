@@ -1,8 +1,8 @@
 package factory;
 
+import UI.Menu;
 import database.ReadAllMembers;
 import database.ReadResults;
-import database.WriteResult;
 import persons.EliteSwimmer;
 import persons.Member;
 
@@ -18,6 +18,7 @@ public class Result {
     private String timestamp;
     private String timeResult;
     private int rank;
+    private Menu menu = new Menu();
     private EliteSwimmer eliteSwimmer = new EliteSwimmer();
     private ArrayList<Member> eliteMembers = new ArrayList<Member>();
     private ReadResults readResults = new ReadResults();
@@ -39,27 +40,22 @@ public class Result {
         this.timeResult = timeResult;
         this.rank = rank;
     }
-
-    public int getMemberId() {
-        return memberId;
+    public void chooseRank (){
+        System.out.println("Enter rank result:");
+        rank = scanner.nextInt();
     }
 
-    public int getRank() {
-        return rank;
+    private void chooseTimeResult (){
+        System.out.println("Enter the time result: (hh:mm:ss)");
+        timeResult = scanner.next();
+
     }
 
-    public String getDisciplineName(){
-        return this.disciplineName;
-    }
-
-   public String getTimeResult(){
-        return this.timeResult;
-   }
 
     private String chooseDisciplineName() {
-        System.out.println("Press the follwing numbers for a discipline:\n1 ‣ Butterfly" +
+        System.out.println("Press the following numbers for a discipline:\n1 ‣ Butterfly" +
                 "\n2 ‣ Breast Stroke\n3 ‣ Crawl\n4 ‣ Back Crawl");
-        int disciplineChoice = scanner.nextInt();
+        int disciplineChoice = menu.getUserInput();
         switch (disciplineChoice) {
             case 1:
                 disciplineName = "Butterfly";
@@ -79,23 +75,12 @@ public class Result {
         return disciplineName;
     }
 
-    private void getTimestamp() {
-        System.out.println("Please enter the date of the result: (dd-mm-yyyy)");
-        timestamp = scanner.next();
-    }
-
-    private void chooseTimeResult (){
-        System.out.println("Enter the time result: (hh:mm:ss)");
-        timeResult = scanner.next();
-
-    }
-
     public String writeTrainingToCsv() {
         addMemberIdAndNameToResult();
         chooseDisciplineName();
         getTimestamp();
         chooseTimeResult();
-        setTournementNameToNull();
+        setTournamentNameToNull();
         setRankTo0();
         return toStringCsv();
     }
@@ -110,32 +95,13 @@ public class Result {
         return toStringCsv();
     }
 
-    public void setTournementNameToNull(){
-        tournamentName = null;
-    }
-
-    public void setRankTo0(){
-        rank = 0;
-    }
-
-
-    public void getTournamentName(){
-        System.out.println("Enter the name of the tournament:");
-        tournamentName = scanner.next();
-    }
-
-    public void chooseRank (){
-        System.out.println("Enter rank result:");
-        rank = scanner.nextInt();
-    }
-
     public void showElitenameAndId(){
         //se om den fordobles hvis den køres flere gange
         eliteMembers = eliteSwimmer.findEliteSwimmer();
         System.out.println("Elite Members:");
 
         for (int i = 0; i < eliteMembers.size(); i++) {
-            System.out.println("name: " + eliteMembers.get(i).getName() + "," + " member ID: " +
+            System.out.println("Name: " + eliteMembers.get(i).getName() + "," + " Member ID: " +
                     eliteMembers.get(i).getMemberId());
         }
     }
@@ -147,28 +113,27 @@ public class Result {
         boolean isIdFound = false;
         do {
             try {
-                System.out.println("type in the member ID");
+                System.out.println("Type in the member ID");
                 showElitenameAndId();
-                int userinput = scanner.nextInt();
+                int userinput = menu.getUserInput();
 
                  for (int i = 0; i < eliteMembers.size(); i++) {
                      if (eliteMembers.get(i).getMemberId() == userinput) {
-                memberId = userinput;
-                nameOfMember = eliteMembers.get(i).getName();
-                System.out.println("nice");
-                isIdFound = true;
-                //userinput og user name addes til resultobject!!
-            }
-        }
-        }catch (NullPointerException exception){
-            System.out.println("try again");
+                     memberId = userinput;
+                     nameOfMember = eliteMembers.get(i).getName();
+                     isIdFound = true;
+
+                     //userinput og user name addes til resultobject!!
+                    }
+                }
+
+            } catch (NullPointerException exception){
+            System.out.println("Couldn't find the member!");
             isIdFound = false;
-        }
+            }
 
-    }while (!isIdFound);
+        } while (!isIdFound);
     }
-
-
 
     public ArrayList<Result> getJuniorResults(){
         juniorResults.removeAll(juniorResults);
@@ -294,7 +259,38 @@ public class Result {
         competitionResults.removeAll(competitionResults);
         eliteResult.removeAll(eliteResult);
     }
+    public void getTournamentName(){
+        System.out.println("Enter the name of the tournament:");
+        tournamentName = scanner.next();
+    }
+    private void getTimestamp() {
+        System.out.println("Please enter the date of the result: (dd-mm-yyyy)");
+        timestamp = scanner.next();
+    }
 
+    public void setTournamentNameToNull(){
+        tournamentName = null;
+    }
+
+    public void setRankTo0(){
+        rank = 0;
+    }
+
+    public int getMemberId() {
+        return memberId;
+    }
+
+    public int getRank() {
+        return rank;
+    }
+
+    public String getDisciplineName(){
+        return this.disciplineName;
+    }
+
+    public String getTimeResult(){
+        return this.timeResult;
+    }
 
     private String toStringCsv() {
         return disciplineName + ";" +
@@ -304,13 +300,7 @@ public class Result {
                 tournamentName + ";" +
                 timeResult + ";" +
                 rank;
-
-
     }
-
-
-
-
 
     @Override
     public String toString() {
@@ -338,8 +328,5 @@ public class Result {
                 " Rank: " + rank + ',' +
                 " Time result: " + timeResult;
 
-
     }
-
-
 }

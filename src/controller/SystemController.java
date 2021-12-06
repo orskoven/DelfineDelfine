@@ -24,19 +24,19 @@ public class SystemController {
 
             switch (userInput) {
                 case 1:
-                    Chairman.login();
+                    Chairman.chairmanLogin();
                     Chairman.validateLogin();
                     chairmanMenu.showChairmanMenu();
                     break;
 
                 case 2:
-                    Cashier.login();
+                    Cashier.cashierLogin();
                     Cashier.validateLogin();
                     cashierMenu.showCashierMenu();
                     break;
 
                 case 3:
-                    Coach.login();
+                    Coach.coachLogin();
                     Coach.validateLogin();
                     coachMenu.showCoachMenu();
                     break;

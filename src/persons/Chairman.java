@@ -4,42 +4,48 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Chairman {
-    private String login;
+    private String username;
     private String password;
-    static ArrayList<Chairman> chairmans = new ArrayList<Chairman>();
+    static ArrayList<Chairman> chairmen = new ArrayList<Chairman>();
 
-    public Chairman(String login, String password) {
-        this.login = login;
+    public Chairman(String username, String password) {
+        this.username = username;
         this.password = password;
     }
 
-    public static void login() {
-        String login = "chairman";
+    public static void chairmanLogin() {
+        String username = "chairman";
         String password = "chairman123";
-        Chairman chairman = new Chairman(login, password);
-        chairmans.add(chairman);
+        Chairman chairman = new Chairman(username, password);
+        chairmen.add(chairman);
     }
 
-    public static void validateLogin() {
+    public static Chairman login(){
         Scanner userInputString = new Scanner(System.in);
 
+        System.out.println("Username:");
+        String chairmanUsername = userInputString.nextLine();
+
+        System.out.println("Password: ");
+        String chairmanPassword = userInputString.nextLine();
+
+        Chairman currentUser = new Chairman(chairmanUsername, chairmanPassword);
+        return currentUser;
+    }
+
+
+    public static void validateLogin() {
         boolean validateCheck = false;
         while (!validateCheck) {
 
-            System.out.println("Login:");
-            String chairmanLogin = userInputString.nextLine();
+            Chairman userInput = login();
 
-            System.out.println("Password: ");
-            String chairmanPassword = userInputString.nextLine();
+            for (int i = 0; i < chairmen.size(); i++) {
+                Boolean usernameCheck = userInput.getUsername().equals(chairmen.get(i).getUsername());
+                Boolean passwordCheck = userInput.getPassword().equals(chairmen.get(i).getPassword());
 
-            Chairman test = new Chairman(chairmanLogin, chairmanPassword);
-
-            for (int i = 0; i < chairmans.size(); i++) {
-                Boolean loginCheck = test.getLogin().equals(chairmans.get(i).getLogin());
-                Boolean passwordCheck = test.getPassword().equals(chairmans.get(i).getPassword());
-
-                if (loginCheck && passwordCheck) {
-                    System.out.println("Correct login - Welcome");
+                if (usernameCheck && passwordCheck) {
+                    System.out.println("👋🏽 Welcome 👋🏽");
                     validateCheck = true;
                     break;
                 } else {
@@ -47,15 +53,17 @@ public class Chairman {
 
                 }
             }
+            System.out.println();
         }
-        chairmans = new ArrayList<Chairman>();
+        chairmen = new ArrayList<Chairman>();
     }
 
-    public String getLogin() {
-        return login;
+    public String getUsername() {
+        return this.username;
     }
 
     public String getPassword() {
-        return password;
+        return this.password;
     }
+
 }

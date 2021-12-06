@@ -14,6 +14,27 @@ public class CoachMenu {
     private EliteSwimmer eliteSwimmer = new EliteSwimmer();
     private Result result = new Result();
 
+    public void optionsForCoach(){
+        System.out.println("Coach options:");
+        System.out.println("1. Show top 5 results");
+        System.out.println("2. Show competition results");
+        System.out.println("3. Show elite swimmers");
+        System.out.println("4. Create a training result");
+        System.out.println("5. Create a competition result");
+        System.out.println("9. Return");
+    }
+
+    public void showResultsOptions(){
+        System.out.println("Show top 5 results: ");
+        System.out.println("1. Junior");
+        System.out.println("2. Senior");
+    }
+
+    public void showCompetitionOptions(){
+        System.out.println("Show competitions results: ");
+        System.out.println("1. Junior");
+        System.out.println("2. Senior");
+    }
 
     public void showCoachMenu() throws IOException {
         int coachMenuChoice;
@@ -58,7 +79,7 @@ public class CoachMenu {
                 //create training result
                 writeResult.writerToFile(result.writeTrainingToCsv());
             } else if (coachMenuChoice == 5){
-                //competition rersult
+                //competition result
                 writeResult.writerToFile(result.writeCompetitionToCsv());
 
             } else if (coachMenuChoice == 9) {
@@ -70,27 +91,7 @@ public class CoachMenu {
         } while (coachMenuChoice != 9);
     }
 
-    public void optionsForCoach(){
-        System.out.println("Coach options:");
-        System.out.println("1. Show top 5 results"); //juniors + seniors
-        System.out.println("2. Show competition results");
-        System.out.println("3. Show elite swimmers");
-        System.out.println("4. Create a training result");
-        System.out.println("5. Create a competition result");
-        System.out.println("9. Return");
-    }
 
-    public void showResultsOptions(){
-        System.out.println("Show top 5 results: ");
-        System.out.println("1. Junior");
-        System.out.println("2. Senior");
-    }
-
-    public void showCompetitionOptions(){
-        System.out.println("Show competitions results: ");
-        System.out.println("1. Junior");
-        System.out.println("2. Senior");
-    }
 
 
 

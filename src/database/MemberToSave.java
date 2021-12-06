@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MemberToSave {
+
     private ArrayList<String> memberDetails = new ArrayList<String>();
     static int memberId;
 
@@ -57,4 +58,7 @@ public class MemberToSave {
         saveMemberIdCounter();
         return memberId+2 ;
     }
+
+
+
 }

@@ -33,7 +33,7 @@ public class EditFile {
                 }
                 System.out.println(member.toStringToPrintAll());
             } catch (NullPointerException exception) {
-                System.out.println("NO MEMBER HAS THAT ID");
+                System.out.println("No member has that ID");
                 System.out.println("\nHere are all member ID's:");
                 for (int j = 0; j < membersList.size(); j++) {
                     System.out.println(membersList.get(j).getMemberId());
@@ -47,7 +47,7 @@ public class EditFile {
     }
 
     public void removeMember(ArrayList<Member> membersList, Member member) throws IOException {
-        System.out.println("1.Remove\n2.Quit");
+        System.out.println("1. Remove\n2. Quit");
         int inputUser = scanner.nextInt();
         if (inputUser == 1) {
             for (int i = 0; i < membersList.size(); i++) {
@@ -60,7 +60,7 @@ public class EditFile {
             System.out.println("No member has been removed.");
         }
         Writer w = new FileWriter("resources/members.csv", false);
-        write.writerToFile("name;age;adress;id;isActive;isUnder18;isElite;hasPaid");
+        write.writerToFile("name;age;address;id;isActive;isUnder18;isElite;hasPaid");
         for (int i = 0; i < membersList.size(); i++) {
             write.writerToFile("\n" + membersList.get(i).toString());
 
@@ -78,7 +78,7 @@ public class EditFile {
 
     public void addMember(ArrayList<Member> membersList) throws IOException {
         Writer w = new FileWriter("resources/members.csv", false);
-        write.writerToFile("name;age;adress;id;isActive;isUnder18;isElite;hasPaid" + "\n");
+        write.writerToFile("name;age;address;id;isActive;isUnder18;isElite;hasPaid" + "\n");
         for (int i = 0; i < membersList.size(); i++) {
             write.writerToFile( membersList.get(i).toString() + "\n");
         }

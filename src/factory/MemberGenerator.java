@@ -2,6 +2,7 @@ package factory;
 
 import database.MemberToSave;
 import database.ReadPrices;
+import database.WriteMember;
 import persons.Member;
 
 import java.util.Scanner;
@@ -20,6 +21,7 @@ public class MemberGenerator {
 
 
     public Member MemberGenerator() {
+        System.out.println("Insert details:");
         boolean isVerified = false;
         do {
             System.out.println("Age: ");

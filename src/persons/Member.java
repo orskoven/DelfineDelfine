@@ -1,22 +1,20 @@
 package persons;
 
-
-
 public class Member {
     private String name;
     private int age;
-    private String adress;
+    private String address;
     private int memberId;
     private boolean isActive;
     private boolean isUnder18;
     private boolean isEliteSwimmer;
     private boolean hasPaid;
 
-    public Member(String name, int age, String adress, int memberId,
+    public Member(String name, int age, String address, int memberId,
                   boolean isActive, boolean isUnder18, boolean isEliteSwimmer, boolean hasPaid) {
         this.name = name;
         this.age = age;
-        this.adress = adress;
+        this.address = address;
         this.memberId = memberId;
         this.isActive = isActive;
         this.isUnder18 = isUnder18;
@@ -26,10 +24,6 @@ public class Member {
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getAge() {
@@ -57,10 +51,6 @@ public class Member {
         return isUnder18;
     }
 
-    public void setUnder18(boolean under18) {
-        isUnder18 = under18;
-    }
-
     public boolean isEliteSwimmer() {
         return isEliteSwimmer;
     }
@@ -80,14 +70,14 @@ public class Member {
 
 @Override
 public String toString() {
-    return name + ";" + age + ";" + adress + ";" + memberId + ";" + isActive + ";" +
+    return name + ";" + age + ";" + address + ";" + memberId + ";" + isActive + ";" +
             isUnder18 + ";" + isEliteSwimmer + ";" + hasPaid;
 }
     public String toStringToConsole() {
         return
                 " Name: " + name +
                 "\n Age: " + age +
-                "\n Address: " + adress +
+                "\n Address: " + address +
                 "\n Id: " + memberId +
                 "\n Active: " + isActive +
                 "\n Under 18: " + isUnder18 +
@@ -95,26 +85,26 @@ public String toString() {
                 "\n Paid: " + hasPaid;
     }
     public String toStringToPrintAll() {
-        String toPrint = " Name: "+ name +
-                        "| Age: " + age +
-                        "| Address: " + adress +
-                        "| Id: " + memberId;
+        String toPrint = "• Name: "+ name +
+                        " | Age: " + age +
+                        " | Address: " + address +
+                        " | Id: " + memberId;
                         if (this.isActive) {
-                           toPrint +=  "| Active";
+                           toPrint +=  " | Active";
                         } else {
-                            toPrint +=  "| Passive";
+                            toPrint +=  " | Passive";
                         } if (this.isUnder18) {
-                            toPrint +=  "| Junior";
+                            toPrint +=  " | Junior";
                          } else {
-                            toPrint +=  "| Senior";
+                            toPrint +=  " | Senior";
                         }  if (this.isEliteSwimmer) {
-                            toPrint +=  "| Elite Swimmer";
+                            toPrint +=  " | Elite Swimmer";
                         } else {
-                            toPrint +=  "| Leasure swimmer";
+                            toPrint +=  " | Leisure swimmer";
                         } if (this.hasPaid) {
-                            toPrint +=  "| Has paid |";
+                            toPrint +=  " | Has paid |";
                         } else {
-                            toPrint +=  "| Has not paid |";
+                            toPrint +=  " | Has not paid |";
                         }
                         return toPrint;
     }
