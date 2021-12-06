@@ -42,13 +42,14 @@ public class Cashier {
                 if (loginCheck && passwordCheck) {
                     System.out.println("Correct login - Welcome");
                     validateCheck = true;
+                    break;
                 } else {
                     System.out.println("Wrong login - try again");
 
                 }
             }
-            cashiers = new ArrayList<Cashier>();
         }
+        cashiers = new ArrayList<Cashier>();
     }
 
     public String getLogin() {

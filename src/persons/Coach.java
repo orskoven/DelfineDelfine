@@ -41,13 +41,14 @@ public class Coach{
                     if (loginCheck && passwordCheck) {
                         System.out.println("Correct login - Welcome");
                         validateCheck = true;
+                        break;
                     } else {
                         System.out.println("Wrong login - try again");
 
                     }
                 }
-                coaches = new ArrayList<Coach>();
             }
+          coaches = new ArrayList<Coach>();
         }
 
     public String getLogin() {
