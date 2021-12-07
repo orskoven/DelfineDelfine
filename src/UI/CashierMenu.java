@@ -1,5 +1,6 @@
 package UI;
 
+import analysis.CashierAnalysis;
 import database.ReadAllMembers;
 import factory.MemberUpdate;
 import persons.Cashier;
@@ -11,9 +12,7 @@ import java.util.ArrayList;
 public class CashierMenu {
     private Menu menu = new Menu();
     private MemberUpdate memberUpdate = new MemberUpdate();
-    private ReadAllMembers readAllMembers = new ReadAllMembers();
-    private ArrayList<Member> members = new ArrayList<Member>();
-    private ArrayList<Member> hasntPayedMembers = new ArrayList<Member>();
+    private CashierAnalysis cashierAnalysis = new CashierAnalysis();
 
     public CashierMenu() throws IOException {
     }
@@ -42,12 +41,10 @@ public class CashierMenu {
                 showRevenueData();
             } else if (cashierChoice == 3) {
                 //show members in arrears
-                getMembersWhoHasntPayed();      //evt. LoadingMissingpaymentmembers
+                cashierAnalysis.getMembersWhoHasntPayed();
             } else if (cashierChoice == 4) {
                 //change member payment status
                 paymentStatus();
-
-
             } else if (cashierChoice == 9) {
                 break;
             }
@@ -91,12 +88,13 @@ public class CashierMenu {
 
     public void showRevenueData(){
         System.out.println("Expected revenue:");
-        System.out.println(" " + getExpectedRevenue()+" DKK");
+        System.out.println(" " + cashierAnalysis.getExpectedRevenue()+" DKK");
         System.out.println("Payed revenue:");
-        System.out.println(" " + getPayedRevenue()+" DKK");
+        System.out.println(" " + cashierAnalysis.getPayedRevenue()+" DKK");
         System.out.println("Missing revenue:");
-        System.out.println(" " + getMissingRevenue()+" DKK");
+        System.out.println(" " + cashierAnalysis.getMissingRevenue()+" DKK");
     }
+    /*
     public int paymentDetails(int memberArrayIndex){
         members.removeAll(members);
         members = readAllMembers.setFile();
@@ -172,4 +170,5 @@ public class CashierMenu {
             System.out.println(member.toStringToPrintAll());
         }
     }
+    */
 }

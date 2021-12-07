@@ -1,10 +1,11 @@
-package persons;
+package analysis;
 
 import database.ReadAllMembers;
+import persons.Member;
 
 import java.util.ArrayList;
 
-public class EliteSwimmer {
+public class CoachAnalysis {
     private ReadAllMembers readAllMembers = new ReadAllMembers();
     private ArrayList<Member> members = new ArrayList<Member>();
     private ArrayList<Member> eliteMembers = new ArrayList<Member>();
@@ -17,11 +18,7 @@ public class EliteSwimmer {
     public ArrayList<Member> findEliteSwimmer() {
 
         clearList();
-        //members.clear();
-        //eliteMembers.clear();
-
         members = readAllMembers.setFile();
-
 
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).isEliteSwimmer() == (true)) {
@@ -38,7 +35,7 @@ public class EliteSwimmer {
         System.out.println("Junior Team");
         for (int i = 0; i < eliteMembers.size(); i++) {
             if (eliteMembers.get(i).isUnder18() == true){
-                System.out.println("・Name: " + eliteMembers.get(i).getName() + ", ID: " + eliteMembers.get(i).getMemberId());
+                System.out.println("• Name: " + eliteMembers.get(i).getName() + ", ID: " + eliteMembers.get(i).getMemberId());
             }
         }
     }
@@ -48,11 +45,8 @@ public class EliteSwimmer {
         System.out.println("Senior Team");
         for (int i = 0; i < eliteMembers.size(); i++) {
             if (eliteMembers.get(i).isUnder18() == false){
-                System.out.println("・Name: " + eliteMembers.get(i).getName() + ", ID: " + eliteMembers.get(i).getMemberId());
+                System.out.println("• Name: " + eliteMembers.get(i).getName() + ", ID: " + eliteMembers.get(i).getMemberId());
             }
         }
     }
-
-
-
 }

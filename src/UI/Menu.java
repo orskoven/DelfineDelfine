@@ -79,9 +79,4 @@ public class Menu {
             //simulate a piece of task
         }
     }
-
-
-
-
-
 }

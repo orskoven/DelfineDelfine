@@ -5,7 +5,7 @@ import analysis.ResultAnalysis;
 import persons.Result;
 import database.WriteResult;
 import factory.ResultGenerator;
-import persons.EliteSwimmer;
+import analysis.CoachAnalysis;
 
 import java.io.IOException;
 
@@ -13,14 +13,14 @@ public class CoachMenu {
     private Menu menu = new Menu();
 
     private WriteResult writeResult = new WriteResult();
-    private EliteSwimmer eliteSwimmer = new EliteSwimmer();
+    private CoachAnalysis eliteSwimmer = new CoachAnalysis();
     private Result result = new Result();
     private ResultGenerator resultGenerator = new ResultGenerator();
     private ResultAnalysis resultAnalysis = new ResultAnalysis();
 
     public void optionsForCoach(){
         System.out.println("Coach options:");
-        System.out.println("1. Show top 5 results");
+        System.out.println("1. Show top 5 training results");
         System.out.println("2. Show competition results");
         System.out.println("3. Show elite swimmers");
         System.out.println("4. Create a training result");
@@ -29,7 +29,7 @@ public class CoachMenu {
     }
 
     public void showResultsOptions(){
-        System.out.println("Show top 5 results: ");
+        System.out.println("Show top 5 training results: ");
         System.out.println("1. Junior");
         System.out.println("2. Senior");
     }
@@ -50,11 +50,10 @@ public class CoachMenu {
             coachMenuChoice = menu.getUserInput();
 
             if (coachMenuChoice == 1) {
-                //Show top 5
+                //Show top 5 training
                 showResultsOptions();
                 coachTrainingResultChoice = menu.getUserInput();
 
-                //Skal der opdeles så det kun er træningsresultater der bliver vist?
                 resultAnalysis.getTop5Result("butterfly",coachTrainingResultChoice);
                 System.out.println();
                 resultAnalysis.getTop5Result("breast stroke",coachTrainingResultChoice);

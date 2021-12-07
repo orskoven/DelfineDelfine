@@ -1,5 +1,9 @@
 package persons;
 
+import UI.Menu;
+
+import java.util.Scanner;
+
 public class Member {
     private String name;
     private int age;
@@ -9,6 +13,13 @@ public class Member {
     private boolean isUnder18;
     private boolean isEliteSwimmer;
     private boolean hasPaid;
+    private Scanner input = new Scanner(System.in);
+
+    private Menu menu = new Menu();
+
+    public Member(){
+
+    }
 
     public Member(String name, int age, String address, int memberId,
                   boolean isActive, boolean isUnder18, boolean isEliteSwimmer, boolean hasPaid) {
@@ -67,9 +78,69 @@ public class Member {
         this.hasPaid = hasPaid;
     }
 
+    public int askForAge(){
+        System.out.println("Age: ");
+        age = menu.getUserInput();
+        return age;
+    }
 
-@Override
-public String toString() {
+    public String askForName(){
+        System.out.println("Name: ");
+        name = input.next();
+        return name;
+    }
+
+    public String askForAddress(){
+        System.out.println("Address: ");
+        address = input.nextLine();
+        if (address.isEmpty()) {
+            address = input.nextLine();
+        }
+        return address;
+    }
+
+    public boolean askForIsActive(){
+        System.out.println("Is the member:\n1. Active\n2. Passive ");
+        if (menu.getUserInput() == 1) {
+            isActive = true;
+        } else {
+            isActive = false;
+        }
+        return isActive;
+    }
+
+    public boolean askIsUnder18(){
+        if (age < 18) {
+            isUnder18 = true;
+        } else {
+            isUnder18 = false;
+        }
+        return isUnder18;
+    }
+
+    public boolean askForIsElite(){
+        System.out.println("Is the member:\n1. Elite swimmer\n2. Non-elite");
+        if (menu.getUserInput() == 1) {
+            isEliteSwimmer = true;
+        } else {
+            isEliteSwimmer = false;
+        }
+        return isEliteSwimmer;
+    }
+
+    public boolean askForHasPaid(){
+        System.out.println("Has the member paid:\n1. Yes\n2. No");
+        if (menu.getUserInput() == 1) {
+            hasPaid = true;
+        } else {
+            hasPaid = false;
+        }
+        return hasPaid;
+    }
+
+
+    @Override
+    public String toString() {
     return name + ";" + age + ";" + address + ";" + memberId + ";" + isActive + ";" +
             isUnder18 + ";" + isEliteSwimmer + ";" + hasPaid;
 }

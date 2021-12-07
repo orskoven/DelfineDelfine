@@ -3,7 +3,6 @@ package analysis;
 import database.ReadAllMembers;
 import database.ReadResults;
 import persons.Result;
-import persons.EliteSwimmer;
 import persons.Member;
 
 import java.util.ArrayList;
@@ -12,7 +11,7 @@ import java.util.Locale;
 
 public class ResultAnalysis {
 
-    private EliteSwimmer eliteSwimmer = new EliteSwimmer();
+    private CoachAnalysis eliteSwimmer = new CoachAnalysis();
     private ArrayList<Member> eliteMembers = new ArrayList<Member>();
     private ReadResults readResults = new ReadResults();
     private ReadAllMembers readAllMembers = new ReadAllMembers();

@@ -1,5 +1,6 @@
 package UI;
 
+import analysis.MemberAnalysis;
 import database.EditFile;
 import database.MemberToSave;
 import database.ReadAllMembers;
@@ -13,13 +14,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ChairmanMenu {
-    private Scanner scanner = new Scanner(System.in);
     private MemberGenerator member = new MemberGenerator();
     private ArrayList<Member> readAllMembersList = new ArrayList<Member>();
     private ReadAllMembers readAllMembers = new ReadAllMembers();
     static MemberToSave memberToSave = new MemberToSave();
     private Menu menu = new Menu();
     private MemberUpdate memberUpdate= new MemberUpdate();
+    private MemberAnalysis memberAnalysis = new MemberAnalysis();
 
 
     public ChairmanMenu() throws IOException {
@@ -42,18 +43,13 @@ public class ChairmanMenu {
 
            switch (chairmanChoice) {
                case 1:
+                   //create member
                    ReadPrices.getMembershipPricesFromFile();
                    memberToSave.saveMemberDetailsToFile(member.memberGenerator());
                    break;
                case 2:
-                   //SKAL DETTE LAVES TIL EN METODE UNDER EN PACKAGE (ANALYSIS?)
-                   readAllMembersList.removeAll(readAllMembersList);
-                   readAllMembersList = readAllMembers.setFile();
                    //show members
-                   System.out.println("All Members: ");
-                   for (int i = 0; i < readAllMembersList.size(); i++) {
-                       System.out.println(readAllMembersList.get(i).toStringToPrintAll());
-                   }
+                   memberAnalysis.showAllMembers();
                    break;
                case 3:
                    // remove member
@@ -81,15 +77,15 @@ public class ChairmanMenu {
 
         switch (adjustChoice){
             case 1:
-               // System.out.println("Members who are passive:");
+               //Turn member active
                 memberUpdate.getNonActiveMembers();
                 break;
             case 2:
-               // System.out.println("Members who are active:");
+               //Turn member passive
                 memberUpdate.getActiveMembers();
                 break;
             case 3:
-               //changeMembershipStatus();
+               //quit
                 break;
 
         }
@@ -132,8 +128,4 @@ public class ChairmanMenu {
         System.out.println("What would you like to adjust?: ");
         System.out.println("1. Active/Passive\n2. Elite/non-Elite");
     }
-
-
-
-
 }

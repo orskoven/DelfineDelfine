@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class MemberUpdate {
     private ReadAllMembers readAllMembers = new ReadAllMembers();
-    private ArrayList<Member> members = readAllMembers.setFile();
+    private ArrayList<Member> members = new ArrayList<Member>();
     private ArrayList<Member> membersToUpdate = new ArrayList<Member>();
     private Menu menu = new Menu();
 
@@ -22,6 +22,7 @@ public class MemberUpdate {
 
     public void getNonActiveMembers () throws IOException {
         clearArraylist();
+        members = readAllMembers.setFile();
 
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).isActive() == false) {
@@ -53,6 +54,7 @@ public class MemberUpdate {
 
     public  void getActiveMembers() throws IOException {
         clearArraylist();
+        members = readAllMembers.setFile();
 
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).isActive() == true) {
@@ -85,6 +87,7 @@ public class MemberUpdate {
 
     public void getNonEliteMembers () throws IOException {
         clearArraylist();
+        members = readAllMembers.setFile();
 
 
         for (int i = 0; i < members.size(); i++) {
@@ -115,6 +118,7 @@ public class MemberUpdate {
     }
       public void getEliteMembers () throws IOException {
           clearArraylist();
+          members = readAllMembers.setFile();
 
           for (int i = 0; i < members.size(); i++) {
               if (members.get(i).isEliteSwimmer() == true) {
@@ -143,6 +147,7 @@ public class MemberUpdate {
 
     public void payingMembers () throws IOException {
         clearArraylist();
+        members = readAllMembers.setFile();
 
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).isHasPaid() == true) {
@@ -173,6 +178,7 @@ public class MemberUpdate {
 
     public void nonPayingMembers () throws IOException {
         clearArraylist();
+        members = readAllMembers.setFile();
 
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).isHasPaid() == false) {
@@ -214,5 +220,6 @@ public class MemberUpdate {
 
     public void clearArraylist(){
         membersToUpdate.removeAll(membersToUpdate);
+        members.removeAll(members);
     }
 }
