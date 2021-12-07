@@ -21,7 +21,6 @@ public class MemberUpdate {
     }
 
     public void getNonActiveMembers (int memberId) throws IOException {
-
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).isActive() == false) {
                 membersToUpdate.add(members.get(i));
@@ -33,11 +32,11 @@ public class MemberUpdate {
                 membersToUpdate.get(i).setActive(true);
                 members.add(membersToUpdate.get(i));
                 updateFile(i);
-            } else if (members.size() == 0) {
-                System.out.println("No member to update [X]");
-                i = members.size();
+                membersToUpdate.clear();
+            }  else {
+                System.out.println("Nothing to update [X]");
+                membersToUpdate.clear();
             }
-
         }
     }
 
@@ -54,9 +53,10 @@ public class MemberUpdate {
                 membersToUpdate.get(i).setActive(false);
                 members.add(membersToUpdate.get(i));
                 updateFile(i);
-            } else if (members.size() == 0) {
-                System.out.println("No member to update [X]");
-                i = members.size();
+                membersToUpdate.clear();
+            }  else {
+                System.out.println("Nothing to update [X]");
+                membersToUpdate.clear();
             }
         }
     }
@@ -73,9 +73,10 @@ public class MemberUpdate {
                 membersToUpdate.get(i).setEliteSwimmer(true);
                 members.add(membersToUpdate.get(i));
                 updateFile(i);
-            }  else if (members.size() == 0) {
-                System.out.println("No member to update [X]");
-                i = members.size();
+                membersToUpdate.clear();
+            }  else {
+                System.out.println("Nothing to update [X]");
+                membersToUpdate.clear();
             }
         }
     }
@@ -91,9 +92,10 @@ public class MemberUpdate {
                   membersToUpdate.get(i).setEliteSwimmer(false);
                   members.add(membersToUpdate.get(i));
                   updateFile(i);
-              } else if (members.size() == 0) {
-                  System.out.println("No member to update [X]");
-                  i = members.size();
+                  membersToUpdate.clear();
+              }  else {
+                  System.out.println("Nothing to update [X]");
+                  membersToUpdate.clear();
               }
           }
       }
@@ -115,9 +117,10 @@ public class MemberUpdate {
                 membersToUpdate.get(i).setHasPaid(false);
                 members.add(membersToUpdate.get(i));
                 updateFile(i);
-            } else if (members.size() == 0) {
-                System.out.println("No member to update [X]");
-                i = members.size();
+                membersToUpdate.clear();
+            }  else {
+                System.out.println("Nothing to update [X]");
+                membersToUpdate.clear();
             }
         }
     }
@@ -139,9 +142,10 @@ public class MemberUpdate {
                 membersToUpdate.get(i).setHasPaid(true);
                 members.add(membersToUpdate.get(i));
                 updateFile(i);
-            } else if (members.size() == 0) {
-                System.out.println("No member to update [X]");
-                i = members.size();
+                membersToUpdate.clear();
+            }  else {
+                System.out.println("Nothing to update [X]");
+                membersToUpdate.clear();
             }
         }
     }

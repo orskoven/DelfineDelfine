@@ -1,4 +1,4 @@
 name;age;address;id;isActive;isUnder18;isElite;hasPaid
-tim;12;vvv;123;true;true;true;false
+tim;12;vvv;123;true;true;false;false
 tove;19;jjj;321;true;false;true;true
-laura;24;norge;271;true;false;false;false
+laura;24;norge;271;false;false;false;false
