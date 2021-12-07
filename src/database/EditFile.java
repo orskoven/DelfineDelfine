@@ -70,6 +70,14 @@ public class EditFile {
     }
 
     public void removeMemberProcess() throws IOException {
+        readAllMembers.removeAll(readAllMembers);
+        readAllMembers = readAllMembersGetMember.setFile();
+
+        System.out.println("All Members: ");
+        for (int i = 0; i < readAllMembers.size(); i++) {
+            System.out.println(readAllMembers.get(i).toStringToPrintAll());
+        }
+
         Member memberToLocate = lookForMemberId(readAllMembers);
         removeMember(readAllMembers, memberToLocate);
         readAllMembers = new ArrayList<Member>();

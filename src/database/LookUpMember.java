@@ -17,7 +17,7 @@ public class LookUpMember {
     private ReadAllMembers readAllMembersGetMember = new ReadAllMembers();
     private WriteMember write = new WriteMember();
 
-    public Member LookUpMember() throws IOException {
+    public Member lookUpMember() throws IOException {
         Member memberToLocate = lookForMemberId(readAllMembers);
         readAllMembers = new ArrayList<Member>();
         return memberToLocate;

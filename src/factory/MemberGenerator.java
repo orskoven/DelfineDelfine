@@ -20,7 +20,7 @@ public class MemberGenerator {
     private MemberToSave memberToSave = new MemberToSave();
 
 
-    public Member MemberGenerator() {
+    public Member memberGenerator() {
         System.out.println("Insert details:");
         boolean isVerified = false;
         do {

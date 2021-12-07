@@ -43,7 +43,7 @@ public class ChairmanMenu {
            switch (chairmanChoice) {
                case 1:
                    ReadPrices.getMembershipPricesFromFile();
-                   memberToSave.saveMemberDetailsToFile(member.MemberGenerator());
+                   memberToSave.saveMemberDetailsToFile(member.memberGenerator());
                    break;
                case 2:
                    //SKAL DETTE LAVES TIL EN METODE UNDER EN PACKAGE (ANALYSIS?)
@@ -57,11 +57,7 @@ public class ChairmanMenu {
                    break;
                case 3:
                    // remove member
-                   readAllMembersList = readAllMembers.setFile();
-                   System.out.println("All Members: ");
-                   for (int i = 0; i < readAllMembersList.size(); i++) {
-                       System.out.println(readAllMembersList.get(i).toStringToPrintAll());
-                   }
+
                    new EditFile().removeMemberProcess();
                    break;
                case 4:
