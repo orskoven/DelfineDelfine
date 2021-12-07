@@ -57,6 +57,11 @@ public class ChairmanMenu {
                    break;
                case 3:
                    // remove member
+                   readAllMembersList = readAllMembers.setFile();
+                   System.out.println("All Members: ");
+                   for (int i = 0; i < readAllMembersList.size(); i++) {
+                       System.out.println(readAllMembersList.get(i).toStringToPrintAll());
+                   }
                    new EditFile().removeMemberProcess();
                    break;
                case 4:
