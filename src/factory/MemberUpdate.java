@@ -20,111 +20,160 @@ public class MemberUpdate {
     public MemberUpdate () throws IOException {
     }
 
-    public void getNonActiveMembers (int memberId) throws IOException {
+    public void getNonActiveMembers () throws IOException {
+        clearArraylist();
+
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).isActive() == false) {
                 membersToUpdate.add(members.get(i));
             }
         }
+        for (int i = 0; i < membersToUpdate.size() ; i++) {
+            System.out.println(membersToUpdate.get(i).toStringToPrintAll());
+        }
+
+        System.out.println("Type ID to adjust: ");
+        int memberIDInput = menu.getUserInput();
+
+        int counter = 0;
 
         for (int i = 0; i < membersToUpdate.size(); i++) {
-            if (memberId == membersToUpdate.get(i).getMemberId()) {
+            if (memberIDInput == membersToUpdate.get(i).getMemberId()) {
                 membersToUpdate.get(i).setActive(true);
                 members.add(membersToUpdate.get(i));
                 updateFile(i);
-                membersToUpdate.clear();
-            }  else {
-                System.out.println("Nothing to update [X]");
-                membersToUpdate.clear();
+                counter++;
+
             }
+        }
+        if (counter == 0){
+            System.out.println("Nothing to update [X]");
         }
     }
 
-    public  void getActiveMembers(int memberID) throws IOException {
+    public  void getActiveMembers() throws IOException {
+        clearArraylist();
+
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).isActive() == true) {
                 membersToUpdate.add(members.get(i));
 
             }
         }
+        for (int i = 0; i < membersToUpdate.size() ; i++) {
+            System.out.println(membersToUpdate.get(i).toStringToPrintAll());
+        }
+
+        System.out.println("Type ID to adjust: ");
+        int memberIDInput = menu.getUserInput();
+        int counter = 0;
 
         for (int i = 0; i < membersToUpdate.size(); i++) {
-            if (memberID == membersToUpdate.get(i).getMemberId()) {
+            if (memberIDInput == membersToUpdate.get(i).getMemberId()) {
                 membersToUpdate.get(i).setActive(false);
                 members.add(membersToUpdate.get(i));
                 updateFile(i);
-                membersToUpdate.clear();
-            }  else {
-                System.out.println("Nothing to update [X]");
-                membersToUpdate.clear();
+                counter++;
+
+
             }
+        }
+        if (counter == 0) {
+            System.out.println("Nothing to update [X]");
         }
     }
 
-    public void getNonEliteMembers (int memberId) throws IOException {
+    public void getNonEliteMembers () throws IOException {
+        clearArraylist();
+
+
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).isEliteSwimmer() == false) {
                 membersToUpdate.add(members.get(i));
             }
         }
+        for (int i = 0; i < membersToUpdate.size() ; i++) {
+            System.out.println(membersToUpdate.get(i).toStringToPrintAll());
+        }
+        System.out.println("Type ID to adjust: ");
+        int memberIDInput = menu.getUserInput();
+        int counter = 0;
 
         for (int i = 0; i < membersToUpdate.size(); i++) {
-            if (memberId == membersToUpdate.get(i).getMemberId()) {
+            if (memberIDInput == membersToUpdate.get(i).getMemberId()) {
                 membersToUpdate.get(i).setEliteSwimmer(true);
                 members.add(membersToUpdate.get(i));
                 updateFile(i);
-                membersToUpdate.clear();
-            }  else {
-                System.out.println("Nothing to update [X]");
-                membersToUpdate.clear();
+                counter++;
+
             }
+
+        }
+        if (counter == 0){
+            System.out.println("Nothing to update [X]");
         }
     }
-      public void getEliteMembers (int memberId) throws IOException {
+      public void getEliteMembers () throws IOException {
+          clearArraylist();
+
           for (int i = 0; i < members.size(); i++) {
               if (members.get(i).isEliteSwimmer() == true) {
                   membersToUpdate.add(members.get(i));
               }
           }
+          for (int i = 0; i < membersToUpdate.size() ; i++) {
+              System.out.println(membersToUpdate.get(i).toStringToPrintAll());
+          }
+          System.out.println("Type ID to adjust: ");
+          int memberIDInput = menu.getUserInput();
+          int counter = 0;
 
           for (int i = 0; i < membersToUpdate.size(); i++) {
-              if (memberId == membersToUpdate.get(i).getMemberId()) {
+              if (memberIDInput == membersToUpdate.get(i).getMemberId()) {
                   membersToUpdate.get(i).setEliteSwimmer(false);
                   members.add(membersToUpdate.get(i));
                   updateFile(i);
-                  membersToUpdate.clear();
-              }  else {
-                  System.out.println("Nothing to update [X]");
-                  membersToUpdate.clear();
+                  counter++;
               }
+          }
+          if (counter == 0){
+              System.out.println("Nothing to update [X]");
           }
       }
 
     public void payingMembers () throws IOException {
+        clearArraylist();
+
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).isHasPaid() == true) {
                 membersToUpdate.add(members.get(i));
             }
-        }  for (int i = 0; i < membersToUpdate.size() ; i++) {
+        }
+        for (int i = 0; i < membersToUpdate.size() ; i++) {
             System.out.println(membersToUpdate.get(i).toStringToPrintAll());
         }
 
         System.out.println("Type ID to adjust: ");
         int userInput = menu.getUserInput();
+        int counter = 0;
 
         for (int i = 0; i < membersToUpdate.size(); i++) {
             if (userInput == membersToUpdate.get(i).getMemberId()) {
                 membersToUpdate.get(i).setHasPaid(false);
                 members.add(membersToUpdate.get(i));
                 updateFile(i);
-                membersToUpdate.clear();
-            }  else {
-                System.out.println("Nothing to update [X]");
-                membersToUpdate.clear();
+                counter++;
+
             }
         }
+        if (counter == 0){
+            System.out.println("Nothing to update [X]");
+        }
     }
+
     public void nonPayingMembers () throws IOException {
+        clearArraylist();
+
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).isHasPaid() == false) {
                 membersToUpdate.add(members.get(i));
@@ -136,20 +185,21 @@ public class MemberUpdate {
 
         System.out.println("Type ID to adjust: ");
         int userInput = menu.getUserInput();
+        int counter =0;
 
         for (int i = 0; i < membersToUpdate.size(); i++) {
             if (userInput == membersToUpdate.get(i).getMemberId()) {
                 membersToUpdate.get(i).setHasPaid(true);
                 members.add(membersToUpdate.get(i));
                 updateFile(i);
-                membersToUpdate.clear();
-            }  else {
-                System.out.println("Nothing to update [X]");
-                membersToUpdate.clear();
+                counter++;
+
             }
         }
+        if (counter == 0){
+            System.out.println("Nothing to update [X]");
+        }
     }
-
 
     public void updateFile (int i) throws IOException {
         for (int j = 0; j < members.size(); j++) {
@@ -160,5 +210,9 @@ public class MemberUpdate {
             }
         }
         System.out.println("\nThe adjustment has been completed [✓]");
+    }
+
+    public void clearArraylist(){
+        membersToUpdate.removeAll(membersToUpdate);
     }
 }

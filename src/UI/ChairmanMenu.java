@@ -65,18 +65,10 @@ public class ChairmanMenu {
                    new EditFile().removeMemberProcess();
                    break;
                case 4:
-                   //SKAL DETTE LAVES TIL EN METODE UNDER EN PACKAGE (ANALYSIS?)
-                   readAllMembersList.removeAll(readAllMembersList);
-                   readAllMembersList =readAllMembers.setFile();
                    // adjust members
-                   System.out.println("All Members: ");
+                   changeMembershipStatus();
 
-                   for (int i = 0; i < readAllMembersList.size(); i++) {
-                       System.out.println("Name: " + readAllMembersList.get(i).getName() + " ID: " + readAllMembersList.get(i).getMemberId());
-                   }
-                   System.out.println("Please type the ID of the member you want to adjust: ");
-                   int memberId = menu.getUserInput();
-                   changeMembershipStatus(memberId);
+
                    break;
                case 9:
                    break;
@@ -87,18 +79,18 @@ public class ChairmanMenu {
 
     }
 
-    public void activeMenu(int memberId) throws IOException {
+    public void activeMenu() throws IOException {
         System.out.println("1. Turn member active \n2. Turn member passive\n3. Quit");
         int adjustChoice = menu.getUserInput();
 
         switch (adjustChoice){
             case 1:
                // System.out.println("Members who are passive:");
-                memberUpdate.getNonActiveMembers(memberId);
+                memberUpdate.getNonActiveMembers();
                 break;
             case 2:
                // System.out.println("Members who are active:");
-                memberUpdate.getActiveMembers(memberId);
+                memberUpdate.getActiveMembers();
                 break;
             case 3:
                //changeMembershipStatus();
@@ -107,17 +99,17 @@ public class ChairmanMenu {
         }
     }
 
-    public void eliteMenu(int memberId) throws IOException {
+    public void eliteMenu() throws IOException {
         System.out.println("1. Change member to be elite \n2. Change member to be non-elite\n3. Quit");
         int adjustChoice = menu.getUserInput();
         switch (adjustChoice){
             case 1:
            //     System.out.println("Members who are non-elite:");
-                memberUpdate.getNonEliteMembers(memberId);
+                memberUpdate.getNonEliteMembers();
                 break;
             case 2:
              //   System.out.println("Members who are elite:");
-                memberUpdate.getEliteMembers(memberId);
+                memberUpdate.getEliteMembers();
                 break;
             case 3:
                 break;
@@ -125,16 +117,16 @@ public class ChairmanMenu {
         }
     }
 
-    public void changeMembershipStatus(int memberId) throws IOException {
+    public void changeMembershipStatus() throws IOException {
         showMembershipOptions();
         int adjustChoice = menu.getUserInput();
 
         switch (adjustChoice){
             case 1:
-                activeMenu(memberId);
+                activeMenu();
                 break;
             case 2:
-                eliteMenu(memberId);
+                eliteMenu();
                 break;
 
         }
