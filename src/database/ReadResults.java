@@ -1,6 +1,6 @@
 package database;
 
-import factory.Result;
+import persons.Result;
 
 import java.io.File;
 import java.io.FileNotFoundException;

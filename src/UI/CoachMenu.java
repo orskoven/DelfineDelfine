@@ -1,8 +1,10 @@
 package UI;
 
 
-import factory.Result;
+import analysis.ResultAnalysis;
+import persons.Result;
 import database.WriteResult;
+import factory.ResultGenerator;
 import persons.EliteSwimmer;
 
 import java.io.IOException;
@@ -13,6 +15,8 @@ public class CoachMenu {
     private WriteResult writeResult = new WriteResult();
     private EliteSwimmer eliteSwimmer = new EliteSwimmer();
     private Result result = new Result();
+    private ResultGenerator resultGenerator = new ResultGenerator();
+    private ResultAnalysis resultAnalysis = new ResultAnalysis();
 
     public void optionsForCoach(){
         System.out.println("Coach options:");
@@ -51,13 +55,13 @@ public class CoachMenu {
                 coachTrainingResultChoice = menu.getUserInput();
 
                 //Skal der opdeles så det kun er træningsresultater der bliver vist?
-                result.getTop5Result("butterfly",coachTrainingResultChoice);
+                resultAnalysis.getTop5Result("butterfly",coachTrainingResultChoice);
                 System.out.println();
-                result.getTop5Result("breast stroke",coachTrainingResultChoice);
+                resultAnalysis.getTop5Result("breast stroke",coachTrainingResultChoice);
                 System.out.println();
-                result.getTop5Result("crawl",coachTrainingResultChoice);
+                resultAnalysis.getTop5Result("crawl",coachTrainingResultChoice);
                 System.out.println();
-                result.getTop5Result("back crawl",coachTrainingResultChoice);
+                resultAnalysis.getTop5Result("back crawl",coachTrainingResultChoice);
 
 
 
@@ -66,7 +70,7 @@ public class CoachMenu {
                 showCompetitionOptions();
                 coachCompetitionChoice = menu.getUserInput();
 
-                result.getCompetitionResults(coachCompetitionChoice);
+                resultAnalysis.getCompetitionResults(coachCompetitionChoice);
 
 
             } else if (coachMenuChoice == 3) {
@@ -77,10 +81,10 @@ public class CoachMenu {
 
             } else if (coachMenuChoice == 4) {
                 //create training result
-                writeResult.writerToFile(result.writeTrainingToCsv());
+                writeResult.writerToFile(resultGenerator.writeTrainingToCsv());
             } else if (coachMenuChoice == 5){
                 //competition result
-                writeResult.writerToFile(result.writeCompetitionToCsv());
+                writeResult.writerToFile(resultGenerator.writeCompetitionToCsv());
 
             } else if (coachMenuChoice == 9) {
                 break;
@@ -90,10 +94,4 @@ public class CoachMenu {
 
         } while (coachMenuChoice != 9);
     }
-
-
-
-
-
-
 }

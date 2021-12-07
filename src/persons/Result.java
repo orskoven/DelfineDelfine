@@ -1,10 +1,9 @@
-package factory;
+package persons;
 
 import UI.Menu;
+import analysis.ResultAnalysis;
 import database.ReadAllMembers;
 import database.ReadResults;
-import persons.EliteSwimmer;
-import persons.Member;
 
 import java.util.*;
 
@@ -18,6 +17,7 @@ public class Result {
     private String timestamp;
     private String timeResult;
     private int rank;
+
     private Menu menu = new Menu();
     private EliteSwimmer eliteSwimmer = new EliteSwimmer();
     private ArrayList<Member> eliteMembers = new ArrayList<Member>();
@@ -27,6 +27,7 @@ public class Result {
     private ArrayList<Result> allResults = new ArrayList<Result>();
     private ArrayList<Member> allMembers = new ArrayList<Member>();
     ArrayList<Result> seniorResults = new ArrayList<Result>();
+    private ResultAnalysis resultAnalysis = new ResultAnalysis();
 
     public Result() {
     }
@@ -40,21 +41,78 @@ public class Result {
         this.timeResult = timeResult;
         this.rank = rank;
     }
+
+    public String chooseDisciplineName() {
+        System.out.println("Press the following numbers for a discipline:\n1. Butterfly" +
+                "\n2. Breast Stroke\n3. Crawl\n4. Back Crawl");
+        int disciplineChoice = menu.getUserInput();
+        switch (disciplineChoice) {
+            case 1:
+                disciplineName = "Butterfly";
+                break;
+            case 2:
+                disciplineName = "Breast Stroke";
+                break;
+            case 3:
+                disciplineName = "Crawl";
+                break;
+            case 4:
+                disciplineName = "Back Crawl";
+                break;
+            default:
+                break;
+        }
+        return disciplineName;
+    }
+
+    public void addMemberIdAndNameToResult(){
+        //se om den fordobles hvis den køres flere gange
+        eliteMembers = eliteSwimmer.findEliteSwimmer();
+
+        boolean isIdFound = false;
+        do {
+            try {
+                System.out.println("Type in the member ID");
+                resultAnalysis.showElitenameAndId();
+                int userinput = menu.getUserInput();
+
+                for (int i = 0; i < eliteMembers.size(); i++) {
+                    if (eliteMembers.get(i).getMemberId() == userinput) {
+                        memberId = userinput;
+                        nameOfMember = eliteMembers.get(i).getName();
+                        isIdFound = true;
+
+                        //userinput og user name addes til resultobject!!
+                    }
+                }
+
+            } catch (NullPointerException exception){
+                System.out.println("Couldn't find the member!");
+                isIdFound = false;
+            }
+
+        } while (!isIdFound);
+    }
+
     public void chooseRank (){
         System.out.println("Enter rank result:");
         rank = scanner.nextInt();
     }
 
-    private void chooseTimeResult (){
+    public void chooseTimeResult (){
         System.out.println("Enter the time result: (hh:mm:ss)");
         timeResult = scanner.next();
 
     }
 
+    public String getNameOfMember() {
+        return nameOfMember;
+    }
 
+    /*
     private String chooseDisciplineName() {
-        System.out.println("Press the following numbers for a discipline:\n1 ‣ Butterfly" +
-                "\n2 ‣ Breast Stroke\n3 ‣ Crawl\n4 ‣ Back Crawl");
+        System.out.println("Press the following numbers for a discipline:\n1. Butterfly" +
+                "\n2. Breast Stroke\n3. Crawl\n4. Back Crawl");
         int disciplineChoice = menu.getUserInput();
         switch (disciplineChoice) {
             case 1:
@@ -94,6 +152,8 @@ public class Result {
         chooseTimeResult();
         return toStringCsv();
     }
+
+
 
     public void showElitenameAndId(){
         //se om den fordobles hvis den køres flere gange
@@ -259,11 +319,13 @@ public class Result {
         competitionResults.removeAll(competitionResults);
         eliteResult.removeAll(eliteResult);
     }
+    */
+
     public void getTournamentName(){
         System.out.println("Enter the name of the tournament:");
         tournamentName = scanner.next();
     }
-    private void getTimestamp() {
+    public void getTimestamp() {
         System.out.println("Please enter the date of the result: (dd-mm-yyyy)");
         timestamp = scanner.next();
     }
@@ -292,7 +354,7 @@ public class Result {
         return this.timeResult;
     }
 
-    private String toStringCsv() {
+    public String toStringCsv() {
         return disciplineName + ";" +
                 nameOfMember + ";" +
                 memberId + ";" +

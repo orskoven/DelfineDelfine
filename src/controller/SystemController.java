@@ -17,7 +17,6 @@ public class SystemController {
 
         menu.welcome();
 
-
         do {
             menu.chooseUser();
             userInput = menu.getUserInput();
