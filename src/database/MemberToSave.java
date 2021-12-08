@@ -59,6 +59,17 @@ public class MemberToSave {
         return memberId+2 ;
     }
 
+        public static void writerToFile(String members){
+            try {
+                Writer w = new FileWriter("resources/members.csv", true);
+                w.write(members);
+                w.close();
 
 
-}
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+    }

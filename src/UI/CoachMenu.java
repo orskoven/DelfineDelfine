@@ -2,6 +2,7 @@ package UI;
 
 
 import analysis.ResultAnalysis;
+import database.MemberToSave;
 import persons.Result;
 import database.WriteResult;
 import factory.ResultGenerator;
@@ -80,10 +81,10 @@ public class CoachMenu {
 
             } else if (coachMenuChoice == 4) {
                 //create training result
-                writeResult.writerToFile(resultGenerator.writeTrainingToCsv());
+                MemberToSave.writerToFile(resultGenerator.writeTrainingToCsv());
             } else if (coachMenuChoice == 5){
                 //competition result
-                writeResult.writerToFile(resultGenerator.writeCompetitionToCsv());
+                MemberToSave.writerToFile(resultGenerator.writeCompetitionToCsv());
 
             } else if (coachMenuChoice == 9) {
                 break;

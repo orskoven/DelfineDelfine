@@ -13,8 +13,6 @@ public class EditFile {
     private ArrayList<Member> members = new ArrayList<Member>();
     private ArrayList<Member> readAllMembers = new ReadAllMembers().setFile();
     private ReadAllMembers readAllMembersGetMember = new ReadAllMembers();
-    private WriteMember write = new WriteMember();
-
     public Member lookForMemberId(ArrayList<Member> membersList) {
 
         Member member = null;
@@ -60,9 +58,9 @@ public class EditFile {
             System.out.println("No member has been removed.");
         }
         Writer w = new FileWriter("resources/members.csv", false);
-        write.writerToFile("name;age;address;id;isActive;isUnder18;isElite;hasPaid");
+        MemberToSave.writerToFile("name;age;address;id;isActive;isUnder18;isElite;hasPaid");
         for (int i = 0; i < membersList.size(); i++) {
-            write.writerToFile("\n" + membersList.get(i).toString());
+            MemberToSave.writerToFile("\n" + membersList.get(i).toString());
 
         }
 
@@ -86,9 +84,9 @@ public class EditFile {
 
     public void addMember(ArrayList<Member> membersList) throws IOException {
         Writer w = new FileWriter("resources/members.csv", false);
-        write.writerToFile("name;age;address;id;isActive;isUnder18;isElite;hasPaid" + "\n");
+        MemberToSave.writerToFile("name;age;address;id;isActive;isUnder18;isElite;hasPaid" + "\n");
         for (int i = 0; i < membersList.size(); i++) {
-            write.writerToFile( membersList.get(i).toString() + "\n");
+            MemberToSave.writerToFile( membersList.get(i).toString() + "\n");
         }
     }
 

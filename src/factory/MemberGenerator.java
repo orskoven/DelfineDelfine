@@ -3,7 +3,6 @@ package factory;
 import analysis.MemberAnalysis;
 import database.MemberToSave;
 import database.ReadPrices;
-import database.WriteMember;
 import persons.Member;
 
 import java.util.Scanner;

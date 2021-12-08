@@ -15,7 +15,6 @@ public class LookUpMember {
     private ArrayList<Member> members = new ArrayList<Member>();
     private ArrayList<Member> readAllMembers = new ReadAllMembers().setFile();
     private ReadAllMembers readAllMembersGetMember = new ReadAllMembers();
-    private WriteMember write = new WriteMember();
 
     public Member lookUpMember() throws IOException {
         Member memberToLocate = lookForMemberId(readAllMembers);
@@ -71,7 +70,7 @@ public class LookUpMember {
         }
         Writer w = new FileWriter("resources/members.csv", false);
         for (int i = 0; i < membersList.size(); i++) {
-            write.writerToFile("\n" + membersList.get(i).toString());
+            MemberToSave.writerToFile("\n" + membersList.get(i).toString());
 
         }
 
