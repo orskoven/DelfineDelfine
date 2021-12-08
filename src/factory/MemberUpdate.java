@@ -1,3 +1,6 @@
+// AUTHOR : RASMUS & LAURA & SIMON & ELISA
+
+
 package factory;
 
 import UI.Menu;

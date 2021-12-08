@@ -1,3 +1,6 @@
+// AUTHOR : SIMON & ELISA
+
+
 package factory;
 
 import analysis.MemberAnalysis;

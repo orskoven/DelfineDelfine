@@ -1,3 +1,6 @@
+
+// AUTHOR : RASMUS & LAURA & SIMON
+
 package analysis;
 
 import database.ReadAllMembers;

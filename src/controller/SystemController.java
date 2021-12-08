@@ -1,3 +1,6 @@
+// AUTHOR : ELISA & LAURA
+
+
 package controller;
 import UI.*;
 import persons.*;
@@ -23,20 +26,20 @@ public class SystemController {
 
             switch (userInput) {
                 case 1:
-                    //Chairman.chairmanLogin();
-                    //Chairman.validateLogin();
+                    Chairman.chairmanLogin();
+                    Chairman.validateLogin();
                     chairmanMenu.showChairmanMenu();
                     break;
 
                 case 2:
-                    //Cashier.cashierLogin();
-                    //Cashier.validateLogin();
+                    Cashier.cashierLogin();
+                    Cashier.validateLogin();
                     cashierMenu.showCashierMenu();
                     break;
 
                 case 3:
-                    //Coach.coachLogin();
-                    //Coach.validateLogin();
+                    Coach.coachLogin();
+                    Coach.validateLogin();
                     coachMenu.showCoachMenu();
                     break;
             }

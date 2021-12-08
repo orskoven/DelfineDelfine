@@ -1,3 +1,6 @@
+// AUTHOR : RASMUS & LAURA
+
+
 package database;
 
 import persons.Result;

@@ -1,3 +1,6 @@
+// AUTHOR : ELISA & LAURA & SIMON & RASMUS
+
+
 import controller.SystemController;
 
 import java.io.IOException;

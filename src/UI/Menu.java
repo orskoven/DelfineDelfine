@@ -1,3 +1,6 @@
+// AUTHOR : ELISA & LAURA & SIMON
+
+
 package UI;
 
 import persons.Member;

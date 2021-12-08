@@ -1,3 +1,6 @@
+// AUTHOR : ELISA & LAURA & SIMON & RASMUS
+
+
 package persons;
 
 import UI.Menu;

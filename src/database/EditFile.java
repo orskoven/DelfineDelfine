@@ -1,3 +1,6 @@
+// AUTHOR : RASMUS & SIMON
+
+
 package database;
 
 import persons.Member;
