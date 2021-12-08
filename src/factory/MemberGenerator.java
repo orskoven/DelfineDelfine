@@ -17,6 +17,7 @@ public class MemberGenerator {
     public Member memberGenerator() {
         System.out.println("Insert details:");
         boolean isVerified = false;
+
         do {
 
             String name = member.askForName();
@@ -30,10 +31,13 @@ public class MemberGenerator {
 
             newMember = new Member(name, age, address, new MemberToSave().getMemberId(), isActive,
                     isUnder18, isEliteSwimmer, hasPaid);
+
             String[] newMemberArray = newMember.toStringToConsole().split(",");
 
             System.out.println("Verify the details: ");
+
             // print details
+
             for (int i = 0; i < newMemberArray.length; i++) {
                 System.out.println(newMemberArray[i]);
             }
@@ -43,6 +47,7 @@ public class MemberGenerator {
             }  else  if (!newMember.isHasPaid()) {
                 memberAnalysis.getMemberSubscriptionPrice(newMember);
             }
+
             System.out.println("-----------------------------------");
             System.out.println("1. Save the member\n2. Start over");
             if (scanner.nextInt() == 1) {
